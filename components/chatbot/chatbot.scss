@@ -1,0 +1,117 @@
+// Settings
+// ============================================================================
+$chatbot-bg-color: #fff;
+$chatbot-border-radius: 8px;
+
+
+// Structure
+// ============================================================================
+.chatbot {
+  position: fixed;
+  right: 32px;
+  bottom: 96px; // height of launch + gap
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 480px;
+  height: 884px;
+  padding: 0;
+  background-color: var(--pf-v5-global--BackgroundColor--light-100);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.12);
+  overflow: hidden;
+
+  // Chatbot header
+  // --------------------------------------------------------------------------
+  &__header {
+    padding: 24px;
+    background-color: var(--pf-v5-global--BackgroundColor--light-300);
+  }
+
+  // Chatbot main
+  // --------------------------------------------------------------------------
+  &__main {
+    padding: 24px;
+    // background-color: #ccc;
+  }
+
+  // Chatbot footer
+  // --------------------------------------------------------------------------
+  &__footer {
+    padding: 24px;
+    // background-color: #bbb;
+  }
+
+  // Chatbot display modes
+  // --------------------------------------------------------------------------
+  // &--overlay {} // default mode
+
+  &--dock {
+    right: 0;
+  }
+
+  &--fullscreen {
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+}
+
+
+// Launch button
+// ============================================================================
+.chatbot__toggle {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 100;
+}
+
+
+// Input
+// ============================================================================
+.chatbot__input {}
+
+
+// Messages
+// ============================================================================
+.chatbot__messages {
+  display: grid;
+  gap: 24px;
+}
+
+
+// System message
+// ----------------------------------------------------------------------------
+.chatbot__system-message {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--pf-v5-global--spacer--md);
+}
+
+// User message
+// ----------------------------------------------------------------------------
+.chatbot__user-message {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--pf-v5-global--spacer--md);
+}
+
+
+// Structured response
+// ============================================================================
+.chatbot__structured-response {}
+
+
+// Cards
+// ============================================================================
+.chatbot__card {}
+
+
+// Footnote
+// ============================================================================
+.chatbot__footnote {
+  color: var(--pf-v5-global--Color--400);
+  text-align: center;
+}
