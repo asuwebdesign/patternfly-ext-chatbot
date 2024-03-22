@@ -33,24 +33,14 @@ export const DropdownWithKebab = () => {
       shouldFocusToggleOnSelect
     >
       <DropdownList>
-        <DropdownItem value={0} key="action">
-          Action
+        <DropdownItem value={0} key="chatbot-display-overlay">
+          Overlay
         </DropdownItem>
-        <DropdownItem value={1} key="link" to="#default-link2" onClick={ev => ev.preventDefault()}>
-          Link
+        <DropdownItem value={1} key="chatbot-display-dock">
+          Dock
         </DropdownItem>
-        <DropdownItem value={2} isDisabled key="disabled action">
-          Disabled Action
-        </DropdownItem>
-        <DropdownItem value={3} isDisabled key="disabled link" to="#default-link4">
-          Disabled Link
-        </DropdownItem>
-        <Divider key="separator" />
-        <DropdownItem value={4} key="separated action">
-          Separated Action
-        </DropdownItem>
-        <DropdownItem value={5} key="separated link" to="#default-link6" onClick={ev => ev.preventDefault()}>
-          Separated Link
+        <DropdownItem value={2} key="chatbot-display-fullscreen">
+          Fullscreen
         </DropdownItem>
       </DropdownList>
     </Dropdown>

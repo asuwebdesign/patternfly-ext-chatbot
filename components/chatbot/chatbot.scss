@@ -71,7 +71,23 @@ $chatbot-border-radius: 8px;
 
 // Input
 // ============================================================================
-.chatbot__input {}
+.chatbot__input {
+  display: grid;
+  gap: var(--pf-v5-global--spacer--md);
+  padding: var(--pf-v5-global--spacer--md);
+  border: var(--pf-v5-global--BorderWidth--sm) solid var(--pf-v5-global--BorderColor--100);
+  border-radius: 8px;
+
+  &-primary {
+    display: flex;
+  }
+
+  &-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
 
 
 // Messages
@@ -113,5 +129,6 @@ $chatbot-border-radius: 8px;
 // ============================================================================
 .chatbot__footnote {
   color: var(--pf-v5-global--Color--400);
+  font-size: var(--pf-v5-global--icon--FontSize--sm);
   text-align: center;
 }

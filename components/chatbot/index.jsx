@@ -2,6 +2,8 @@
 
 // Import packages
 import React, { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane, faMicrophone, faCirclePlus, faBars } from '@fortawesome/free-solid-svg-icons'
 import { motion } from "framer-motion"
 
 // Import styles
@@ -12,6 +14,9 @@ import './chatbot.scss'
 import { DropdownWithKebab } from './components/display-modes'
 import { Avatar } from '@patternfly/react-core'
 import { TextArea } from '@patternfly/react-core'
+import { Button } from '@patternfly/react-core'
+import { Divider } from '@patternfly/react-core'
+import { Tooltip } from '@patternfly/react-core'
 
 const Chatbot = ({ messages, onMessageSubmit, chatbotVisible }) => {
   const [inputValue, setInputValue] = useState('');
@@ -20,6 +25,9 @@ const Chatbot = ({ messages, onMessageSubmit, chatbotVisible }) => {
   const [chatbotMode, setChatbotMode] = useState('overlay'); // Default mode is 'overlay'
   const [showOptions, setShowOptions] = useState(false);
   const [showOldConversations, setShowOldConversations] = useState(false);
+
+  // Tooltips
+  const tooltipRefChatbotUseMicrophone = React.useRef(null)
 
   // Function to simulate bot response
   const getBotResponse = (userMessage) => {
@@ -69,6 +77,13 @@ const Chatbot = ({ messages, onMessageSubmit, chatbotVisible }) => {
       setSpeechRecognition(recognition);
     }
   }, []);
+
+  const handleTextareaChange = (e) => {
+    setInputValue(e.target.value);
+    // Auto-grow the textarea by adjusting its height based on its scroll height
+    e.target.style.height = 'auto';
+    e.target.style.height = `${e.target.scrollHeight}px`;
+  };
 
   const startListening = () => {
     if (speechRecognition) {
@@ -122,6 +137,7 @@ const Chatbot = ({ messages, onMessageSubmit, chatbotVisible }) => {
       <div className="chatbot__header">
         <h1>Chatbot</h1>
         <div>Current display mode: {chatbotMode}</div>
+        <FontAwesomeIcon icon={faBars} />
         <div className="header-options">
           <button className="options-toggle" onClick={toggleOptions}>Options</button>
           <button className="conversations-toggle" onClick={toggleOldConversations}>Old Conversations</button>
@@ -137,12 +153,30 @@ const Chatbot = ({ messages, onMessageSubmit, chatbotVisible }) => {
         {showOldConversations && (
           <div className="old-conversations">
             <h2>Old Conversations</h2>
-            <ul>
-              {/* Render your old chat conversations here */}
-              <li>Title 1</li>
-              <li>Title 2</li>
-              <li>Title 3</li>
-            </ul>
+            <h3>Today</h3>
+            <ol>
+              <li>Topic #1 label</li>
+              <li>Topic #2 label</li>
+              <li>Topic #3 label</li>
+            </ol>
+            <h3>Yesterday</h3>
+            <ol>
+              <li>Topic #1 label</li>
+              <li>Topic #2 label</li>
+              <li>Topic #3 label</li>
+            </ol>
+            <h3>Previous 7 days</h3>
+            <ol>
+              <li>Topic #1 label</li>
+              <li>Topic #2 label</li>
+              <li>Topic #3 label</li>
+            </ol>
+            <h3>Previous 30 days</h3>
+            <ol>
+              <li>Topic #1 label</li>
+              <li>Topic #2 label</li>
+              <li>Topic #3 label</li>
+            </ol>
           </div>
         )}
       </div>
@@ -160,25 +194,35 @@ const Chatbot = ({ messages, onMessageSubmit, chatbotVisible }) => {
         </div>
       </div>
       <div className="chatbot__footer">
-        <form onSubmit={handleMessageSubmit}>
-          <TextArea
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Type your message..."
-            rows={3} // Set the number of visible text lines
-            aria-label="text area example"
-          />
-          <div className="character-counter">{inputValue.length} characters</div>
-          <button type="button" onClick={listening ? stopListening : startListening}>
-            {listening ? 'Stop Listening' : 'Start Listening'}
-          </button>
-          <button type="submit">Send</button>
+        <form className="chatbot__input" onSubmit={handleMessageSubmit}>
+          <div className="chatbot__input-primary">
+            <TextArea
+              value={inputValue}
+              onChange={handleTextareaChange}
+              onKeyDown={handleKeyDown}
+              placeholder="Type your message..."
+              aria-label="text area example"
+            />
+            <Button variant="plain" aria-label="Use microphone" onClick={listening ? stopListening : startListening} aria-describedby='tooltip-chatbot-use-microphone' ref={tooltipRefChatbotUseMicrophone}>
+              <FontAwesomeIcon icon={faMicrophone} />
+            </Button>
+          </div>
+          <Divider />
+          <div className="chatbot__input-secondary">
+            <Button variant="plain" aria-label="Add context">
+              <FontAwesomeIcon icon={faCirclePlus} />
+            </Button>
+            <div className="character-counter">{inputValue.length} of 4,000</div>
+            <Button variant={inputValue.length > 0 ? 'primary' : 'plain'} aria-label="Send" type="submit" isAriaDisabled={inputValue.length === 0}>
+              <FontAwesomeIcon icon={faPaperPlane} />
+            </Button>
+          </div>
         </form>
         <div className="chatbot__footnote">
           <p>Chatbot can make mistakes. Consider checking important information.</p>
         </div>
       </div>
+      <Tooltip id="tooltip-chatbot-use-microphone" content="Use micrphone" triggerRef={tooltipRefChatbotUseMicrophone} />
     </motion.div>
   );
 };
