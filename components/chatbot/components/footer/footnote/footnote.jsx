@@ -1,0 +1,1 @@
+// Footnote - displayed in the footer

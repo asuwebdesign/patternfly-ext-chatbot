@@ -18,13 +18,13 @@ const App = () => {
   return (
     <div className="app">
 
-      <div className="pf-chatbot">
-        <div className="pf-chatbot__header">Header</div>
-        <div className="pf-chatbot__main">Main</div>
-        <div className="pf-chatbot__footer">Footer</div>
-      </div>
-
-      <button className="pf-chatbot-toggle">Button</button>
+      {/* Main chatbot component */}
+      <Chatbot messages={messages} onMessageSubmit={handleMessageSubmit} chatbotVisible={chatbotVisible} />
+      
+      {/* Chatbot launch action */}
+      <button onClick={toggleChatbot} className="chatbot__toggle">
+        {chatbotVisible ? 'Hide Chatbot' : 'Show Chatbot'}
+      </button>
 
     </div>
   )
