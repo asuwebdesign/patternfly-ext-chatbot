@@ -1,4 +1,6 @@
-import "./globals.css"
+import React from 'react'
+
+import "./globals.scss"
 
 export const metadata = {
   title: "PatternFly Chatbot Extension",
@@ -10,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className="" lang="en">
-      <body>{children}</body>
+      <body suppressHydrationWarning={true}>{children}</body>
     </html>
   )
 }
