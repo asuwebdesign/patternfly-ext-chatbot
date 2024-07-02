@@ -5,11 +5,14 @@ import React, { useState, useEffect } from 'react'
 import Testing from '@/components/testing'
 
 // Import PatternFly components
-import { Button, Tooltip, Spinner } from '@patternfly/react-core'
+import { Button, Tooltip, Text, TextVariants } from '@patternfly/react-core'
 
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faBars } from '@fortawesome/free-solid-svg-icons'
+
+// Import assets
+// import Illustration from '@/public/assets/illustration--terms-of-use.svg'
 
 // Import styles
 import '@patternfly/react-core/dist/styles/base.css'
@@ -19,6 +22,10 @@ const App = () => {
 
   // Configure tooltips
   const tooltipRef = React.useRef()
+
+  // Configure layout options
+  const title = <Text component={TextVariants.h1}>Terms of use</Text>
+  const content = null
 
   return (
     <div className="app">
@@ -34,19 +41,29 @@ const App = () => {
 
 
       {/* BEGIN PatternFly Chatbot */}
-      <div className="pf-chatbot pf-chatbot--layout--splash">
+      <div className="pf-chatbot pf-chatbot--layout--terms">
+
+        {/* BEGIN Chatbot header */}
+        <div className="pf-chatbot__header">
+          <div>Graphic</div>
+          <div>{title}</div>
+        </div>
+        {/* END Chatbot header */}
 
         {/* BEGIN Chatbot main */}
         <div className="pf-chatbot__main">
 
-          {/* Brand */}
-          <div className="pf-chatbot__brand">Logo</div>
-
-          {/* Spinner */}
-          <div className="pf-chatbot__loading"><Spinner aria-label="Connecting to the service" /></div>
+          Terms of use content goes here...
 
         </div>
         {/* END Chatbot main */}
+
+        {/* BEGIN Chatbot footer */}
+        <div className="pf-chatbot__footer">
+          <Button variant="tertiary">Decline</Button>
+          <Button>Accept</Button>
+        </div>
+        {/* END Chatbot footer */}
 
       </div>
       {/* END PatternFly Chatbot */}

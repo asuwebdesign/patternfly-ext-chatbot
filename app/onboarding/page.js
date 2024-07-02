@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react'
 import Testing from '@/components/testing'
 
 // Import PatternFly components
-import { Button, Tooltip, Spinner } from '@patternfly/react-core'
+import { Button, Tooltip, Text, TextVariants } from '@patternfly/react-core'
 
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -19,6 +19,8 @@ const App = () => {
 
   // Configure tooltips
   const tooltipRef = React.useRef()
+
+  // Configure layout options
 
   return (
     <div className="app">
@@ -34,19 +36,29 @@ const App = () => {
 
 
       {/* BEGIN PatternFly Chatbot */}
-      <div className="pf-chatbot pf-chatbot--layout--splash">
+      <div className="pf-chatbot pf-chatbot--layout--onboarding">
+
+        {/* BEGIN Chatbot header */}
+        <div className="pf-chatbot__header">
+          Graphic
+          <Button variant="link">Skip</Button>
+        </div>
+        {/* END Chatbot header */}
 
         {/* BEGIN Chatbot main */}
         <div className="pf-chatbot__main">
-
-          {/* Brand */}
-          <div className="pf-chatbot__brand">Logo</div>
-
-          {/* Spinner */}
-          <div className="pf-chatbot__loading"><Spinner aria-label="Connecting to the service" /></div>
-
+          <Text component={TextVariants.h1}>{`Redefine work in the age of AI`}</Text>
+          <Text component={TextVariants.p}>{`Experience personalized assistance and seamless problem-solving, simplifying your journey with Red Hat every step of the way.`}</Text>
         </div>
         {/* END Chatbot main */}
+
+        {/* BEGIN Chatbot footer */}
+        <div className="pf-chatbot__footer">
+          <Button>Previous</Button>
+          <div>dots</div>
+          <Button>Next</Button>
+        </div>
+        {/* END Chatbot footer */}
 
       </div>
       {/* END PatternFly Chatbot */}
