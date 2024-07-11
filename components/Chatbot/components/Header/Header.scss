@@ -8,8 +8,8 @@
   grid-template-columns: 48px 1fr 48px;
   align-items: center;
   justify-content: center;
-  column-gap: 24px;
-  padding: 24px;
+  column-gap: var(--pf-t--global--spacer--400);
+  padding: var(--pf-t--global--spacer--400);
   background-color: var(--pf-t--chatbot--background);
 
   // Divider
