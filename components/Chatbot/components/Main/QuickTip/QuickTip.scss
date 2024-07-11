@@ -1,0 +1,38 @@
+// ============================================================================
+// Chatbot Main - Quick Tip
+// ============================================================================
+.pf-chatbot__quick-tip {
+  --pf-t--chatbot--quick-tip--desc--color: var(--pf-t--color--gray--70);
+
+  box-shadow: var(--pf-t--global--box-shadow--sm);
+
+  &:before { display: none; }
+
+  // Contents
+  img { border-radius: var(--pf-t--global--border--radius--small); }
+  .pf-v6-c-content--h3 { font-weight: 500; }
+  .pf-v6-c-content--p { color: var(--pf-t--chatbot--quick-tip--desc--color); font-size: var(--pf-t--global--font--size--body--lg); }
+
+  // Actions
+  .pf-v6-c-button {
+    font-weight: 500;
+    font-size: var(--pf-t--global--font--size--body--lg);
+  }
+
+
+  // Hide quick tip
+  &--hidden { display: none; }
+
+}
+
+
+// ============================================================================
+// Chatbot Dark Theme
+// ============================================================================
+.pf-v6-theme-dark {
+
+  .pf-chatbot__quick-tip {
+    --pf-t--chatbot--quick-tip--desc--color: var(--pf-t--color--gray--30);
+  }
+
+}

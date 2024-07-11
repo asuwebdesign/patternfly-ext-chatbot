@@ -5,14 +5,13 @@
 import React from 'react'
 
 // Import PatternFly components
-import { Button, Text, TextVariants } from '@patternfly/react-core'
+import { Text, TextVariants } from '@patternfly/react-core'
 
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faBars } from '@fortawesome/free-solid-svg-icons'
 
 // Import Chatbot components
-import Tooltip from '@/components/Chatbot/components/Tooltip/Tooltip'
 import Header from '@/components/Chatbot/components/Header/Header'
 import Main from '@/components/Chatbot/components/Main/Main'
 import Footer from '@/components/Chatbot/components/Footer/Footer'
@@ -23,6 +22,7 @@ import ToggleMenu from '../../components/Header/ToggleMenu/ToggleMenu'
 import ToggleOptions from '../../components/Header/ToggleOptions/ToggleOptions'
 import Messages from '../../components/Main/Messages/Messages'
 import Separator from '../../components/Main/Separator/Separator'
+import QuickTip from '../../components/Main/QuickTip/QuickTip'
 
 // Import styles
 import './Chat.scss'
@@ -50,6 +50,11 @@ const Chat = () => {
           <Message />
           <Separator type="date" value="2024-07-08" />
           <Message />
+          <QuickTip
+            imgSrc="https://cdn.dribbble.com/userupload/15166768/file/original-55c633c1ee5dbc0bb6da2b833b4d125c.png?resize=2048x1536"
+            imgAlt="Picture description"
+            heading="Quick tip heading"
+            description="Quick tip description that can wrap multiple lines as needed." />
           <Message />
           <Message />
           <Message />
