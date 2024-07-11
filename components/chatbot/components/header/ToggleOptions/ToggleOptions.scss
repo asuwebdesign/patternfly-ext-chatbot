@@ -1,0 +1,11 @@
+// ============================================================================
+// Toggle Options
+// ============================================================================
+.pf-chatbot__button--toggle-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--pf-t--global--border--radius--pill);
+}
