@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
-import Chatbot from '@/components/chatbot'
+import Chatbot from '@/components/Chatbot'
 
 const App = () => {
   const [messages, setMessages] = useState([])
