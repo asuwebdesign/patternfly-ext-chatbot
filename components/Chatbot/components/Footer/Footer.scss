@@ -4,7 +4,10 @@
 .pf-chatbot__footer {
   grid-area: 3 / 1 / 4 / 2;
   position: relative;
-  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pf-t--global--spacer--300);
+  padding: var(--pf-t--global--spacer--400);
   background-color: var(--pf-t--chatbot--background);
 
   // Divider
