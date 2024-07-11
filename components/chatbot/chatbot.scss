@@ -1,136 +1,90 @@
-// Settings
 // ============================================================================
-$chatbot-bg-color: #fff;
-$chatbot-border-radius: 8px;
-
-
-.pf-v5-c-button { transition: var(--pf-v5-global--Transition); }
-
-// Structure
+// Chatbot
 // ============================================================================
-.chatbot {
+.pf-chatbot {
+
+  // Local design tokens
+  --pf-t--chatbot--heading--font-family: var(--pf-v6-c-content--heading--FontFamily, redhatdisplayvf, redhatdisplay, helvetica, arial, sans-serif);
+  --pf-t--chatbot--font-size: var(--pf-t--global--font--size--md);
+  --pf-t--chatbot--background: var(--pf-t--color--gray--10);
+  --pf-t--chatbot--border: var(--pf-t--color--gray--30);
+  --pf-t--chatbot--illustration--fill: var(--pf-t--color--red--50);
+  --pf-t--chatbot--code--background: var(--pf-t--color--gray--20);
+
   position: fixed;
-  right: 32px;
-  bottom: 96px; // height of launch + gap
+  bottom: 96px;
+  right: 24px;
   display: grid;
   grid-template-rows: auto 1fr auto;
   width: 480px;
-  height: 884px;
-  padding: 0;
-  background-color: var(--pf-v5-global--BackgroundColor--light-100);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,.12);
+  height: 75vh; // TODO change
+  background-color: var(--pf-t--chatbot--background);
+  border-radius: var(--pf-t--global--border--radius--medium);
+  box-shadow: 0 1px 2px rgba(0,0,0, .12);
+  font-size: var(--pf-t--chatbot--font-size);
   overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-  // Chatbot header
-  // --------------------------------------------------------------------------
-  &__header {
-    padding: 24px;
-    background-color: var(--pf-v5-global--BackgroundColor--light-300);
-  }
+  // transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) var(--pf-t--global--duration--300);
 
-  // Chatbot main
-  // --------------------------------------------------------------------------
-  &__main {
-    padding: 24px;
-    // background-color: #ccc;
-  }
+  &--hidden { pointer-events: none; }
+}
 
-  // Chatbot footer
-  // --------------------------------------------------------------------------
-  &__footer {
-    padding: 24px;
-    // background-color: #bbb;
-  }
 
-  // Chatbot display modes
-  // --------------------------------------------------------------------------
-  // &--overlay {} // default mode
+// ============================================================================
+// Chatbot Display Mode - Docked
+// ============================================================================
+.pf-chatbot--docked {
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
 
-  &--dock {
-    right: 0;
-  }
 
-  &--fullscreen {
-    bottom: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-  }
+// ============================================================================
+// Chatbot Display Mode - Fullscreen
+// ============================================================================
+.pf-chatbot--fullscreen {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+
+  // display grid (chat only? fullscreen for bootup screens...)
+  // 3x3: header, main, footer
 
 }
 
 
-// Launch button
 // ============================================================================
-.chatbot__toggle {
-  position: fixed;
-  right: 32px;
-  bottom: 32px;
-  z-index: 100;
+// Chatbot Display Mode - Standalone
+// ============================================================================
+.pf-chatbot--embedded {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
 }
 
 
-// Input
-// ============================================================================
-.chatbot__input {
-  display: grid;
-  gap: var(--pf-v5-global--spacer--md);
-  padding: var(--pf-v5-global--spacer--md);
-  border: var(--pf-v5-global--BorderWidth--sm) solid var(--pf-v5-global--BorderColor--100);
-  border-radius: 8px;
 
-  &-primary {
-    display: flex;
+// ============================================================================
+// Chatbot Dark Theme
+// ============================================================================
+.pf-v6-theme-dark {
+
+  .pf-chatbot {
+    --pf-t--chatbot--background: var(--pf-t--color--gray--95);
+    --pf-t--chatbot--border: var(--pf-t--color--gray--50);
+    --pf-t--chatbot--illustration--fill: var(--pf-t--color--white);
+    --pf-t--chatbot--code--background: var(--pf-t--color--gray--60);
   }
 
-  &-secondary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
+  // ... dark style overrides ...
 
-
-// Messages
-// ============================================================================
-.chatbot__messages {
-  display: grid;
-  gap: 24px;
-}
-
-
-// System message
-// ----------------------------------------------------------------------------
-.chatbot__system-message {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--pf-v5-global--spacer--md);
-}
-
-// User message
-// ----------------------------------------------------------------------------
-.chatbot__user-message {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--pf-v5-global--spacer--md);
-}
-
-
-// Structured response
-// ============================================================================
-.chatbot__structured-response {}
-
-
-// Cards
-// ============================================================================
-.chatbot__card {}
-
-
-// Footnote
-// ============================================================================
-.chatbot__footnote {
-  color: var(--pf-v5-global--Color--400);
-  font-size: var(--pf-v5-global--icon--FontSize--sm);
-  text-align: center;
 }
