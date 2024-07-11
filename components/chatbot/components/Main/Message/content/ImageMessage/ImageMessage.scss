@@ -1,0 +1,5 @@
+.pf-chatbot__message-image {
+  display: flex;
+
+  img { border-radius: var(--pf-t--chatbot-message--type--border--radius); } 
+}
