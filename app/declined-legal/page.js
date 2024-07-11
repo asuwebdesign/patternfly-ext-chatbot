@@ -43,7 +43,7 @@ const App = () => {
 
   const termsOfUseTitle = ''
   const termsOfUseAgreement = <>
-    Patternfly Privacy Policy
+    {`Patternfly Privacy Policy
     Introduction
     Welcome to Patternfly. We value your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and share information when you use our services. By using our website, mobile application, or any of our services, you agree to the terms outlined in this policy.
 
@@ -106,12 +106,12 @@ const App = () => {
     Email: privacy@patternfly.com
     Address: 123 Privacy Lane, Anytown, USA
 
-    Effective Date: June 20, 2024
+    Effective Date: June 20, 2024`}
   </>
 
   const privacyStatementTitle = ''
   const privacyStatementAgreement = <>
-    Patternfly Privacy Policy
+    {`Patternfly Privacy Policy
     Introduction
     Welcome to Patternfly. We value your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and share information when you use our services. By using our website, mobile application, or any of our services, you agree to the terms outlined in this policy.
 
@@ -174,7 +174,7 @@ const App = () => {
     Email: privacy@patternfly.com
     Address: 123 Privacy Lane, Anytown, USA
 
-    Effective Date: June 20, 2024
+    Effective Date: June 20, 2024`}
   </>
 
   const declinedLegalTitle = ''
