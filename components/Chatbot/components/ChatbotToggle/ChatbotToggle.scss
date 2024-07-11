@@ -2,6 +2,7 @@
 // Toggle Chatbot
 // ============================================================================
 .pf-v6-c-button.pf-chatbot__button--toggle-chatbot {
+  --pf-v6-c-button--AlignItems: center;
   --pf-t--chatbot-toggle--background: var(--pf-t--color--black);
   --pf-t--chatbot-toggle--background--hover: var(--pf-t--color--gray--90);
   --pf-t--chatbot-toggle--color: var(--pf-t--color--white);
