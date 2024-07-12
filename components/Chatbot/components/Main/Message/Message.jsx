@@ -5,7 +5,7 @@
 import React from 'react'
 
 // Import PatternFly components
-import { Avatar } from '@patternfly/react-core'
+import { Avatar, Label } from '@patternfly/react-core'
 import { Timestamp } from '@patternfly/react-core'
 
 // Import Chatbot components
@@ -22,7 +22,7 @@ const Message = () => {
   // avatar, name, badge, timestamp, message, sources, actions
 
   const userAvatarSrc = 'https://cdn.dribbble.com/userupload/13172077/file/original-a14393b3cb1514a52294d1f921261f51.jpg?resize=1504x1504'
-  const userAvatarAlt = ''
+  const userAvatarAlt = 'Profile picture of someone'
   const userName = 'User Name'
   const timestamp = '9:30am'
 
@@ -58,7 +58,8 @@ const Message = () => {
       <Avatar src={userAvatarSrc} alt={userAvatarAlt} />
       <div className="pf-chatbot__message-contents">
         <div className="pf-chatbot__message-meta">
-          <span>{userName}</span>
+          <span className="pf-chatbot__message-name">{userName}</span>
+          <Label variant="outline" isCompact>AI</Label> {/* only applies to bot messages... */}
           <time dateTime="">{timestamp}</time>
         </div>
         <div className="pf-chatbot__message-response">

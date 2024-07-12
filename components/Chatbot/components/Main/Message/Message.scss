@@ -27,13 +27,23 @@
 
   &-meta {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     gap: var(--pf-t--global--spacer--200);
 
-    span {
+    .pf-chatbot__message-name {
       font-family: var(--pf-t--chatbot--heading--font-family);
       font-weight: 600;
       font-size: var(--pf-t--global--font--size--200);
+    }
+
+    .pf-v6-c-label {
+      --pf-v6-c-label--m-outline--BorderColor: var(--pf-t--color--gray--50);
+      --pf-v6-c-label--FontSize: var(--pf-t--global--font--size--xs);
+      font-weight: 500;
+    
+      .pf-v6-c-label__content {
+        --pf-v6-c-label--Color: var(--pf-t--color--gray--50);
+      }
     }
 
     time {
