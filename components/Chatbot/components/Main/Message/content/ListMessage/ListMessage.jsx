@@ -5,21 +5,18 @@
 import React from 'react'
 
 // Import PatternFly components
-import { List, ListItem } from '@patternfly/react-core'
+import { List, ListItem, ListComponent, OrderType } from '@patternfly/react-core'
 
 // Import styles
 import './ListMessage.scss'
 
-const ListMessage = () => {
-
-  // Support: ul, ol
-
+const ListMessage = ({ ordered, items }) => {
   return (
     <div className="pf-chatbot__message-list">
-      <List>
-        <ListItem>First</ListItem>
-        <ListItem>Second</ListItem>
-        <ListItem>Third</ListItem>
+      <List component={ordered && ListComponent.ol} type={ordered && OrderType.number}>
+        {items.map((item, index) => (
+          <ListItem key={index}>{item}</ListItem>
+        ))}
       </List>
     </div>
   )
