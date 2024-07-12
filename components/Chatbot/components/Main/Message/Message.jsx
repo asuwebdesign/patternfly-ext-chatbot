@@ -26,7 +26,7 @@ const Message = () => {
   const userName = 'User Name'
   const timestamp = '9:30am'
 
-  const handleMessage = () => {}
+  const handleMessage = () => { }
 
   // ---- Sample content ----
   const sampleText = <>By default <code>{'push()'}</code></>
@@ -34,6 +34,23 @@ const Message = () => {
   const sampleListOrdered = ['Item 1', 'Item 2', 'Item 3']
   const sampleImgSrc = 'https://cdn.dribbble.com/userupload/15532609/file/original-e98aacdfdd1aad5b1a07d597e7771735.jpg?resize=2048x1536'
   const sampleImgAlt = 'Mockup of 3 iPhones on blue background'
+  const sampleSources = [
+    {
+      title: 'Getting started with Red Hat OpenShift on IBM',
+      url: 'https://example.com/1',
+      description: 'Red Hat OpenShift on IBM Cloud is a managed offering to create your own cluster of compute hosts where you can deploy and manage containerized apps on IBM Cloud',
+    },
+    {
+      title: 'Item 2',
+      url: 'https://example.com/2',
+      description: 'This is the description for item 2.',
+    },
+    {
+      title: 'Item 3',
+      url: 'https://example.com/3',
+      description: 'This is the description for item 3.',
+    }
+  ]
   // ---- Sample content ----
 
   return (
@@ -50,7 +67,7 @@ const Message = () => {
           <ListMessage ordered items={sampleListOrdered} />
           <ImageMessage imageSrc={sampleImgSrc} imageAlt={sampleImgAlt} />
         </div>
-        <Sources />
+        <Sources items={sampleSources} />
       </div>
     </div>
   )
