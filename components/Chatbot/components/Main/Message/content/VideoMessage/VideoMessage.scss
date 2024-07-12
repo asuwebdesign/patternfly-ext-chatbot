@@ -1,4 +1,11 @@
 // ============================================================================
 // Chatbot Main - Message - Content - Video
 // ============================================================================
-.pf-chatbot__message-video {}
+.pf-chatbot__message-video {
+
+  [data-media-player][data-layout='video']:not([data-fullscreen]) {
+    --video-border-radius: var(--pf-t--global--border--radius--small);
+    border: 0;
+  }
+
+}

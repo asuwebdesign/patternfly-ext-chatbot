@@ -12,6 +12,7 @@ import { Timestamp } from '@patternfly/react-core'
 import TextMessage from './content/TextMessage/TextMessage'
 import ListMessage from './content/ListMessage/ListMessage'
 import ImageMessage from './content/ImageMessage/ImageMessage'
+import VideoMessage from './content/VideoMessage/VideoMessage'
 import Sources from './Sources/Sources'
 
 // Import styles
@@ -51,6 +52,12 @@ const Message = () => {
       description: 'This is the description for item 3.',
     }
   ]
+  const sampleVideoTitle = 'Sprite Fight'
+  const sampleVideoSrc = 'https://files.vidstack.io/sprite-fight/720p.mp4'
+  const sampleVideoPosterSrc = 'https://files.vidstack.io/sprite-fight/poster.webp'
+  const sampleVideoPosterAlt = 'Girl walks into campfire with gnomes surrounding her friend ready for their next meal!'
+  const sampleVideoThumbnails = 'https://files.vidstack.io/sprite-fight/thumbnails.vtt'
+
   // ---- Sample content ----
 
   return (
@@ -67,6 +74,7 @@ const Message = () => {
           <ListMessage items={sampleList} />
           <ListMessage ordered items={sampleListOrdered} />
           <ImageMessage imageSrc={sampleImgSrc} imageAlt={sampleImgAlt} />
+          <VideoMessage title={sampleVideoTitle} videoSrc={sampleVideoSrc} posterSrc={sampleVideoPosterSrc} posterAlt={sampleVideoPosterAlt} thumbnails={sampleVideoThumbnails} />
         </div>
         <Sources items={sampleSources} />
       </div>
