@@ -8,10 +8,10 @@ import React from 'react'
 import './TextMessage.scss'
 import { Text, TextVariants } from '@patternfly/react-core'
 
-const TextMessage = () => {
+const TextMessage = ({ text }) => {
   return (
     <div className="pf-chatbot__message-text">
-      <Text component={TextVariants.p}>By default <code>{'push()'}</code></Text>
+      <Text component={TextVariants.p}>{text}</Text>
     </div>
   )
 }
