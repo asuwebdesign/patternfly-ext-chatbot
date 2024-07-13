@@ -11,7 +11,7 @@
   .pf-v6-c-card {
     background-color: var(--pf-t--chatbot--sources--background);
 
-    &:before, &:after { display: none; }
+    &::before, &::after { display: none; }
 
     .pf-v6-c-card__body {
       display: flex;

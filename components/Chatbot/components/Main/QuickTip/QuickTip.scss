@@ -6,7 +6,7 @@
 
   box-shadow: var(--pf-t--global--box-shadow--sm);
 
-  &:before { display: none; }
+  &::before { display: none; }
 
   // Contents
   img { border-radius: var(--pf-t--global--border--radius--small); }

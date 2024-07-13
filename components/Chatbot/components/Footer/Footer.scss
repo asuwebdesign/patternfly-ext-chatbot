@@ -11,7 +11,7 @@
   background-color: var(--pf-t--chatbot--background);
 
   // Divider
-  &:before {
+  &::before {
     content: '';
     position: absolute;
     top: 0;
