@@ -16,18 +16,16 @@ import './Sources.scss'
 
 const Sources = ({ items }) => {
 
-  // Total # of sources
-  // - Source title
-  // - Source url
-  // - Source description
-  // Current source (ID)
+  // Configure states
+  const [currentSource, setCurrentSource] = useState(0)
 
+  // Configure props
+  const { title, url, description } = items[currentSource]
+  const totalSources = items.length
   const prevSourceIcon = <FontAwesomeIcon icon={faAngleLeft} />
   const nextSourceIcon = <FontAwesomeIcon icon={faAngleRight} />
 
-  const [currentSource, setCurrentSource] = useState(0)
-  const totalSources = items.length
-
+  // Configure handlers
   const handleNextSource = () => {
     setCurrentSource((prevSource) => (prevSource + 1) % totalSources)
   }
@@ -36,11 +34,9 @@ const Sources = ({ items }) => {
     setCurrentSource((prevSource) => (prevSource - 1 + totalSources) % totalSources)
   }
 
-  const { title, url, description } = items[currentSource]
-
   return (
     <div className="pf-chatbot__sources">
-      <Text component={TextVariants.p}>{totalSources} sources</Text>
+      <Text className="pf-chatbot__sources-total" component={TextVariants.p}>{totalSources} sources</Text>
 
       <div start={currentSource + 1}>
         <Card key={currentSource}>

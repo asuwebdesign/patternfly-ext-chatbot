@@ -6,7 +6,14 @@
   --pf-t--chatbot--sources--description: var(--pf-t--color--gray--70);
   --pf-t--chatbot--sources--footer--background: rgba(224, 224, 224, 0.5);
 
-  // Total sources
+  display: flex;
+  flex-direction: column;
+
+  > .pf-chatbot__sources-total.pf-v6-c-content--p {
+    padding: 0 var(--pf-t--global--spacer--300);
+    margin-block-end: var(--pf-t--global--spacer--200);
+    font-size: var(--pf-t--global--font--size--body--default);
+  }
 
   .pf-v6-c-card {
     background-color: var(--pf-t--chatbot--sources--background);
