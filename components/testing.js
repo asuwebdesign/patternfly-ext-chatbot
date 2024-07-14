@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Button } from '@patternfly/react-core'
+import { Button, Switch } from '@patternfly/react-core'
 
 export default function Testing({ handleDisplay }) {
 
@@ -33,8 +33,9 @@ export default function Testing({ handleDisplay }) {
     }
   }, [isDarkTheme]);
   
-  const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme)
+  const toggleTheme = (event, checked) => {
+    // setIsDarkTheme(!isDarkTheme)
+    setIsDarkTheme(checked)
   }
 
   
@@ -42,7 +43,7 @@ export default function Testing({ handleDisplay }) {
   return (
     <div className="testing" style={testingStyle}>
       <p><small>Themes:</small></p>
-      <Button variant="tertiary" onClick={toggleTheme}>Toggle theme</Button>
+      <Switch id="simple-switch" label="Dark theme" isChecked={isDarkTheme} onChange={toggleTheme} ouiaId="BasicSwitch" />
       <br />
       <p><small>Display modes:</small></p>
       <Button variant="tertiary" onClick={() => handleDisplay()}>Floating</Button>
