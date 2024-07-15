@@ -1,7 +1,7 @@
 // ============================================================================
 // Chatbot
 // ============================================================================
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 // Import Chatbot components
@@ -16,6 +16,15 @@ import TermsOfUse from './layouts/TermsOfUse/TermsOfUse'
 import './Chatbot.scss'
 
 const Chatbot = ({ displayMode, layout, chatbotVisible, ...props }) => {
+
+  // Configure docked mode
+  useEffect(() => {
+    if (displayMode === 'pf-chatbot--docked') {
+      document.documentElement.classList.add('pf-chatbot-allow--docked')
+    } else {
+      document.documentElement.classList.remove('pf-chatbot-allow--docked')
+    }
+  }, [displayMode])
 
   // Configure animations
   const motionChatbot = {

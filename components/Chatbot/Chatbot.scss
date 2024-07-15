@@ -28,13 +28,21 @@
 
   // transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) var(--pf-t--global--duration--300);
 
+  // Hide chatbot
   &--hidden { pointer-events: none; }
+
+  // Nested chatbot buttons
+  .pf-v6-c-button { --pf-v6-c-button--AlignItems: center; }
 }
 
 
 // ============================================================================
 // Chatbot Display Mode - Docked
 // ============================================================================
+html.pf-chatbot-allow--docked {
+  padding-right: 480px;
+}
+
 .pf-chatbot--docked {
   bottom: 0;
   right: 0;
@@ -50,13 +58,26 @@
 .pf-chatbot--fullscreen {
   bottom: 0;
   right: 0;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: 96px 1fr auto;
   width: 100%;
   height: 100%;
   border-radius: 0;
   box-shadow: none;
 
+  &.pf-chatbot--layout--chat {
+    .pf-chatbot__header { grid-area: 1 / 2 / 2 / 3; }
+    .pf-chatbot__main { grid-area: 2 / 2 / 3 / 3; width: 960px; margin: 0 auto; }
+    .pf-chatbot__footer { grid-area: 3 / 2 / 4 / 3; width: 960px; margin: 0 auto; }
+  }
+
   // display grid (chat only? fullscreen for bootup screens...)
   // 3x3: header, main, footer
+  //
+  // .div1 { grid-area: 1 / 1 / 4 / 2; }
+  // .div2 { grid-area: 1 / 2 / 2 / 3; }
+  // .div3 { grid-area: 2 / 2 / 3 / 3; }
+  // .div4 { grid-area: 3 / 2 / 4 / 3; }
 
 }
 
