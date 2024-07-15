@@ -10,6 +10,11 @@
   --pf-t--chatbot--border: var(--pf-t--color--gray--30);
   --pf-t--chatbot--illustration--fill: var(--pf-t--color--red--50);
   --pf-t--chatbot--code--background: var(--pf-t--color--gray--20);
+  --pf-t--chatbot--icon--fill: var(--pf-t--color--gray--50);
+  --pf-t--chatbot--icon--fill--hover: var(--pf-t--color--gray--70);
+  --pf-t--chatbot--timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  --pf-t--chatbot--jump--background: var(--pf-t--chatbot--background);
+  --pf-t--chatbot--jump--background--hover: var(--pf-t--color--white);
 
   position: fixed;
   bottom: 96px;
@@ -26,7 +31,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  // transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) var(--pf-t--global--duration--300);
+  // transition: all var(--pf-t--chatbot--timing-function var(--pf-t--global--duration--300);
 
   // Hide chatbot
   &--hidden { pointer-events: none; }
@@ -104,8 +109,9 @@ html.pf-chatbot-allow--docked {
     --pf-t--chatbot--border: var(--pf-t--color--gray--50);
     --pf-t--chatbot--illustration--fill: var(--pf-t--color--white);
     --pf-t--chatbot--code--background: var(--pf-t--color--gray--60);
+    --pf-t--chatbot--icon--fill: var(--pf-t--color--gray--30);
+    --pf-t--chatbot--icon--fill--hover: var(--pf-t--color--white);
+    --pf-t--chatbot--jump--background--hover: var(--pf-t--color--black);
   }
-
-  // ... dark style overrides ...
 
 }
