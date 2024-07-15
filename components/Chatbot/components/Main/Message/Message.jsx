@@ -2,18 +2,20 @@
 // Chatbot Main - Message
 // ============================================================================
 
-import React from 'react'
+import React, { useState } from 'react'
 
 // Import PatternFly components
 import { Avatar, Label } from '@patternfly/react-core'
 import { Timestamp } from '@patternfly/react-core'
 
 // Import Chatbot components
+import Processing from './Processing/Processing'
 import TextMessage from './content/TextMessage/TextMessage'
 import ListMessage from './content/ListMessage/ListMessage'
 import ImageMessage from './content/ImageMessage/ImageMessage'
 import VideoMessage from './content/VideoMessage/VideoMessage'
 import Sources from './Sources/Sources'
+import QuickReply from './actions/QuickReply/QuickReply'
 
 // Import styles
 import './Message.scss'
@@ -26,6 +28,8 @@ const Message = () => {
   const userAvatarAlt = 'Profile picture of someone'
   const userName = 'User Name'
   const timestamp = '9:30am'
+
+  const [isProcessing, setIsProcessing] = useState(false)
 
   const handleMessage = () => { }
 
@@ -70,13 +74,17 @@ const Message = () => {
           <time dateTime="">{timestamp}</time>
         </div>
         <div className="pf-chatbot__message-response">
-          <TextMessage text={sampleText} />
-          <ListMessage items={sampleList} />
-          <ListMessage ordered items={sampleListOrdered} />
-          <ImageMessage imageSrc={sampleImgSrc} imageAlt={sampleImgAlt} />
-          <VideoMessage title={sampleVideoTitle} videoSrc={sampleVideoSrc} posterSrc={sampleVideoPosterSrc} posterAlt={sampleVideoPosterAlt} thumbnails={sampleVideoThumbnails} />
+          {isProcessing && <Processing />}
+          {!isProcessing && <>
+            <TextMessage text={sampleText} />
+            <ListMessage items={sampleList} />
+            <ListMessage ordered items={sampleListOrdered} />
+            <ImageMessage imageSrc={sampleImgSrc} imageAlt={sampleImgAlt} />
+            <VideoMessage title={sampleVideoTitle} videoSrc={sampleVideoSrc} posterSrc={sampleVideoPosterSrc} posterAlt={sampleVideoPosterAlt} thumbnails={sampleVideoThumbnails} />
+          </>}
         </div>
-        <Sources items={sampleSources} />
+        {!isProcessing && <QuickReply />}
+        {!isProcessing && <Sources items={sampleSources} />}
       </div>
     </div>
   )
