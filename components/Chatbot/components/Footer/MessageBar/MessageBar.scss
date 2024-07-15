@@ -22,7 +22,7 @@
   min-height: 64px;
   background-color: var(--pf-t--chatbot--message-bar--BackgroundColor);
   border-radius: calc(var(--pf-t--global--border--radius--medium) * 2); // 32px corners - universal for single and multi-line height
-  transition: box-shadow cubic-bezier(0.77, 0, 0.175, 1) var(--pf-t--global--duration--100);
+  transition: box-shadow var(--pf-t--chatbot--timing-function) var(--pf-t--global--duration--100);
 
   &:hover {
     box-shadow: inset 0 0 0 1px var(--pf-t--chatbot--message-bar--BoxShadow--color--hover);
@@ -81,8 +81,8 @@
   // --------------------------------------------------------------------------
   .pf-chatbot__button--send {
     transition:
-      transform cubic-bezier(0.77, 0, 0.175, 1) var(--pf-t--global--duration--100),
-      opacity cubic-bezier(0.77, 0, 0.175, 1) var(--pf-t--global--duration--100);
+      transform var(--pf-t--chatbot--timing-function) var(--pf-t--global--duration--100),
+      opacity var(--pf-t--chatbot--timing-function) var(--pf-t--global--duration--100);
 
     .pf-v6-c-button__text {
       color: var(--pf-t--chatbot--message-bar--send-icon--fill);
