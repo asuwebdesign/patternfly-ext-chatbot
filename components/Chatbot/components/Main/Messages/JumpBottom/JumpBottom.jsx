@@ -16,7 +16,7 @@ import Tooltip from '@/components/Chatbot/components/Tooltip/Tooltip'
 // Import styles
 import './JumpBottom.scss'
 
-const JumpBottom = ({ atBottom, onClick }) => {
+const JumpBottom = ({ isOverflowing, atBottom, onClick }) => {
 
   // Configure tooltips
   const tooltipJumpBottom = React.useRef()
@@ -24,7 +24,7 @@ const JumpBottom = ({ atBottom, onClick }) => {
   return (
     <>
       <Button
-        className={`pf-chatbot__jump--bottom ${atBottom && 'pf-chatbot__jump--bottom--hidden'}`}
+        className={`pf-chatbot__jump--bottom ${isOverflowing && atBottom && 'pf-chatbot__jump--bottom--hidden'}`}
         aria-describedby="pf-chatbot__tooltip--jump-bottom"
         ref={tooltipJumpBottom}
         onClick={onClick}
