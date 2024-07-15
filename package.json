@@ -23,18 +23,19 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "@patternfly/react-core": "^6.0.0-alpha.80",
+    "@patternfly/react-core": "^6.0.0-alpha.81",
     "@patternfly/react-icons": "^6.0.0-alpha.29",
     "@patternfly/react-tokens": "^6.0.0-alpha.28",
     "@vidstack/react": "^1.11.29",
     "framer-motion": "^11.3.2",
     "next": "14.2.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-textarea-auto-witdth-height": "^1.0.3"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.4",
-    "sass": "^1.77.7"
+    "sass": "^1.77.8"
   }
 }

@@ -1,0 +1,130 @@
+// ============================================================================
+// Chatbot Footer - Message Bar
+// ============================================================================
+.pf-chatbot__message-bar {
+  --pf-t--chatbot--message-bar--BackgroundColor: var(--pf-t--color--white);
+  --pf-t--chatbot--message-bar--BoxShadow--color--hover: var(--pf-t--color--gray--30);
+  --pf-t--chatbot--message-bar--BoxShadow--color--focus: var(--pf-t--color--blue--50);
+
+  --pf-t--chatbot--message-bar--icon--fill: var(--pf-t--color--gray--50);
+  --pf-t--chatbot--message-bar--icon--fill--hover: var(--pf-t--color--gray--70);
+  --pf-t--chatbot--message-bar--icon--fill--active: var(--pf-t--color--white);
+
+  --pf-t--chatbot--message-bar--send-icon--fill: var(--pf-t--color--blue--50);
+  --pf-t--chatbot--message-bar--send-icon--fill--hover: var(--pf-t--color--blue--50);
+  --pf-t--chatbot--message-bar--send-icon--background--color--hover: rgba(224, 240, 255, 0.5); // --pf-t--color--blue--10 @ 50%
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  min-height: 64px;
+  background-color: var(--pf-t--chatbot--message-bar--BackgroundColor);
+  border-radius: calc(var(--pf-t--global--border--radius--medium) * 2); // 32px corners - universal for single and multi-line height
+  transition: box-shadow cubic-bezier(0.77, 0, 0.175, 1) var(--pf-t--global--duration--100);
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px var(--pf-t--chatbot--message-bar--BoxShadow--color--hover);
+  }
+
+  &:focus-within {
+    box-shadow: inset 0 0 0 2px var(--pf-t--chatbot--message-bar--BoxShadow--color--focus);
+  }
+
+
+  // Input
+  // --------------------------------------------------------------------------
+  
+  .pf-chatbot__message-textarea {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 100%;
+    max-height: 192px;    
+    font-size: var(--pf-t--global--font--size--md);
+    padding: calc(var(--pf-t--global--spacer--100) + var(--pf-t--global--spacer--300)) var(--pf-t--global--spacer--400);
+  }    
+
+  // Actions
+  // --------------------------------------------------------------------------
+  &-actions {
+    display: flex;
+    align-self: flex-end;
+    margin: 0 var(--pf-t--global--spacer--200) var(--pf-t--global--spacer--200) 0;
+  }
+
+  // Standard Buttons
+  // --------------------------------------------------------------------------
+  .pf-v6-c-button {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--pf-t--global--border--radius--pill);
+
+    .pf-v6-c-button__text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--pf-t--chatbot--message-bar--icon--fill);
+    }
+
+    svg { height: 20px; }
+
+    // Interactive states
+    &:hover, &:focus {
+      .pf-v6-c-button__text { color: var(--pf-t--chatbot--message-bar--icon--fill--hover); }
+    }
+  }
+
+  // Send Button
+  // --------------------------------------------------------------------------
+  .pf-chatbot__button--send {
+    transition:
+      transform cubic-bezier(0.77, 0, 0.175, 1) var(--pf-t--global--duration--100),
+      opacity cubic-bezier(0.77, 0, 0.175, 1) var(--pf-t--global--duration--100);
+
+    .pf-v6-c-button__text {
+      color: var(--pf-t--chatbot--message-bar--send-icon--fill);
+    }
+
+    &:hover, &:focus {
+      background-color: var(--pf-t--chatbot--message-bar--send-icon--background--color--hover);
+
+      .pf-v6-c-button__text { color: var(--pf-t--chatbot--message-bar--send-icon--fill--hover); }
+    }
+
+    // &.pf-chatbot__button--visible {
+    //   transform: translate3d(0, 0, 0);
+    //   opacity: 1;
+    // }
+    // &.pf-chatbot__button--hidden {
+    //   transform: translate3d(16px, 0, 0);
+    //   opacity: 0;
+    //   pointer-events: none;
+    // }
+  }
+
+}
+
+
+// ============================================================================
+// Chatbot Dark Theme
+// ============================================================================
+.pf-v6-theme-dark {
+
+  .pf-chatbot__message-bar {
+    --pf-t--chatbot--message-bar--BackgroundColor: var(--pf-t--color--gray--80);
+    --pf-t--chatbot--message-bar--BoxShadow--color--hover: var(--pf-t--color--gray--50);
+    --pf-t--chatbot--message-bar--BoxShadow--color--focus: var(--pf-t--color--blue--30);
+
+    --pf-t--chatbot--message-bar--icon--fill: var(--pf-t--color--gray--30);
+    --pf-t--chatbot--message-bar--icon--fill--hover: var(--pf-t--color--white);
+    --pf-t--chatbot--message-bar--icon--fill--active: var(--pf-t--color--white);
+
+    --pf-t--chatbot--message-bar--send-icon--fill: var(--pf-t--color--blue--30);
+    --pf-t--chatbot--message-bar--send-icon--fill--hover: var(--pf-t--color--white);
+    --pf-t--chatbot--message-bar--send-icon--background--color--hover: var(--pf-t--color--blue--50);
+  }
+
+}
