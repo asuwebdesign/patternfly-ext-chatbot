@@ -15,7 +15,7 @@ import ListMessage from './content/ListMessage/ListMessage'
 import ImageMessage from './content/ImageMessage/ImageMessage'
 import VideoMessage from './content/VideoMessage/VideoMessage'
 import Sources from './Sources/Sources'
-import QuickReply from './actions/QuickReply/QuickReply'
+// import QuickReply from './actions/QuickReply/QuickReply'
 
 // Import styles
 import './Message.scss'
@@ -83,7 +83,7 @@ const Message = () => {
             <VideoMessage title={sampleVideoTitle} videoSrc={sampleVideoSrc} posterSrc={sampleVideoPosterSrc} posterAlt={sampleVideoPosterAlt} thumbnails={sampleVideoThumbnails} />
           </>}
         </div>
-        {!isProcessing && <QuickReply />}
+        {/* {!isProcessing && <QuickReply />} */}
         {!isProcessing && <Sources items={sampleSources} />}
       </div>
     </div>
