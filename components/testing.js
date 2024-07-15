@@ -14,7 +14,7 @@ export default function Testing({ handleDisplay }) {
     alignItems: 'flex-start',
     justifyContent: 'center',
     padding: '24px',
-    border: '1px solid #ccc',
+    background: 'var(--pf-t--global--background--color--secondary--default)',
     borderRadius: '8px',
     gap: '8px',
     zIndex: '999'
