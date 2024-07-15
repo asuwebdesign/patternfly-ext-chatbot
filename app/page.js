@@ -210,7 +210,7 @@ const App = () => {
 
       <div className={styles.center}>
         <Image
-          className={styles.logo}
+          className="logo"
           src="/next.svg"
           alt="Next.js Logo"
           width={180}
