@@ -1,0 +1,30 @@
+// ============================================================================
+// Chatbot Main - Message - Content - Quick Reply
+// ============================================================================
+.pf-chatbot__message-quick-reply {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pf-t--global--spacer--200);
+
+  // Label buttons
+  .pf-v6-c-label {
+    --pf-v6-c-label--FontSize: var(--pf-t--chatbot--font-size);
+    --pf-v6-c-label--PaddingBlockStart: 0;
+    --pf-v6-c-label--PaddingBlockEnd: 0;
+    --pf-v6-c-label--PaddingInlineStart: 0;
+    --pf-v6-c-label--PaddingInlineEnd: 0;
+
+    button.pf-v6-c-label__content {
+      justify-content: center;
+      min-width: 64px;
+      padding: var(--pf-t--global--spacer--100) var(--pf-t--global--spacer--200);
+    }
+  }
+
+  // Stacked variant
+  &--stacked {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}

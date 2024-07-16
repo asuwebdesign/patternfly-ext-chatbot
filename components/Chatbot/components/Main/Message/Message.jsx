@@ -14,8 +14,8 @@ import TextMessage from './content/TextMessage/TextMessage'
 import ListMessage from './content/ListMessage/ListMessage'
 import ImageMessage from './content/ImageMessage/ImageMessage'
 import VideoMessage from './content/VideoMessage/VideoMessage'
+import QuickReplyMessage from './content/QuickReplyMessage/QuickReplyMessage'
 import Sources from './Sources/Sources'
-// import QuickReply from './actions/QuickReply/QuickReply'
 
 // Import styles
 import './Message.scss'
@@ -61,6 +61,9 @@ const Message = () => {
   const sampleVideoPosterSrc = 'https://files.vidstack.io/sprite-fight/poster.webp'
   const sampleVideoPosterAlt = 'Girl walks into campfire with gnomes surrounding her friend ready for their next meal!'
   const sampleVideoThumbnails = 'https://files.vidstack.io/sprite-fight/thumbnails.vtt'
+  const sampleQuickReplyInlineMinimum = ['Yes', 'No']
+  const sampleQuickReplyInline = ['Microsoft Edge', 'Google Chrome', 'Mozilla Firefox', 'Apple Safari', 'Internet Explorer']
+  const sampleQuickReplyStacked = ['Help me with an access issue', 'Show my critical vulnerabilities', 'Create new integrations', 'Get recommendations from an advisor', 'Something else']
 
   // ---- Sample content ----
 
@@ -81,6 +84,9 @@ const Message = () => {
             <ListMessage ordered items={sampleListOrdered} />
             <ImageMessage imageSrc={sampleImgSrc} imageAlt={sampleImgAlt} />
             <VideoMessage title={sampleVideoTitle} videoSrc={sampleVideoSrc} posterSrc={sampleVideoPosterSrc} posterAlt={sampleVideoPosterAlt} thumbnails={sampleVideoThumbnails} />
+            <QuickReplyMessage items={sampleQuickReplyInlineMinimum} />
+            <QuickReplyMessage items={sampleQuickReplyInline} />
+            <QuickReplyMessage items={sampleQuickReplyStacked} stacked />
           </>}
         </div>
         {/* {!isProcessing && <QuickReply />} */}
