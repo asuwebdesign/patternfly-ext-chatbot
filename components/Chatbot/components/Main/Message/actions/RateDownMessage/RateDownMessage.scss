@@ -1,0 +1,14 @@
+// ============================================================================
+// Chatbot Main - Message - Actions - Rate Down
+// ============================================================================
+.pf-chatbot__button--rate-down {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--pf-t--global--border--radius--pill);
+  color: var(--pf-t--chatbot--icon--fill);
+  font-size: var(--pf-t--chatbot--font-size);
+
+  &:hover, &:focus {
+    color: var(--pf-t--chatbot--icon--fill--hover);
+  }
+}
