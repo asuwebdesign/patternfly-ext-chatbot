@@ -16,6 +16,7 @@ import ImageMessage from './content/ImageMessage/ImageMessage'
 import VideoMessage from './content/VideoMessage/VideoMessage'
 import QuickReplyMessage from './content/QuickReplyMessage/QuickReplyMessage'
 import Sources from './Sources/Sources'
+import Actions from './Actions/Actions'
 
 // Import styles
 import './Message.scss'
@@ -89,8 +90,8 @@ const Message = () => {
             <QuickReplyMessage items={sampleQuickReplyStacked} stacked />
           </>}
         </div>
-        {/* {!isProcessing && <QuickReply />} */}
         {!isProcessing && <Sources items={sampleSources} />}
+        {!isProcessing && <Actions />}
       </div>
     </div>
   )
