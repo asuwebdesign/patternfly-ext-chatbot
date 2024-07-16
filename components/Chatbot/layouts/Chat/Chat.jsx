@@ -45,6 +45,8 @@ const Chat = () => {
       </Header>
       <Main>
         <Messages>
+
+          {/* Store this conversation and pass through <Chatbot .../> */}
           <Message />
           <Separator type="text" value="Agent joined the chat" />
           <Message />
@@ -60,6 +62,8 @@ const Chat = () => {
           <Message />
           <Message />
           <Message />
+          {/* Store this conversation and pass through <Chatbot .../> */}
+        
         </Messages>
       </Main>
       <Footer>

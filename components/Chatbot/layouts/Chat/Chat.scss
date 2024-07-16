@@ -1,4 +1,16 @@
 // ============================================================================
 // Chatbot Layout - Chat
 // ============================================================================
-.pf-chatbot.pf-chatbot--layout--chat {}
+.pf-chatbot.pf-chatbot--layout--chat {
+
+  .pf-chatbot__main {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .pf-chatbot__messages-overflow {
+    padding-top: var(--pf-t--global--spacer--400);
+    padding-bottom: var(--pf-t--global--spacer--400);
+  }
+
+}
