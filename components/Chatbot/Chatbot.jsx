@@ -28,19 +28,19 @@ const Chatbot = ({ displayMode, layout, chatbotVisible, ...props }) => {
 
   // Configure animations
   const motionChatbot = {
-    open: { opacity: 1, y: 0 },
-    closed: { opacity: 0, y: '16px' }
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: '16px' }
   }
 
   return (
     <motion.div
       className={`pf-chatbot ${layout && 'pf-chatbot--layout--' + layout} ${displayMode} ${!chatbotVisible ? 'pf-chatbot--hidden' : ''}`}
       variants={motionChatbot}
-      initial="closed"
-      animate={chatbotVisible ? "open" : "closed"}
+      initial="hidden"
+      animate={chatbotVisible ? "visible" : "hidden"}
     >
       
-      {layout === 'splash' && <Splash {...props} />}
+      {layout === 'splash' && <Splash chatbotVisible={chatbotVisible} {...props} />}
       {layout === 'terms-of-use' && <TermsOfUse {...props} />}
       {layout === 'privacy-statement' && <PrivacyStatement {...props} />}
       {layout === 'declined-legal' && <DeclinedLegal {...props} />}
