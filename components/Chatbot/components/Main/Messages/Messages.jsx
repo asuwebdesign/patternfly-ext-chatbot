@@ -31,10 +31,6 @@ const Messages = ({ children }) => {
     const element = chatbotMessages.current
     if (element) {
       const { scrollHeight, clientHeight } = element
-
-      console.log('scrollHeight: ' + scrollHeight)
-      console.log('clientHeight: ' + clientHeight)
-
       setIsOverflowing(scrollHeight >= clientHeight)
     }
   }
