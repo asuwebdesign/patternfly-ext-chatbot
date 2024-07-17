@@ -16,13 +16,15 @@ import './Splash.scss'
 const Splash = ({ splashLogoSrc, splashLogoAlt }) => {
   return (
     <>
-    <Main>
-      <div className="pf-chatbot__brand">
-        <img src={splashLogoSrc} alt={splashLogoAlt} />
-      </div>
+      <Main>
+        {splashLogoSrc && splashLogoAlt && (
+          <div className="pf-chatbot__brand">
+            <img src={splashLogoSrc} alt={splashLogoAlt} />
+          </div>
+        )}
 
-      <div className="pf-chatbot__loading"><Spinner aria-label="Connecting to the service" /></div>
-    </Main>
+        <div className="pf-chatbot__loading"><Spinner aria-label="Connecting to the service" /></div>
+      </Main>
     </>
   )
 }
