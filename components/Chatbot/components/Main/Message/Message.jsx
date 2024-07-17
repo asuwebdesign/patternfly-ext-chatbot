@@ -15,6 +15,8 @@ import ListMessage from './content/ListMessage/ListMessage'
 import ImageMessage from './content/ImageMessage/ImageMessage'
 import VideoMessage from './content/VideoMessage/VideoMessage'
 import QuickReplyMessage from './content/QuickReplyMessage/QuickReplyMessage'
+// import CodeBlockMessage from './content/CodeBlockMessage/CodeBlockMessage'
+import TableMessage from './content/TableMessage/TableMessage'
 import Sources from './Sources/Sources'
 import Actions from './Actions/Actions'
 
@@ -65,6 +67,9 @@ const Message = () => {
   const sampleQuickReplyInlineMinimum = ['Yes', 'No']
   const sampleQuickReplyInline = ['Microsoft Edge', 'Google Chrome', 'Mozilla Firefox', 'Apple Safari', 'Internet Explorer']
   const sampleQuickReplyStacked = ['Help me with an access issue', 'Show my critical vulnerabilities', 'Create new integrations', 'Get recommendations from an advisor', 'Something else']
+  const sampleTableCaption = 'Simple table caption'
+  const sampleTableHeaders = ['Column header', 'Column header', 'Column header']
+  const sampleTableData = [['A1', 'A2', 'A3'], ['B1', 'B2', 'B3'], ['C1', 'C2', 'C3']]
 
   // ---- Sample content ----
 
@@ -88,6 +93,8 @@ const Message = () => {
             <QuickReplyMessage items={sampleQuickReplyInlineMinimum} />
             <QuickReplyMessage items={sampleQuickReplyInline} />
             <QuickReplyMessage items={sampleQuickReplyStacked} stacked />
+            {/* <CodeBlockMessage /> */}
+            <TableMessage caption={sampleTableCaption} columns={sampleTableHeaders} rows={sampleTableData} />
           </>}
         </div>
         {!isProcessing && <Sources items={sampleSources} />}

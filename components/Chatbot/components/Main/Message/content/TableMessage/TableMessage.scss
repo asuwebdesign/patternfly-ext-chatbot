@@ -1,0 +1,12 @@
+// ============================================================================
+// Chatbot Main - Message - Content - Table
+// ============================================================================
+.pf-chatbot__message-table {
+  border-radius: var(--pf-t--chatbot-message--type--border--radius);
+  overflow: hidden;
+
+  .pf-v6-c-table__tr:last-child {
+    border-block-end: 0;
+  }
+
+}
