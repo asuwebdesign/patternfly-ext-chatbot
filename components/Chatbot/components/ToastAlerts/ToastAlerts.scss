@@ -1,0 +1,11 @@
+// ============================================================================
+// Chatbot Toast Alerts
+// ============================================================================
+.pf-chatbot__toast-alerts.pf-v6-c-alert-group {
+  position: absolute;
+  top: calc(96px + var(--pf-t--global--spacer--400)); // height of header (96) + offset (24)
+  left: var(--pf-t--global--spacer--400);
+  width: calc(100% - 48px);
+  z-index: calc(var(--pf-t--global--z-index--2xl) + var(--pf-t--global--z-index--lg));
+  
+}

@@ -7,11 +7,8 @@ import React from 'react'
 // Import PatternFly components
 import { Text, TextVariants } from '@patternfly/react-core'
 
-// Import FontAwesome icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsis, faBars } from '@fortawesome/free-solid-svg-icons'
-
 // Import Chatbot components
+import ToastAlerts from '../../components/ToastAlerts/ToastAlerts'
 import Header from '@/components/Chatbot/components/Header/Header'
 import Main from '@/components/Chatbot/components/Main/Main'
 import Footer from '@/components/Chatbot/components/Footer/Footer'
@@ -28,9 +25,9 @@ import QuickTip from '../../components/Main/QuickTip/QuickTip'
 import './Chat.scss'
 
 const Chat = () => {
-
   return (
     <>
+      <ToastAlerts />
       <Header>
         {/* Chatbot title */}
         <div className="pf-chatbot__title">
@@ -57,10 +54,6 @@ const Chat = () => {
             imgAlt="Picture description"
             heading="Quick tip heading"
             description="Quick tip description that can wrap multiple lines as needed." />
-          <Message />
-          <Message />
-          <Message />
-          <Message />
           <Message />
           {/* Store this conversation and pass through <Chatbot .../> */}
         
