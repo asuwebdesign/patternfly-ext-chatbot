@@ -15,7 +15,7 @@ import TermsOfUse from './layouts/TermsOfUse/TermsOfUse'
 // Import styles
 import './Chatbot.scss'
 
-const Chatbot = ({ displayMode, layout, chatbotVisible, ...props }) => {
+const Chatbot = ({ config, displayMode, layout, chatbotVisible, ...props }) => {
 
   // Configure docked mode
   useEffect(() => {
@@ -40,12 +40,12 @@ const Chatbot = ({ displayMode, layout, chatbotVisible, ...props }) => {
       animate={chatbotVisible ? "visible" : "hidden"}
     >
       
-      {layout === 'splash' && <Splash chatbotVisible={chatbotVisible} {...props} />}
-      {layout === 'terms-of-use' && <TermsOfUse {...props} />}
-      {layout === 'privacy-statement' && <PrivacyStatement {...props} />}
-      {layout === 'declined-legal' && <DeclinedLegal {...props} />}
-      {layout === 'onboarding' && <Onboarding {...props} />}
-      {layout === 'chat' && <Chat {...props} />}
+      {layout === 'splash' && <Splash config={config} chatbotVisible={chatbotVisible} {...props} />}
+      {layout === 'terms-of-use' && <TermsOfUse config={config} {...props} />}
+      {layout === 'privacy-statement' && <PrivacyStatement config={config} {...props} />}
+      {layout === 'declined-legal' && <DeclinedLegal config={config} {...props} />}
+      {layout === 'onboarding' && <Onboarding config={config} {...props} />}
+      {layout === 'chat' && <Chat config={config} {...props} />}
 
       {/* Or add a custom layout... */}
 
