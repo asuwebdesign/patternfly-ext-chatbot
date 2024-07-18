@@ -2,10 +2,10 @@
 // Chatbot Layout - Chat
 // ============================================================================
 
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 // Import PatternFly components
-import { Text, TextVariants } from '@patternfly/react-core'
+import { Brand, Text, TextVariants } from '@patternfly/react-core'
 
 // Import Chatbot components
 import ToastAlerts from '../../components/ToastAlerts/ToastAlerts'
@@ -24,14 +24,49 @@ import QuickTip from '../../components/Main/QuickTip/QuickTip'
 // Import styles
 import './Chat.scss'
 
-const Chat = () => {
+const Chat = ({ config }) => {
+
+  const { footnote } = config.chat
+
+  const [messages, setMessages] = useState([])
+  const messagesEndRef = useRef(null)
+
+  const handleSend = (input) => {
+    setMessages([...messages, { text: input, user: true }])
+    setTimeout(() => {
+      const botResponse = generateBotResponse(input);
+      setMessages((prevMessages) => [...prevMessages, { text: botResponse, user: false }])
+    }, 500)
+  }
+
+  const generateBotResponse = (userInput) => {
+    return `You said: ${userInput}`
+  }
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages])
+
+
+  // Check to see if dark theme is enabled
+  const [isDarkTheme, setIsDarkTheme] = useState(false)
+  useEffect(() => {
+    const element = document.querySelector('.pf-v6-theme-dark')
+    if (element) {
+      setIsDarkTheme(true)
+    } else {
+      setIsDarkTheme(false)
+    }
+  }, [])
+
   return (
     <>
       <ToastAlerts />
       <Header>
         {/* Chatbot title */}
         <div className="pf-chatbot__title">
-          <Text component={TextVariants.h1}>Red Hat</Text>
+          <Brand src="/logo-chatbot.svg" alt="Lightspeed logo" />
+          {/* <Text component={TextVariants.h1}>Red Hat</Text> */}
         </div>
 
         <ToggleMenu />
@@ -56,12 +91,19 @@ const Chat = () => {
             description="Quick tip description that can wrap multiple lines as needed." />
           <Message />
           {/* Store this conversation and pass through <Chatbot .../> */}
-        
+
+          {messages.map((message, index) => (
+            <div key={index} className={message.user ? 'user-message' : 'bot-message'}>
+              {message.text}
+            </div>
+          ))}
+          <div ref={messagesEndRef} aria-hidden="true" />
+
         </Messages>
       </Main>
       <Footer>
-        <MessageBar />
-        <Footnote />
+        <MessageBar onSend={handleSend} />
+        {footnote.show && <Footnote config={footnote} />}
       </Footer>
     </>
   )

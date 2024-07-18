@@ -17,47 +17,44 @@ import Popover from '../../Popover/Popover'
 // Import styles
 import './Footnote.scss'
 
-const Footnote = () => {
+const Footnote = ({ config }) => {
 
-  // Optional. Upgrade to text. Upgrade to popover.
+  const { label, popover } = config
 
-  // Footnote popover
-  // - image
-  // - heading
-  // - desc
-  // - got it button (dismiss)
-  // - ext link text
-  // - ext link url
-
+  // Configure popover content
   const popoverBodyContent = (
     <>
-      <img src="https://cdn.dribbble.com/userupload/10651749/file/original-8a07b8e39d9e8bf002358c66fce1223e.gif" alt="Description of image" />
-      <Text component={TextVariants.h3}>Verify accuracy</Text>
-      <Text component={TextVariants.p}>{`While Lightspeed strives for accuracy, there's always a possibility of errors. It's a good practice to verify critical information from reliable sources, especially if it's crucial for decision-making or actions.`}</Text>
+      {popover.image.show && <img src={popover.image.src} alt={popover.image.alt} />}
+      <Text component={TextVariants.h3}>{popover.title}</Text>
+      <Text component={TextVariants.p}>{popover.desc}</Text>
     </>
   )
 
   const popoverFooterContent = (
     <>
       <Button variant="secondary">Got it</Button>
-      <Button variant="link" icon={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />} iconPosition="end">Learn more</Button>
+      {popover.link.show && <Button variant="link" component="a" href={popover.link.url} target="_blank" icon={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />} iconPosition="end">{popover.link.label}</Button>}
     </>
   )
 
   return (
     <div className="pf-chatbot__footnote">
-      <Popover
-        className="pf-chatbot__popover--footnote"
-        aria-label="More information"
-        // headerContent={popoverHeaderContent}
-        bodyContent={popoverBodyContent}
-        footerContent={popoverFooterContent}
-        minWidth={432}
-        maxWidth={432}
-        distance={16}
-      >
-        <Button variant="plain">Lightspeed uses AI. Check for mistakes. <FontAwesomeIcon icon={faCircleInfo} /></Button>
-      </Popover>
+      {popover.show && (
+        <Popover
+          className="pf-chatbot__popover--footnote"
+          aria-label="More information"
+          bodyContent={popoverBodyContent}
+          footerContent={popoverFooterContent}
+          minWidth={432}
+          maxWidth={432}
+          distance={16}
+        >
+          <Button variant="plain">{label} <FontAwesomeIcon icon={faCircleInfo} /></Button>
+        </Popover>
+      )}
+      {!popover.show && (
+        <Text component={TextVariants.small}>{label}</Text>
+      )}
     </div>
   )
 }
