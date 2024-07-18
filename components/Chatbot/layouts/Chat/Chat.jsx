@@ -21,6 +21,8 @@ import Messages from '../../components/Main/Messages/Messages'
 import Separator from '../../components/Main/Separator/Separator'
 import QuickTip from '../../components/Main/QuickTip/QuickTip'
 
+import useDarkMode from '../../useDarkMode'
+
 // Import styles
 import './Chat.scss'
 
@@ -32,11 +34,14 @@ const Chat = ({ config }) => {
   const messagesEndRef = useRef(null)
 
   const handleSend = (input) => {
+
     setMessages([...messages, { text: input, user: true }])
+    
     setTimeout(() => {
       const botResponse = generateBotResponse(input);
       setMessages((prevMessages) => [...prevMessages, { text: botResponse, user: false }])
     }, 500)
+  
   }
 
   const generateBotResponse = (userInput) => {
@@ -49,15 +54,7 @@ const Chat = ({ config }) => {
 
 
   // Check to see if dark theme is enabled
-  const [isDarkTheme, setIsDarkTheme] = useState(false)
-  useEffect(() => {
-    const element = document.querySelector('.pf-v6-theme-dark')
-    if (element) {
-      setIsDarkTheme(true)
-    } else {
-      setIsDarkTheme(false)
-    }
-  }, [])
+  const isDarkMode = useDarkMode();
 
   return (
     <>
@@ -65,7 +62,7 @@ const Chat = ({ config }) => {
       <Header>
         {/* Chatbot title */}
         <div className="pf-chatbot__title">
-          <Brand src="/logo-chatbot.svg" alt="Lightspeed logo" />
+          <Brand src={isDarkMode ? '/logo-chatbot--inverted.svg' : '/logo-chatbot.svg'} alt="Lightspeed logo" />
           {/* <Text component={TextVariants.h1}>Red Hat</Text> */}
         </div>
 
