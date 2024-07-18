@@ -1,7 +1,6 @@
 // ============================================================================
 // Chatbot Layout - Privacy Statement
 // ============================================================================
-
 import React from 'react'
 
 // Import PatternFly components
@@ -16,10 +15,9 @@ import Illustration from './Illustration'
 // Import styles
 import './PrivacyStatement.scss'
 
-const PrivacyStatement = ({ privacyStatementTitle, privacyStatementAgreement }) => {
+const PrivacyStatement = ({ config }) => {
 
-  const title = privacyStatementTitle ? privacyStatementTitle : 'Privacy statement'
-  const content = privacyStatementAgreement ? privacyStatementAgreement : 'No agreement has been provided'
+  const { title, content } = config.privacyStatement
 
   return (
     <>
