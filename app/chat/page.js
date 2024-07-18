@@ -4,26 +4,14 @@ import React, { useState, useEffect } from 'react'
 import Image from "next/image"
 import styles from "../page.module.css"
 
-import Testing from '@/components/testing'
-
-
 // Import styles
 import '@patternfly/react-core/dist/styles/base.css'
 
+// Import Chatbot
 import Chatbot from '@/components/Chatbot/Chatbot'
 import ChatbotToggle from '@/components/Chatbot/components/ChatbotToggle/ChatbotToggle'
-
-// ============================================================================
-// FRONT-END LOGIC
-// 
-// - Splash (minimum setTimeout or something else)
-// - Terms (check useState)
-// - Privacy (check useState)
-// - Declined (if declined)
-// - Onboarding (check useState if enabled)
-// - Chat: Welcome
-// 
-// ============================================================================
+import chatbotConfig from '../config'
+import Testing from '@/components/testing'
 
 const App = () => {
 
@@ -277,23 +265,8 @@ const App = () => {
       <ChatbotToggle label="Chatbot" chatbotVisible={chatbotVisible} toggleChatbot={toggleChatbot} />
 
       <Chatbot
+        config={chatbotConfig}
         displayMode={displayMode}
-
-        // layout="splash"
-        
-        // layout="terms-of-use"
-        // termsOfUseTitle={termsOfUseTitle}
-        // termsOfUseAgreement={termsOfUseAgreement}
-
-        // layout="privacy-statement"
-        // privacyStatementTitle={privacyStatementTitle}
-        // privacyStatementAgreement={privacyStatementAgreement}
-
-        // layout="declined-legal"
-        // declinedLegalTitle={declinedLegalTitle}
-        // declinedLegalContent={declinedLegalContent}
-
-        // layout="onboarding"
 
         layout="chat"
         chatbotVisible={chatbotVisible}

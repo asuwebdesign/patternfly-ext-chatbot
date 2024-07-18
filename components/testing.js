@@ -21,7 +21,7 @@ export default function Testing({ handleDisplay }) {
   }
 
   // Switch Theme
-  const [isDarkTheme, setIsDarkTheme] = useState(false)  
+  const [isDarkTheme, setIsDarkTheme] = useState(false)
   
 
   useEffect(() => {
