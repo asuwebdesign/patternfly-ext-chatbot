@@ -155,20 +155,20 @@ const chatbotConfig = {
   // Declined agreements config
   declinedLegal: {
     show: true,
-    title: '',
-    content: '',
+    title: 'Acceptance required',
+    content: `We're sorry, but to use our app, you need to accept our Terms of Use and Privacy Statement. We understand that these agreements are important to you. These agreements are essential for providing you with our services and ensuring your data is protected.`,
     primaryButton: {
       label: 'Review agreements'
     },
     secondaryButton: {
       show: true,
       label: 'Learn more',
-      url: ''
+      url: 'https://www.redhat.com/'
     },
     tertiaryButton: {
       show: true,
       label: 'Contact customer support',
-      url: ''
+      url: 'https://www.redhat.com/'
     },
   },
 

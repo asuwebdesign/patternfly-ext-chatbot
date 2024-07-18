@@ -16,13 +16,9 @@ import Illustration from './Illustration'
 // Import styles
 import './DeclinedLegal.scss'
 
-const DeclinedLegal = ({ declinedLegalTitle, declinedLegalContent }) => {
+const DeclinedLegal = ({ config }) => {
 
-  const title = declinedLegalTitle ? declinedLegalTitle : 'Acceptance required'
-  const content = declinedLegalContent ? declinedLegalContent : <>
-    <Text component={TextVariants.p}>{`We're sorry, but to use our app, you need to accept our Terms of Use and Privacy Statement. We understand that these agreements are important to you. These agreements are essential for providing you with our services and ensuring your data is protected.`}</Text>
-    <Text component={TextVariants.p}>{`Please take a moment to review them again. You can also learn more about our agreements or contact customer support if you have any questions.`}</Text>
-  </>
+  const { title, content, primaryButton, secondaryButton, tertiaryButton } = config.declinedLegal
 
   return (
     <>
@@ -32,11 +28,13 @@ const DeclinedLegal = ({ declinedLegalTitle, declinedLegalContent }) => {
         </div>
         <Text component={TextVariants.h1}>{title}</Text>
       </Header>
-      <Main>{content}</Main>
+      <Main>
+        <Text component={TextVariants.p}>{content}</Text>
+      </Main>
       <Footer>
-        <Button>Review agreements</Button>
-        <Button variant="tertiary">Learn more</Button>
-        <Button variant="tertiary">Contact customer support</Button>
+        <Button>{primaryButton.label}</Button>
+        {secondaryButton.show && <Button variant="tertiary" component="a" href={secondaryButton.url} target="_blank">{secondaryButton.label}</Button>}
+        {tertiaryButton.show && <Button variant="tertiary" component="a" href={tertiaryButton.url} target="_blank">{tertiaryButton.label}</Button>}
       </Footer>
     </>
   )
