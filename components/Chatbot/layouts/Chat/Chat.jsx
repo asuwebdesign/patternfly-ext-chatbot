@@ -28,11 +28,17 @@ import './Chat.scss'
 
 const Chat = ({ config }) => {
 
+  // Configure data
   const { footnote } = config.chat
 
+  // Theming hook
+  const isDarkMode = useDarkMode()
+
+  // Configure messages
   const [messages, setMessages] = useState([])
   const messagesEndRef = useRef(null)
 
+  // Configure handlers
   const handleSend = (input) => {
 
     setMessages([...messages, { text: input, user: true }])
@@ -51,10 +57,6 @@ const Chat = ({ config }) => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages])
-
-
-  // Check to see if dark theme is enabled
-  const isDarkMode = useDarkMode();
 
   return (
     <>

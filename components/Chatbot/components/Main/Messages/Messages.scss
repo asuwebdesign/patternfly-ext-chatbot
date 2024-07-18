@@ -4,12 +4,13 @@
 .pf-chatbot__messages {
   height: 100%;
   padding: 0;
-  // overflow-x: hidden;
   overflow-y: auto;
 
   &-overflow {
     display: flex;
     flex-direction: column;
     gap: var(--pf-t--global--spacer--600);
+    padding-top: var(--pf-t--global--spacer--400);
+    padding-bottom: var(--pf-t--global--spacer--400);
   }
 }

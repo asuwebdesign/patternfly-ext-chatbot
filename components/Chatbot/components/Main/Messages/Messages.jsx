@@ -22,8 +22,9 @@ const Messages = ({ children }) => {
     const element = chatbotMessages.current
     if (element) {
       const { scrollTop, scrollHeight, clientHeight } = element
+
       setAtTop(scrollTop === 0)
-      setAtBottom(scrollTop + clientHeight >= scrollHeight)
+      setAtBottom(Math.round(scrollTop) + Math.round(clientHeight) >= Math.round(scrollHeight))
     }
   }
 
@@ -53,9 +54,6 @@ const Messages = ({ children }) => {
   useEffect(() => {
     const element = chatbotMessages.current
     if (element) {
-
-      // Automatically scroll to bottom on load
-      element.scrollTop = element.scrollHeight
 
       // Listen for scroll events
       element.addEventListener('scroll', handleScroll)
