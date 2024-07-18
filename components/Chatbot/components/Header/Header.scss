@@ -38,10 +38,13 @@
     margin: 0;
     
     h1 {
-      color: var(--pf-t--color--black);
       font-weight: 600;
       font-size: var(--pf-t--global--font--size--400);
-    }    
+    }
+
+    img {
+      max-height: 48px;
+    }
   }
 
   // Toggle Menu
