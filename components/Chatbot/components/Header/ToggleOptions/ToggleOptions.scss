@@ -1,11 +1,44 @@
 // ============================================================================
 // Toggle Options
 // ============================================================================
-.pf-chatbot__button--toggle-options {
+.pf-chatbot__button--toggle-options.pf-v6-c-button {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
+  padding: 0;
   border-radius: var(--pf-t--global--border--radius--pill);
+  color: var(--pf-t--chatbot--icon--fill);
+
+  .pf-v6-c-button__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  .pf-v6-c-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pf-v6-c-icon__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: calc(var(--pf-t--global--icon--size--100) * 2); // 24px icon
+      height: auto;
+      fill: var(--pf-t--chatbot--icon--fill);
+    }
+  }
+
+  &:hover, &:focus {
+    .pf-v6-c-icon__content {
+      svg { fill: var(--pf-t--chatbot--icon--fill--hover); }
+    }
+  }
 }

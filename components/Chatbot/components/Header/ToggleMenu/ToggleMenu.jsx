@@ -5,14 +5,11 @@
 import React from 'react'
 
 // Import PatternFly components
-import { Button } from '@patternfly/react-core'
-
-// Import FontAwesome icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { Button, Icon } from '@patternfly/react-core'
 
 // Import Chatbot components
 import Tooltip from '@/components/Chatbot/components/Tooltip/Tooltip'
+import RHUIIconMenuBars from './Icon'
 
 // Import styles
 import './ToggleMenu.scss'
@@ -36,7 +33,9 @@ const ToggleMenu = () => {
         ref={tooltipToggleMenu}
         onClick={handleMenu}
       >
-        <FontAwesomeIcon icon={faBars} />
+        <Icon size="lg">
+          <RHUIIconMenuBars />
+        </Icon>
       </Button>
       <Tooltip
         id="pf-chatbot__tooltip--toggle-menu"
