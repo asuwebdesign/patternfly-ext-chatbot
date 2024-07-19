@@ -173,33 +173,24 @@ const chatbotConfig = {
   },
 
   // Onboarding config
-  showOnboarding: {
+  onboarding: {
     show: true,
-    content: [
+    features: [
       {
-        image: {
-          url: '',
-          alt: ''
-        },
-        title: '',
-        desc: ''
+        photo: 'https://cdn.dribbble.com/userupload/15673045/file/original-463ff248823b210040f9a6f19fb4b017.png?resize=1504x1128',
+        title: 'Feature 1',
+        description: 'Description of Feature 1.',
       },
       {
-        image: {
-          url: '',
-          alt: ''
-        },
-        title: '',
-        desc: ''
+        photo: 'https://cdn.dribbble.com/userupload/15672299/file/original-dd87de7b073f07b6794fd083eaff9e7a.png?resize=1504x1128',
+        title: 'Feature 2',
+        description: 'Description of Feature 2.',
       },
       {
-        image: {
-          url: '',
-          alt: ''
-        },
-        title: '',
-        desc: ''
-      }
+        photo: 'https://cdn.dribbble.com/userupload/15666808/file/original-a9ec72266c73d50998f078963fd1d5c5.png?resize=2048x1537',
+        title: 'Feature 3',
+        description: 'Description of Feature 3.',
+      },
     ]
   },
 

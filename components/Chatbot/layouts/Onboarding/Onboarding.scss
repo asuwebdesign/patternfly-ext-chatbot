@@ -1,4 +1,77 @@
 // ============================================================================
 // Chatbot Layout - Onboarding & New Features
 // ============================================================================
-.pf-chatbot.pf-chatbot--layout--onboarding {}
+.pf-chatbot.pf-chatbot--layout--onboarding {
+  --pf-t--chatbot--dot--pagination--background: var(--pf-t--color--gray--30);
+  --pf-t--chatbot--dot--pagination--active--background: var(--pf-t--color--blue--50);
+
+  // Header
+  .pf-chatbot__header {
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 0;
+
+    &::after { display: none; }
+
+    .pf-v6-c-content--h1 {
+      margin: 0;
+    }
+
+    .pf-v6-c-button {
+      justify-self: flex-end;
+    }
+  }
+
+  // Main
+  .pf-chatbot__main {
+    img { border-radius: var(--pf-t--global--border--radius--medium); }
+  }
+
+  // Footer
+  .pf-chatbot__footer::before { display: none; }
+
+  // Feature controls
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    .pf-v6-c-button {
+      --pf-v6-c-button--FontSize: 16px;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+    }
+  }
+
+  // Dot pagination
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--pf-t--global--spacer--300);
+  }
+  
+  .dot {
+    display: block;
+    height: 8px;
+    width: 8px;
+    background-color: var(--pf-t--chatbot--dot--pagination--background);
+    border-radius: var(--pf-t--global--border--radius--pill);
+
+    &.active { background-color: var(--pf-t--chatbot--dot--pagination--active--background); }
+  }
+
+}
+
+
+// ============================================================================
+// Chatbot Dark Theme
+// ============================================================================
+.pf-v6-theme-dark {
+
+  .pf-chatbot.pf-chatbot--layout--onboarding {
+    --pf-t--chatbot--dot--pagination--background: var(--pf-t--color--gray--70);
+    --pf-t--chatbot--dot--pagination--active--background: var(--pf-t--color--blue--30);
+  }
+
+}
