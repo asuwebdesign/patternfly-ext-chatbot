@@ -1,102 +1,112 @@
 // ============================================================================
 // Chatbot Footer - Message Bar
 // ============================================================================
-
-import React, { useRef } from 'react'
-
+import React, { useRef, useState, useEffect } from 'react'
 import { AutoTextArea } from 'react-textarea-auto-witdth-height'
 
-// Import PatternFly components
-import { Button } from '@patternfly/react-core'
-
 // Import Chatbot components
-import Tooltip from '../../Tooltip/Tooltip'
-
-// Import FontAwesome icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperclip, faMicrophone, faStop, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import Attach from './Attach/Attach'
+import Microphone from './Microphone/Microphone'
+import Send from './Send/Send'
+import Stop from './Stop/Stop'
 
 // Import styles
 import './MessageBar.scss'
 
-const MessageBar = () => {
+const MessageBar = ({ onSend }) => {
 
-  // Configure tooltips
-  const tooltipAttachRef = React.useRef()
-  const tooltipUseMicrophoneRef = React.useRef()
-  const tooltipUseStopRef = React.useRef()
-  const tooltipSendMessageRef = React.useRef()
-
-  // Configure states
-  const componentRef = useRef(null)
-  const textareaRef = useRef(null)
-  const actionsRef = useRef(null)
-
+  // Text Input
+  // --------------------------------------------------------------------------
   const [value, setValue] = React.useState('')
+  const textareaRef = useRef(null)
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      handleSend()
+    }
+  }
 
-  // Configure handlers
   const handleChange = (event) => {
     setValue(event.target.value)
   }
 
+  // Attachments
+  // --------------------------------------------------------------------------
   const handleAttach = () => { console.log('Attach button clicked') }
-  const handleUseMicrophone = () => { console.log('Use mic button clicked') }
-  const handleStop = () => { console.log('Stop button clicked') }
+  
+  // Microphone
+  // --------------------------------------------------------------------------
+  const [listening, setListening] = useState(false)
+  const [speechRecognition, setSpeechRecognition] = useState(null)
 
+  // Listen for speech
+  const startListening = () => {
+    if (speechRecognition) {
+      speechRecognition.start()
+      setListening(true)
+    }
+  };
+
+  // Stop listening for speech
+  const stopListening = () => {
+    if (speechRecognition && listening) {
+      speechRecognition.stop()
+      setListening(false)
+    }
+  }
+
+  // Detect speech recognition browser support
+  useEffect(() => {
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+      
+      // Initialize SpeechRecognition
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)()
+      recognition.continuous = false
+      recognition.interimResults = false
+      recognition.lang = 'en-US'
+
+      recognition.onresult = (event) => {
+        const result = event.results[0][0].transcript
+        setValue(result)
+        recognition.stop()
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Speech recognition error:', event.error)
+        recognition.stop()
+      };
+
+      setSpeechRecognition(recognition)
+    }
+  }, [])
+  
+  // Handle sending message
   const handleSend = () => {
-    console.log('Send button clicked')
+    onSend(value)
     setValue('')
   }
 
+  // Handle stop message response  
+  const handleStop = () => { console.log('Stop button clicked') }
+
   return (
-    <div className="pf-chatbot__message-bar" ref={componentRef}>
+    <div className="pf-chatbot__message-bar" >
 
       <AutoTextArea
+        ref={textareaRef}
         className="pf-chatbot__message-textarea"
         value={value}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         placeholder="Send a message..."
         aria-label="Send a message..." />
 
-      <div ref={actionsRef} className="pf-chatbot__message-bar-actions">
-        {/* Attach file or show popover menu */}
-        <Button
-          variant="plain"
-          aria-describedby="pf-chatbot__tooltip--attach"
-          ref={tooltipAttachRef}
-          onClick={() => handleAttach()}
-        ><FontAwesomeIcon icon={faPaperclip} /></Button>
-        <Tooltip id="pf-chatbot__tooltip--attach" content="Attach" position="top" triggerRef={tooltipAttachRef} />
-
-        {/* Use microphone for voice input */}
-        <Button
-          variant="plain"
-          aria-describedby="pf-chatbot__tooltip--use-microphone"
-          ref={tooltipUseMicrophoneRef}
-          onClick={() => handleUseMicrophone()}
-        ><FontAwesomeIcon icon={faMicrophone} /></Button>
-        <Tooltip id="pf-chatbot__tooltip--use-microphone" content="Use microphone" position="top" triggerRef={tooltipUseMicrophoneRef} />
-
-        {/* Stop bot from responding */}
-        {/* <Button
-          aria-describedby="pf-chatbot__tooltip--stop"
-          ref={tooltipUseStopRef}
-          onClick={() => handleStop()}
-        ><FontAwesomeIcon icon={faStop} /></Button> */}
-        {/* <Tooltip id="pf-chatbot__tooltip--stop" content="Stop" position="top" triggerRef={tooltipUseStopRef} /> */}
-
-        {/* Send message */}
-        {value && <>
-          <Button
-            className={`pf-chatbot__button--send ${value ? 'pf-chatbot__button--visible' : 'pf-chatbot__button--hidden'}`}
-            variant="plain"
-            aria-describedby="pf-chatbot__tooltip--send"
-            ref={tooltipSendMessageRef}
-            onClick={() => handleSend()}
-          ><FontAwesomeIcon icon={faPaperPlane} /></Button>
-          <Tooltip id="pf-chatbot__tooltip--send" content="Send" position="top" triggerRef={tooltipSendMessageRef} />
-        </>}
+      <div className="pf-chatbot__message-bar-actions">
+        <Attach handleAttach={handleAttach} isDisabled={listening} />
+        {speechRecognition && <Microphone listening={listening} startListening={startListening} stopListening={stopListening} />}
+        {/* <Stop handleStop={handleStop} /> */}
+        {value && <Send value={value} handleSend={handleSend} />}
       </div>
     </div>
   )
