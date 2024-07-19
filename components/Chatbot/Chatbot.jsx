@@ -17,6 +17,14 @@ import './Chatbot.scss'
 
 const Chatbot = ({ config, displayMode, layout, chatbotVisible, ...props }) => {
 
+  // Configure routing
+  //
+  // - Splash default. Set timeout
+  // - Terms. IsAccepted? No => Decline
+  // - Privacy. IsAccepted? No => Decline
+  // - Onboarding. Available? Cookie-based?
+  // - Chat. TermsAccepted. PrivacyAccepted.
+
   // Configure docked mode
   useEffect(() => {
     if (displayMode === 'pf-chatbot--docked') {
@@ -32,6 +40,11 @@ const Chatbot = ({ config, displayMode, layout, chatbotVisible, ...props }) => {
     hidden: { opacity: 0, y: '16px' }
   }
 
+  // Configure handlers
+  const handleSkip = () => {
+    console.log('Skipped onboarding')
+  }
+
   return (
     <motion.div
       className={`pf-chatbot ${layout && 'pf-chatbot--layout--' + layout} ${displayMode} ${!chatbotVisible ? 'pf-chatbot--hidden' : ''}`}
@@ -44,7 +57,7 @@ const Chatbot = ({ config, displayMode, layout, chatbotVisible, ...props }) => {
       {layout === 'terms-of-use' && <TermsOfUse config={config} {...props} />}
       {layout === 'privacy-statement' && <PrivacyStatement config={config} {...props} />}
       {layout === 'declined-legal' && <DeclinedLegal config={config} {...props} />}
-      {layout === 'onboarding' && <Onboarding config={config} {...props} />}
+      {layout === 'onboarding' && <Onboarding config={config} onSkip={handleSkip} {...props} />}
       {layout === 'chat' && <Chat config={config} {...props} />}
 
       {/* Or add a custom layout... */}
