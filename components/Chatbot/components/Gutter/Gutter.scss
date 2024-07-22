@@ -1,0 +1,15 @@
+// ============================================================================
+// Chatbot Gutter
+// ============================================================================
+.pf-chatbot__gutter {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 100%;
+  background-color: red;
+  
+}
