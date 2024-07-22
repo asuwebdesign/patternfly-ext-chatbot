@@ -99,8 +99,8 @@ const MessageBar = ({ onSend }) => {
         value={value}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        placeholder="Send a message..."
-        aria-label="Send a message..." />
+        placeholder={listening ? 'Listening' : 'Send a message...'}
+        aria-label={listening ? 'Listening' : 'Send a message...'} />
 
       <div className="pf-chatbot__message-bar-actions">
         <Attach handleAttach={handleAttach} isDisabled={listening} />
