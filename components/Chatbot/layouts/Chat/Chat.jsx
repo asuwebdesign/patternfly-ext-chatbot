@@ -43,12 +43,12 @@ const Chat = ({ config, displayMode }) => {
   const handleSend = (input) => {
 
     setMessages([...messages, { text: input, user: true }])
-    
+
     setTimeout(() => {
       const botResponse = generateBotResponse(input);
       setMessages((prevMessages) => [...prevMessages, { text: botResponse, user: false }])
     }, 500)
-  
+
   }
 
   const generateBotResponse = (userInput) => {
@@ -73,13 +73,13 @@ const Chat = ({ config, displayMode }) => {
     <>
       <ToastAlerts />
       <Header>
-        {/* Chatbot title */}
-        <div className="pf-chatbot__title">
-          <Brand src={isDarkMode ? '/logo-chatbot--inverted.svg' : '/logo-chatbot.svg'} alt="Lightspeed logo" />
-          {/* <Text component={TextVariants.h1}>Red Hat</Text> */}
-        </div>
-
-        <ToggleMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+        {displayMode !== 'pf-chatbot--fullscreen' && (
+          <div className="pf-chatbot__title">
+            <Brand src={isDarkMode ? '/logo-chatbot--inverted.svg' : '/logo-chatbot.svg'} alt="Lightspeed logo" />
+            {/* <Text component={TextVariants.h1}>Red Hat</Text> */}
+          </div>
+        )}
+        {displayMode !== 'pf-chatbot--fullscreen' && <ToggleMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
         <ToggleOptions />
       </Header>
       <Menu displayMode={displayMode} isExpanded={isExpanded} setIsExpanded={setIsExpanded} drawerRef={drawerRef} onExpand={onExpand} />
