@@ -1,6 +1,47 @@
 // ============================================================================
 // Chatbot Header - Menu
 // ============================================================================
+.pf-chatbot__menu {
+  .pf-v6-c-nav {
+    --pf-v6-c-nav--PaddingBlockStart: 0;
+    --pf-v6-c-nav--PaddingBlockEnd: 0;
+    --pf-v6-c-nav--PaddingInlineStart: 0;
+    --pf-v6-c-nav--PaddingInlineEnd: 0;
+  }
+
+  .pf-v6-c-nav__section-title {
+    --pf-v6-c-nav__section-title--PaddingInlineStart: var(--pf-t--global--spacer--200);
+    --pf-v6-c-nav__section-title--PaddingInlineEnd: 0;
+    --pf-v6-c-nav__section-title--Color: var(--pf-t--color--gray--50);
+  }
+
+  .pf-v6-c-nav__link {
+    --pf-v6-c-nav__link--PaddingBlockStart: var(--pf-t--global--spacer--200);
+    --pf-v6-c-nav__link--PaddingBlockEnd: var(--pf-t--global--spacer--200);
+    --pf-v6-c-nav__link--PaddingInlineStart: var(--pf-t--global--spacer--200);
+    --pf-v6-c-nav__link--PaddingInlineEnd: var(--pf-t--global--spacer--200);
+    --pf-v6-c-nav__link--BorderRadius: var(--pf-t--global--border--radius--pill);
+    --pf-v6-c-nav__link--FontWeight: 500;
+
+    font-family: var(--pf-t--chatbot--heading--font-family);
+
+    &:hover, &:focus {
+      --pf-v6-c-nav__link--hover--BackgroundColor: var(--pf-t--color--gray--10);
+    }
+
+    &.pf-m-current {
+      --pf-v6-c-nav__link--m-current--BackgroundColor: var(--pf-t--color--gray--10);
+      --pf-v6-c-nav__link--m-current--Color: var(--pf-t--color--black);
+    }
+  }
+
+  .pf-v6-c-nav__link-text {
+    display: flex;
+    align-items: center;
+    gap: var(--pf-t--global--spacer--200);
+  }
+}
+
 .pf-chatbot__menu.pf-v6-c-drawer {
   --pf-v6-c-drawer__panel--MinWidth: 384px;
   --pf-v6-c-drawer__panel--xl--MinWidth: 384px;
@@ -28,46 +69,6 @@
     .pf-v6-c-panel__main {
       max-height: 100%;
     }
-
-    .pf-v6-c-nav {
-      --pf-v6-c-nav--PaddingBlockStart: 0;
-      --pf-v6-c-nav--PaddingBlockEnd: 0;
-      --pf-v6-c-nav--PaddingInlineStart: 0;
-      --pf-v6-c-nav--PaddingInlineEnd: 0;
-    }
-
-    .pf-v6-c-nav__section-title {
-      --pf-v6-c-nav__section-title--PaddingInlineStart: var(--pf-t--global--spacer--200);
-      --pf-v6-c-nav__section-title--PaddingInlineEnd: 0;
-      --pf-v6-c-nav__section-title--Color: var(--pf-t--color--gray--50);
-    }
-
-    .pf-v6-c-nav__link {
-      --pf-v6-c-nav__link--PaddingBlockStart: var(--pf-t--global--spacer--200);
-      --pf-v6-c-nav__link--PaddingBlockEnd: var(--pf-t--global--spacer--200);
-      --pf-v6-c-nav__link--PaddingInlineStart: var(--pf-t--global--spacer--200);
-      --pf-v6-c-nav__link--PaddingInlineEnd: var(--pf-t--global--spacer--200);
-      --pf-v6-c-nav__link--BorderRadius: var(--pf-t--global--border--radius--pill);
-      --pf-v6-c-nav__link--FontWeight: 500;
-
-      font-family: var(--pf-t--chatbot--heading--font-family);
-
-      &:hover, &:focus {
-        --pf-v6-c-nav__link--hover--BackgroundColor: var(--pf-t--color--gray--10);
-      }
-
-      &.pf-m-current {
-        --pf-v6-c-nav__link--m-current--BackgroundColor: var(--pf-t--color--gray--10);
-        --pf-v6-c-nav__link--m-current--Color: var(--pf-t--color--black);
-      }
-    }
-
-    .pf-v6-c-nav__link-text {
-      display: flex;
-      align-items: center;
-      gap: var(--pf-t--global--spacer--200);
-    }
-  
   }
 }
 
@@ -77,25 +78,26 @@
 // ============================================================================
 .pf-v6-theme-dark {
 
+  .pf-chatbot__menu {
+    .pf-v6-c-nav__section-title {
+      --pf-v6-c-nav__section-title--Color: var(--pf-t--color--gray--40);
+    }
+
+    .pf-v6-c-nav__link {
+      &:hover, &:focus {
+        --pf-v6-c-nav__link--hover--BackgroundColor: var(--pf-t--color--gray--70);
+      }
+
+      &.pf-m-current {
+        --pf-v6-c-nav__link--m-current--BackgroundColor: var(--pf-t--color--gray--70);
+        --pf-v6-c-nav__link--m-current--Color: var(--pf-t--color--white);
+      }
+    }
+  }
+
   .pf-chatbot--fullscreen {
     .pf-chatbot__menu.pf-v6-c-panel {
       --pf-v6-c-panel--BackgroundColor: var(--pf-t--color--gray--90);
-
-      .pf-v6-c-nav__section-title {
-        --pf-v6-c-nav__section-title--Color: var(--pf-t--color--gray--40);
-      }
-
-      .pf-v6-c-nav__link {
-        &:hover, &:focus {
-          --pf-v6-c-nav__link--hover--BackgroundColor: var(--pf-t--color--gray--80);
-        }
-
-        &.pf-m-current {
-          --pf-v6-c-nav__link--m-current--BackgroundColor: var(--pf-t--color--gray--80);
-          --pf-v6-c-nav__link--m-current--Color: var(--pf-t--color--white);
-        }
-      }
-    
     }
   }
 
