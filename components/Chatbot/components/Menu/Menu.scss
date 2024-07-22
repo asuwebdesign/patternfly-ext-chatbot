@@ -61,10 +61,13 @@
 // ============================================================================
 .pf-chatbot--fullscreen {
   .pf-chatbot__menu.pf-v6-c-panel {
+    --pf-v6-c-panel--BorderRadius: 0;
     --pf-v6-c-panel__header--PaddingBlockStart: var(--pf-t--global--spacer--400);
     --pf-v6-c-panel__header--PaddingBlockEnd: var(--pf-t--global--spacer--400);
     --pf-v6-c-panel__main-body--PaddingBlockStart: var(--pf-t--global--spacer--400);
-    --pf-v6-c-panel__main-body--PaddingBlockEnd: var(--pf-t--global--spacer--400);
+    --pf-v6-c-panel__main-body--PaddingBlockEnd: var(--pf-t--global--spacer--400);    
+
+    box-shadow: 1px 0 0 0 var(--pf-t--color--gray--10);
 
     .pf-v6-c-panel__main {
       max-height: 100%;
@@ -98,6 +101,8 @@
   .pf-chatbot--fullscreen {
     .pf-chatbot__menu.pf-v6-c-panel {
       --pf-v6-c-panel--BackgroundColor: var(--pf-t--color--gray--90);
+
+      box-shadow: 1px 0 0 0 var(--pf-t--color--gray--95);
     }
   }
 
