@@ -5,9 +5,7 @@
   width: 48px;
   height: 48px;
   border-radius: var(--pf-t--global--border--radius--pill);
-  transition:
-    transform var(--pf-t--chatbot--timing-function) var(--pf-t--global--duration--100),
-    opacity var(--pf-t--chatbot--timing-function) var(--pf-t--global--duration--100);
+  animation: motionSendButton var(--pf-t--chatbot--timing-function) var(--pf-t--global--duration--200) forwards;
 
   .pf-v6-c-button__text {
     display: flex;
@@ -23,14 +21,15 @@
 
     .pf-v6-c-button__text { color: var(--pf-t--chatbot--message-bar--send-icon--fill--hover); }
   }
+}
 
-  // &.pf-chatbot__button--visible {
-  //   transform: translate3d(0, 0, 0);
-  //   opacity: 1;
-  // }
-  // &.pf-chatbot__button--hidden {
-  //   transform: translate3d(16px, 0, 0);
-  //   opacity: 0;
-  //   pointer-events: none;
-  // }
+@keyframes motionSendButton {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
