@@ -5,7 +5,19 @@
 import React from 'react'
 
 // Import PatternFly components
-import { Button, Icon } from '@patternfly/react-core'
+import {
+  Button,
+  Icon,
+  Drawer,
+  DrawerPanelContent,
+  DrawerContent,
+  DrawerContentBody,
+  DrawerPanelBody,
+  DrawerHead,
+  DrawerActions,
+  DrawerCloseButton,
+  DrawerPanelDescription
+} from '@patternfly/react-core'
 
 // Import Chatbot components
 import Tooltip from '@/components/Chatbot/components/Tooltip/Tooltip'
@@ -14,7 +26,7 @@ import RHUIIconMenuBars from './Icon'
 // Import styles
 import './ToggleMenu.scss'
 
-const ToggleMenu = () => {
+const ToggleMenu = ({ isExpanded, setIsExpanded }) => {
 
   // Configure tooltips
   const tooltipToggleMenu = React.useRef()
@@ -22,7 +34,9 @@ const ToggleMenu = () => {
   // Configure handlers
   const handleMenu = () => {
     console.log('Toggle menu')
+    setIsExpanded(!isExpanded)
   }
+  
 
   return (
     <>

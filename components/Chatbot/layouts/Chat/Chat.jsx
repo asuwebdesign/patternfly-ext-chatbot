@@ -5,11 +5,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 // Import PatternFly components
-import { Brand, Text, TextVariants } from '@patternfly/react-core'
+import { Backdrop, Brand, Text, TextVariants } from '@patternfly/react-core'
 
 // Import Chatbot components
 import ToastAlerts from '../../components/ToastAlerts/ToastAlerts'
 import Header from '@/components/Chatbot/components/Header/Header'
+import Menu from '../../components/Menu/Menu'
 import Main from '@/components/Chatbot/components/Main/Main'
 import Footer from '@/components/Chatbot/components/Footer/Footer'
 import Message from '@/components/Chatbot/components/Main/Message/Message'
@@ -26,7 +27,7 @@ import useDarkMode from '../../useDarkMode'
 // Import styles
 import './Chat.scss'
 
-const Chat = ({ config }) => {
+const Chat = ({ config, displayMode }) => {
 
   // Configure data
   const { footnote } = config.chat
@@ -58,6 +59,18 @@ const Chat = ({ config }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages])
 
+
+
+  // TOGGLE USING DRAWER COMPONENT
+  // https://staging-v6.patternfly.org/components/drawer
+  const [isExpanded, setIsExpanded] = React.useState(false)
+  const drawerRef = React.useRef()
+
+  const onExpand = () => {
+    drawerRef.current && drawerRef.current.focus()
+  }
+
+
   return (
     <>
       <ToastAlerts />
@@ -68,12 +81,14 @@ const Chat = ({ config }) => {
           {/* <Text component={TextVariants.h1}>Red Hat</Text> */}
         </div>
 
-        <ToggleMenu />
+        <ToggleMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
         <ToggleOptions />
 
         {/* Menu panel */}
         {/* Options dropdown */}
       </Header>
+      <Menu displayMode={displayMode} isExpanded={isExpanded} setIsExpanded={setIsExpanded} drawerRef={drawerRef} onExpand={onExpand} />
+      {displayMode !== 'pf-chatbot--fullscreen' && isExpanded && <Backdrop />}
       <Main>
         <Messages>
 

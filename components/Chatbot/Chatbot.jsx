@@ -1,7 +1,7 @@
 // ============================================================================
 // Chatbot
 // ============================================================================
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 // Import Chatbot components
@@ -11,6 +11,7 @@ import Onboarding from './layouts/Onboarding/Onboarding'
 import PrivacyStatement from './layouts/PrivacyStatement/PrivacyStatement'
 import Splash from './layouts/Splash/Splash'
 import TermsOfUse from './layouts/TermsOfUse/TermsOfUse'
+import Gutter from './components/Gutter/Gutter'
 
 // Import styles
 import './Chatbot.scss'
@@ -45,12 +46,26 @@ const Chatbot = ({ config, displayMode, layout, chatbotVisible, ...props }) => {
     console.log('Skipped onboarding')
   }
 
+  // Dock mode configuration
+  // const [dockWidth, setDockWidth] = useState(480)
+
+  // const updateWidth = (newWidth) => {
+  //   if (newWidth < 480) {
+  //     newWidth = 480
+  //   } else if (newWidth > 960) {
+  //     newWidth = 960
+  //   }
+  //   setDockWidth(newWidth)
+  //   document.documentElement.style.paddingRight = `${newWidth}px`
+  // }
+
   return (
     <motion.div
       className={`pf-chatbot ${layout && 'pf-chatbot--layout--' + layout} ${displayMode} ${!chatbotVisible ? 'pf-chatbot--hidden' : ''}`}
       variants={motionChatbot}
       initial="hidden"
       animate={chatbotVisible ? "visible" : "hidden"}
+      //style={displayMode === 'pf-chatbot--docked' ? { width: `${dockWidth}px` } : ''}
     >
       
       {layout === 'splash' && <Splash config={config} chatbotVisible={chatbotVisible} {...props} />}
@@ -58,9 +73,11 @@ const Chatbot = ({ config, displayMode, layout, chatbotVisible, ...props }) => {
       {layout === 'privacy-statement' && <PrivacyStatement config={config} {...props} />}
       {layout === 'declined-legal' && <DeclinedLegal config={config} {...props} />}
       {layout === 'onboarding' && <Onboarding config={config} onSkip={handleSkip} {...props} />}
-      {layout === 'chat' && <Chat config={config} {...props} />}
+      {layout === 'chat' && <Chat config={config} displayMode={displayMode} {...props} />}
 
       {/* Or add a custom layout... */}
+
+      {/* {displayMode === 'pf-chatbot--docked' && <Gutter chatbotVisible={chatbotVisible} updateWidth={updateWidth} />} */}
 
     </motion.div>
   )
