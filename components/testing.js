@@ -7,7 +7,7 @@ export default function Testing({ handleDisplay }) {
   const testingStyle = {
     position: 'fixed',
     top: '50%',
-    left: '50%',
+    left: '25%',
     transform: 'translate3d(-50%, -50%, 0)',
     display: 'flex',
     flexDirection: 'column',
