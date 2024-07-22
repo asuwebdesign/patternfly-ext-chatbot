@@ -32,14 +32,14 @@
   // Main
   .pf-chatbot__main {
     grid-area: 2 / 2 / 3 / 3;
-    width: 800px;
+    width: min(60%, 960px);
     margin: 0 auto;
   }
 
   // Footer
   .pf-chatbot__footer {
     grid-area: 3 / 2 / 4 / 3;
-    width: 800px;
+    width: min(60%, 960px);
     margin: 0 auto;
   }
 }
