@@ -56,13 +56,11 @@ const Chat = ({ config, displayMode }) => {
   }
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
 
 
-  // TOGGLE USING DRAWER COMPONENT
-  // https://staging-v6.patternfly.org/components/drawer
   const [isExpanded, setIsExpanded] = React.useState(false)
   const drawerRef = React.useRef()
 
@@ -83,9 +81,6 @@ const Chat = ({ config, displayMode }) => {
 
         <ToggleMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
         <ToggleOptions />
-
-        {/* Menu panel */}
-        {/* Options dropdown */}
       </Header>
       <Menu displayMode={displayMode} isExpanded={isExpanded} setIsExpanded={setIsExpanded} drawerRef={drawerRef} onExpand={onExpand} />
       {displayMode !== 'pf-chatbot--fullscreen' && isExpanded && <Backdrop />}

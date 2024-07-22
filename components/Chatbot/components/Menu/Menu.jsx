@@ -22,8 +22,13 @@ import {
   Panel,
   PanelMain,
   PanelMainBody,
-  PanelHeader
+  PanelHeader,
+  Truncate
 } from '@patternfly/react-core'
+
+// Import FontAwesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMessage } from '@fortawesome/free-regular-svg-icons'
 
 // Import styles
 import './Menu.scss'
@@ -47,29 +52,32 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
 
   const menuContent = <>
     <Nav onSelect={onSelect} aria-label="Grouped global">
-      <NavGroup title="Section title 1">
-        <NavItem preventDefault to="#nav-group1-item1" itemId="group-1_item-1" isActive={activeItem === 'group-1_item-1'}>
-          Group 1 Link 1
+      <NavGroup title="Today">
+        <NavItem preventDefault itemId="group-1_item-1" isActive={activeItem === 'group-1_item-1'}>
+          <FontAwesomeIcon icon={faMessage} />
+          <Truncate content="Red Hat products and services" />
         </NavItem>
-        <NavItem preventDefault to="#nav-group1-item2" itemId="group-1_item-2" isActive={activeItem === 'group-1_item-2'}>
-          Group 1 Link 2
+        <NavItem preventDefault itemId="group-1_item-2" isActive={activeItem === 'group-1_item-2'}>
+          <FontAwesomeIcon icon={faMessage} />
+          <Truncate content="Enterprise Linux installation and setup" />        
         </NavItem>
-        <NavItem preventDefault to="#nav-group1-item3" itemId="group-1_item-3" isActive={activeItem === 'group-1_item-3'}>
-          Group 1 Link 3
+        <NavItem preventDefault itemId="group-1_item-3" isActive={activeItem === 'group-1_item-3'}>
+          <FontAwesomeIcon icon={faMessage} />
+          <Truncate content="Troubleshoot system crash" />        
         </NavItem>
       </NavGroup>
-      <NavGroup title="Section title 2">
-        <NavItem preventDefault to="#nav-group2-item1" itemId="group-2_item-1" isActive={activeItem === 'group-2_item-1'}>
+      <NavGroup title="Yesterday">
+        <NavItem preventDefault itemId="group-2_item-1" isActive={activeItem === 'group-2_item-1'}>
           Group 2 Link 1
         </NavItem>
-        <NavItem preventDefault to="#nav-group2-item2" itemId="group-2_item-2" isActive={activeItem === 'group-2_item-2'}>
+        <NavItem preventDefault itemId="group-2_item-2" isActive={activeItem === 'group-2_item-2'}>
           Group 2 Link 2
         </NavItem>
-        <NavItem preventDefault to="#nav-group2-item3" itemId="group-2_item-3" isActive={activeItem === 'group-2_item-3'}>
+        <NavItem preventDefault itemId="group-2_item-3" isActive={activeItem === 'group-2_item-3'}>
           Group 2 Link 3
         </NavItem>
       </NavGroup>
-      <NavGroup title="Section title 3">
+      <NavGroup title="June">
         <NavItem preventDefault to="#nav-group2-item1" itemId="group-2_item-1" isActive={activeItem === 'group-2_item-1'}>
           Group 3 Link 1
         </NavItem>
@@ -80,7 +88,7 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
           Group 3 Link 3
         </NavItem>
       </NavGroup>
-      <NavGroup title="Section title 4">
+      <NavGroup title="May">
         <NavItem preventDefault to="#nav-group2-item1" itemId="group-2_item-1" isActive={activeItem === 'group-2_item-1'}>
           Group 4 Link 1
         </NavItem>
@@ -91,7 +99,7 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
           Group 4 Link 3
         </NavItem>
       </NavGroup>
-      <NavGroup title="Section title 5">
+      <NavGroup title="April">
         <NavItem preventDefault to="#nav-group2-item1" itemId="group-2_item-1" isActive={activeItem === 'group-2_item-1'}>
           Group 5 Link 1
         </NavItem>
@@ -102,7 +110,7 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
           Group 5 Link 3
         </NavItem>
       </NavGroup>
-      <NavGroup title="Section title 6">
+      <NavGroup title="March">
         <NavItem preventDefault to="#nav-group2-item1" itemId="group-2_item-1" isActive={activeItem === 'group-2_item-1'}>
           Group 3 Link 1
         </NavItem>
@@ -113,7 +121,7 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
           Group 3 Link 3
         </NavItem>
       </NavGroup>
-      <NavGroup title="Section title 7">
+      <NavGroup title="February">
         <NavItem preventDefault to="#nav-group2-item1" itemId="group-2_item-1" isActive={activeItem === 'group-2_item-1'}>
           Group 4 Link 1
         </NavItem>
@@ -124,7 +132,7 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
           Group 4 Link 3
         </NavItem>
       </NavGroup>
-      <NavGroup title="Section title 8">
+      <NavGroup title="January">
         <NavItem preventDefault to="#nav-group2-item1" itemId="group-2_item-1" isActive={activeItem === 'group-2_item-1'}>
           Group 5 Link 1
         </NavItem>
@@ -142,13 +150,14 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
     <DrawerPanelContent>
       <DrawerHead>
         <span tabIndex={isExpanded ? 0 : -1} ref={drawerRef}>
-          Drawer panel header
+          Header, logo on fullscreen
         </span>
         <DrawerActions>
+          <Button>New chat</Button>
           <DrawerCloseButton onClick={onCloseClick} />
         </DrawerActions>
       </DrawerHead>
-      <DrawerPanelDescription>Drawer panel description</DrawerPanelDescription>
+      {/* <DrawerPanelDescription>Drawer panel description</DrawerPanelDescription> */}
       <DrawerPanelBody>
         {menuContent}
       </DrawerPanelBody>
@@ -165,7 +174,7 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
       {displayMode === 'pf-chatbot--fullscreen' && (
         <Panel className="pf-chatbot__menu" isScrollable>
           <PanelHeader>
-            <Button>New chat</Button>
+            <Button isBlock>New chat</Button>
           </PanelHeader>
           <PanelMain>
             <PanelMainBody>
