@@ -15,7 +15,7 @@ import ListMessage from './content/ListMessage/ListMessage'
 import ImageMessage from './content/ImageMessage/ImageMessage'
 import VideoMessage from './content/VideoMessage/VideoMessage'
 import QuickReplyMessage from './content/QuickReplyMessage/QuickReplyMessage'
-// import CodeBlockMessage from './content/CodeBlockMessage/CodeBlockMessage'
+import CodeBlockMessage from './content/CodeBlockMessage/CodeBlockMessage'
 import TableMessage from './content/TableMessage/TableMessage'
 import Sources from './Sources/Sources'
 import Actions from './Actions/Actions'
@@ -23,7 +23,7 @@ import Actions from './Actions/Actions'
 // Import styles
 import './Message.scss'
 
-const Message = () => {
+const Message = ({ config, message }) => {
 
   // avatar, name, badge, timestamp, message, sources, actions
 
@@ -70,7 +70,6 @@ const Message = () => {
   const sampleTableCaption = 'Simple table caption'
   const sampleTableHeaders = ['Column header', 'Column header', 'Column header']
   const sampleTableData = [['A1', 'A2', 'A3'], ['B1', 'B2', 'B3'], ['C1', 'C2', 'C3']]
-
   // ---- Sample content ----
 
   return (
@@ -93,7 +92,7 @@ const Message = () => {
             <QuickReplyMessage items={sampleQuickReplyInlineMinimum} />
             <QuickReplyMessage items={sampleQuickReplyInline} />
             <QuickReplyMessage items={sampleQuickReplyStacked} stacked />
-            {/* <CodeBlockMessage /> */}
+            <CodeBlockMessage />
             <TableMessage caption={sampleTableCaption} columns={sampleTableHeaders} rows={sampleTableData} />
           </>}
         </div>
