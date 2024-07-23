@@ -23,8 +23,6 @@ import Messages from '../../components/Main/Messages/Messages'
 import Separator from '../../components/Main/Separator/Separator'
 import QuickTip from '../../components/Main/QuickTip/QuickTip'
 
-import useDarkMode from '../../useDarkMode'
-
 // Import styles
 import './Chat.scss'
 
@@ -55,9 +53,6 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
       }
     }
   } = config.chat || {}
-
-  // Theming hook
-  const isDarkMode = useDarkMode()
 
   // Configure messages
   const [messages, setMessages] = useState([])
