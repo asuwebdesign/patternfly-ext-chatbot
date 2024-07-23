@@ -15,9 +15,13 @@ import Illustration from './Illustration'
 // Import styles
 import './TermsOfUse.scss'
 
-const TermsOfUse = ({ config }) => {
+const TermsOfUse = ({ config = {} }) => {
 
-  const { title, content } = config.termsOfUse
+  // Configure default values
+  const {
+    title = 'Terms of use',
+    content = 'No agreement has been configured.'
+  } = config.termsOfUse || {}
 
   return (
     <>

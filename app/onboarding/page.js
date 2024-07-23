@@ -27,9 +27,6 @@ const App = () => {
     setDisplayMode(className)
   }
 
-  // Configure layout
-
-
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -126,7 +123,6 @@ const App = () => {
       <Chatbot
         config={chatbotConfig}
         displayMode={displayMode}
-
         layout="onboarding"
         chatbotVisible={chatbotVisible}
       />

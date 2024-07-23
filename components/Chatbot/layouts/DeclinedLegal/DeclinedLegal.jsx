@@ -16,9 +16,26 @@ import Illustration from './Illustration'
 // Import styles
 import './DeclinedLegal.scss'
 
-const DeclinedLegal = ({ config }) => {
+const DeclinedLegal = ({ config = {} }) => {
 
-  const { title, content, primaryButton, secondaryButton, tertiaryButton } = config.declinedLegal
+  // Configure default values
+  const {
+    title = 'Acceptance required',
+    content = 'No description has been configured.',
+    primaryButton = {
+      label: 'Review agreements'
+    },
+    secondaryButton = {
+      show: true,
+      label: 'Learn more',
+      url: 'https://www.redhat.com/'
+    },
+    tertiaryButton = {
+      show: true,
+      label: 'Contact customer support',
+      url: 'https://www.redhat.com/'
+    }
+  } = config.declinedLegal || {}
 
   return (
     <>

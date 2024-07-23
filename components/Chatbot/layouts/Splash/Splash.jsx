@@ -13,7 +13,9 @@ import Main from '../../components/Main/Main'
 // Import styles
 import './Splash.scss'
 
-const Splash = ({ chatbotVisible, splashLogoSrc, splashLogoAlt }) => {
+const Splash = ({ config, chatbotVisible }) => {
+
+  const { logo } = config.splash
 
   // Configure animations
   const motionBrand = {
@@ -24,9 +26,9 @@ const Splash = ({ chatbotVisible, splashLogoSrc, splashLogoAlt }) => {
   return (
     <>
       <Main>
-        {splashLogoSrc && splashLogoAlt && (
+        {logo.src && logo.alt && (
           <motion.div className="pf-chatbot__brand" variants={motionBrand} initial="hidden" animate={chatbotVisible ? "visible" : "hidden"}>
-            <img src={splashLogoSrc} alt={splashLogoAlt} />
+            <img src={logo.src} alt={logo.alt} />
           </motion.div>
         )}
 

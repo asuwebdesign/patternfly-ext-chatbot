@@ -27,11 +27,6 @@ const App = () => {
     setDisplayMode(className)
   }
 
-  // ---- Sample content ----
-  const splashLogoSrc = '/logo-chatbot--inverted.svg'
-  const splashLogoAlt = 'Red Hat Lightspeed logo'
-  // ---- Sample content ----
-
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -128,27 +123,7 @@ const App = () => {
       <Chatbot
         config={chatbotConfig}
         displayMode={displayMode}
-
-        layout="splash"
-        splashLogoSrc={splashLogoSrc}
-        splashLogoAlt={splashLogoAlt}
-        
-        // layout="terms-of-use"
-        // termsOfUseTitle={termsOfUseTitle}
-        // termsOfUseAgreement={termsOfUseAgreement}
-
-        // layout="privacy-statement"
-        // privacyStatementTitle={privacyStatementTitle}
-        // privacyStatementAgreement={privacyStatementAgreement}
-
-        // layout="declined-legal"
-        // declinedLegalTitle={declinedLegalTitle}
-        // declinedLegalContent={declinedLegalContent}
-
-        // layout="onboarding"
-
-        // layout="chat"
-
+        layout="splash"        
         chatbotVisible={chatbotVisible}
       />
     </main>

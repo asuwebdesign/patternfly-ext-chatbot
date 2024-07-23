@@ -27,11 +27,6 @@ const App = () => {
     setDisplayMode(className)
   }
 
-  // Configure layout
-  const declinedLegalTitle = ''
-  const declinedLegalContent = ''
-
-
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -128,11 +123,7 @@ const App = () => {
       <Chatbot
         config={chatbotConfig}
         displayMode={displayMode}
-
         layout="declined-legal"
-        declinedLegalTitle={declinedLegalTitle}
-        declinedLegalContent={declinedLegalContent}
-
         chatbotVisible={chatbotVisible}
       />
     </main>

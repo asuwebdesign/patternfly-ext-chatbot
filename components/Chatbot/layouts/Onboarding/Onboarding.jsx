@@ -19,10 +19,28 @@ import Footer from '../../components/Footer/Footer'
 // Import styles
 import './Onboarding.scss'
 
-const Onboarding = ({ config, onSkip }) => {
+const Onboarding = ({ config = {}, onSkip }) => {
 
-  // Configure data
-  const { features } = config.onboarding
+  // Configure default values
+  const {
+    features = [
+      {
+        photo: 'https://cdn.dribbble.com/userupload/15673045/file/original-463ff248823b210040f9a6f19fb4b017.png?resize=1504x1128',
+        title: 'Feature 1',
+        description: 'Description of Feature 1.',
+      },
+      {
+        photo: 'https://cdn.dribbble.com/userupload/15672299/file/original-dd87de7b073f07b6794fd083eaff9e7a.png?resize=1504x1128',
+        title: 'Feature 2',
+        description: 'Description of Feature 2.',
+      },
+      {
+        photo: 'https://cdn.dribbble.com/userupload/15666808/file/original-a9ec72266c73d50998f078963fd1d5c5.png?resize=2048x1537',
+        title: 'Feature 3',
+        description: 'Description of Feature 3.',
+      },
+    ]
+  } = config.onboarding || {}
 
   const [currentFeature, setCurrentFeature] = useState(0)
 
@@ -30,11 +48,12 @@ const Onboarding = ({ config, onSkip }) => {
   const tooltipPrevious = React.useRef()
   const tooltipNext = React.useRef()
 
-  // Configure handlers
+  // Display previous feature
   const handlePrevious = () => {
     setCurrentFeature((prev) => (prev - 1 + features.length) % features.length)
   }
 
+  // Display next feature
   const handleNext = () => {
     if (currentFeature === features.length - 1) {
       onSkip()

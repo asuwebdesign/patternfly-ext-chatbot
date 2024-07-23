@@ -27,10 +27,30 @@ import useDarkMode from '../../useDarkMode'
 // Import styles
 import './Chat.scss'
 
-const Chat = ({ config, displayMode }) => {
+const Chat = ({ config = {}, displayMode }) => {
 
-  // Configure data
-  const { footnote } = config.chat
+  // Configure default values
+  const {
+    footnote = {
+      show: true,
+      label: 'Lightspeed uses AI. Check for mistakes.',
+      popover: {
+        show: true,
+        image: {
+          show: true,
+          src: 'https://cdn.dribbble.com/userupload/10651749/file/original-8a07b8e39d9e8bf002358c66fce1223e.gif',
+          alt: 'Example image for footnote popover'
+        },
+        title: 'Verify accuracy',
+        desc: `While Lightspeed strives for accuracy, there's always a possibility of errors. It's a good practice to verify critical information from reliable sources, especially if it's crucial for decision-making or actions.`,
+        link: {
+          show: true,
+          label: 'Learn more',
+          url: 'https://www.redhat.com/'
+        }
+      }
+    }
+  } = config.chat || {}
 
   // Theming hook
   const isDarkMode = useDarkMode()

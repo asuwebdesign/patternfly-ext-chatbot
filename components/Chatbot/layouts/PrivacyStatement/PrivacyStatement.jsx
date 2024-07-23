@@ -15,9 +15,13 @@ import Illustration from './Illustration'
 // Import styles
 import './PrivacyStatement.scss'
 
-const PrivacyStatement = ({ config }) => {
+const PrivacyStatement = ({ config = {} }) => {
 
-  const { title, content } = config.privacyStatement
+  // Configure default values
+  const {
+    title = 'Privacy statement',
+    content = 'No agreement has been configured.'
+  } = config.privacyStatement || {}
 
   return (
     <>

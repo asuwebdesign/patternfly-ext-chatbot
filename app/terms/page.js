@@ -123,7 +123,6 @@ const App = () => {
       <Chatbot
         config={chatbotConfig}
         displayMode={displayMode}
-
         layout="terms-of-use"
         chatbotVisible={chatbotVisible}
       />
