@@ -27,7 +27,7 @@ import useDarkMode from '../../useDarkMode'
 // Import styles
 import './Chat.scss'
 
-const Chat = ({ config = {}, displayMode }) => {
+const Chat = ({ config = {}, displayMode, onModeChange }) => {
 
   // Configure default values
   const {
@@ -100,7 +100,7 @@ const Chat = ({ config = {}, displayMode }) => {
           </div>
         )}
         {displayMode !== 'pf-chatbot--fullscreen' && <ToggleMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
-        <ToggleOptions />
+        <ToggleOptions onModeChange={onModeChange} />
       </Header>
       <Menu displayMode={displayMode} isExpanded={isExpanded} setIsExpanded={setIsExpanded} drawerRef={drawerRef} onExpand={onExpand} />
       {displayMode !== 'pf-chatbot--fullscreen' && isExpanded && <Backdrop />}

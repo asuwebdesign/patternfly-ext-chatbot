@@ -18,7 +18,7 @@ import RHUIIconEllipsisHorizontalFill from './Icon'
 // Import styles
 import './ToggleOptions.scss'
 
-const ToggleOptions = () => {
+const ToggleOptions = ({ onModeChange }) => {
 
   // Configure tooltips
   const buttonToggleOptionsRef = React.useRef()
@@ -63,15 +63,15 @@ const ToggleOptions = () => {
       >
         <DropdownGroup label="Display mode">
           <DropdownList>
-            <DropdownItem value={0} key="action">
+            <DropdownItem key="switchDisplayOverlay" onClick={() => onModeChange('')}>
               <FontAwesomeIcon icon={faWindowRestore} />
               <span>Overlay</span>
             </DropdownItem>
-            <DropdownItem value={1} key="action" onClick={ev => ev.preventDefault()}>
+            <DropdownItem key="switchDisplayDock" onClick={() => onModeChange('pf-chatbot--docked')}>
               <FontAwesomeIcon icon={faArrowRightToBracket} />
               <span>Dock to window</span>
             </DropdownItem>
-            <DropdownItem value={2} key="action">
+            <DropdownItem key="switchDisplayFullscreen" onClick={() => onModeChange('pf-chatbot--fullscreen')}>
               <FontAwesomeIcon icon={faExpand} />
               <span>Fullscreen</span>
             </DropdownItem>

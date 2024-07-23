@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Button, Switch } from '@patternfly/react-core'
+import { Switch } from '@patternfly/react-core'
 
-export default function Testing({ handleDisplay }) {
+export default function Testing() {
 
   const testingStyle = {
     position: 'fixed',
@@ -44,11 +44,6 @@ export default function Testing({ handleDisplay }) {
     <div className="testing" style={testingStyle}>
       <p><small>Themes:</small></p>
       <Switch id="simple-switch" label="Dark theme" isChecked={isDarkTheme} onChange={toggleTheme} ouiaId="BasicSwitch" />
-      <br />
-      <p><small>Display modes:</small></p>
-      <Button variant="tertiary" onClick={() => handleDisplay()}>Floating</Button>
-      <Button variant="tertiary" onClick={() => handleDisplay('pf-chatbot--docked')}>Docked</Button>
-      <Button variant="tertiary" onClick={() => handleDisplay('pf-chatbot--fullscreen')}>Fullscreen</Button>
       <br />
       <p><small>Screens:</small></p>
       <Link href="/">Default</Link>

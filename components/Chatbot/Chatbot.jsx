@@ -16,15 +16,15 @@ import Gutter from './components/Gutter/Gutter'
 // Import styles
 import './Chatbot.scss'
 
-const Chatbot = ({ config, displayMode, layout, chatbotVisible, ...props }) => {
+const Chatbot = ({ config, layout, chatbotVisible, ...props }) => {
 
-  // Configure routing
-  //
-  // - Splash default. Set timeout
-  // - Terms. IsAccepted? No => Decline
-  // - Privacy. IsAccepted? No => Decline
-  // - Onboarding. Available? Cookie-based?
-  // - Chat. TermsAccepted. PrivacyAccepted.
+  // Configure display modes
+  const [displayMode, setDisplayMode] = useState('')
+  
+  // Switch display modes
+  const handleDisplayModeChange = (mode) => {
+    setDisplayMode(mode);
+  }
 
   // Configure docked mode
   useEffect(() => {
@@ -73,7 +73,7 @@ const Chatbot = ({ config, displayMode, layout, chatbotVisible, ...props }) => {
       {layout === 'privacy-statement' && <PrivacyStatement config={config} {...props} />}
       {layout === 'declined-legal' && <DeclinedLegal config={config} {...props} />}
       {layout === 'onboarding' && <Onboarding config={config} onSkip={handleSkip} {...props} />}
-      {layout === 'chat' && <Chat config={config} displayMode={displayMode} {...props} />}
+      {layout === 'chat' && <Chat config={config} displayMode={displayMode} onModeChange={handleDisplayModeChange} {...props} />}
 
       {/* Or add a custom layout... */}
 
