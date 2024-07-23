@@ -244,6 +244,7 @@ const App = () => {
             displayMode={displayMode}
             layout="chat"
             chatbotVisible={chatbotVisible}
+            isEmbedded
           />
 
         </main>
