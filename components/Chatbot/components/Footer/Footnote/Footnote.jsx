@@ -19,9 +19,13 @@ import './Footnote.scss'
 
 const Footnote = ({ config }) => {
 
+  // Configure default values
   const { label, popover } = config
 
-  // Configure popover content
+  // Popover visibility state
+  const [isVisible, setIsVisible] = React.useState(false)
+
+  // Define popover body content
   const popoverBodyContent = (
     <>
       {popover.image.show && <img src={popover.image.src} alt={popover.image.alt} />}
@@ -30,9 +34,10 @@ const Footnote = ({ config }) => {
     </>
   )
 
+  // Define popover footer content
   const popoverFooterContent = (
     <>
-      <Button variant="secondary">Got it</Button>
+      <Button variant="secondary" onClick={() => setIsVisible(false)}>Got it</Button>
       {popover.link.show && <Button variant="link" component="a" href={popover.link.url} target="_blank" icon={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />} iconPosition="end">{popover.link.label}</Button>}
     </>
   )
@@ -43,6 +48,9 @@ const Footnote = ({ config }) => {
         <Popover
           className="pf-chatbot__popover--footnote"
           aria-label="More information"
+          isVisible={isVisible}
+          shouldOpen={(_event, _fn) => setIsVisible(true)}
+          shouldClose={(_event, _fn) => setIsVisible(false)}
           bodyContent={popoverBodyContent}
           footerContent={popoverFooterContent}
           minWidth={432}
