@@ -23,3 +23,13 @@
     transform: translateX(-50%);
   }
 }
+
+
+// ============================================================================
+// Chatbot Display Mode - Fullscreen
+// ============================================================================
+.pf-chatbot--fullscreen {
+  .pf-chatbot__footer {
+    &::before { display: none; }
+  }
+}

@@ -66,6 +66,20 @@
 // ============================================================================
 .pf-chatbot--fullscreen {
   .pf-chatbot__header {
-    &::after { width: 100%; }
+    background-color: var(--pf-t--color--white);
+
+    &::after { display: none; }
+  }
+}
+
+
+// ============================================================================
+// Chatbot Dark Theme
+// ============================================================================
+.pf-v6-theme-dark {
+  .pf-chatbot--fullscreen {
+    .pf-chatbot__header {
+      background-color: var(--pf-t--color--gray--90);
+    }
   }
 }
