@@ -29,14 +29,63 @@
   // Main
   .pf-chatbot__main {
     grid-area: 2 / 2 / 3 / 3;
-    width: min(60%, 960px);
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
+  }
+
+  // Messages
+  .pf-chatbot__messages {
+    padding-left: max(20%, calc((100% - 960px) / 2));
+    padding-right: max(20%, calc((100% - 960px) / 2));
   }
 
   // Footer
   .pf-chatbot__footer {
     grid-area: 3 / 2 / 4 / 3;
-    width: min(60%, 960px);
-    margin: 0 auto;
+    width: 100%;
+    padding-left: max(20%, calc((100% - 960px) / 2));
+    padding-right: max(20%, calc((100% - 960px) / 2));
+    margin: 0;
   }
+}
+
+
+// ============================================================================
+// Chatbot Display Mode - Embedded
+// ============================================================================
+@media screen and (min-width: 1024px) {
+  .pf-chatbot.pf-chatbot--layout--chat.pf-chatbot--embedded {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 96px 1fr auto;
+  
+    // Menu
+    .pf-chatbot__menu {
+      grid-area: 1 / 1 / 4 / 2;
+    }
+  
+    // Header
+    .pf-chatbot__header { grid-area: 1 / 2 / 2 / 3; }
+  
+    // Main
+    .pf-chatbot__main {
+      grid-area: 2 / 2 / 3 / 3;
+      width: 100%;
+      margin: 0;
+    }
+
+    // Messages
+    .pf-chatbot__messages {
+      padding-left: max(20%, calc((100% - 960px) / 2));
+      padding-right: max(20%, calc((100% - 960px) / 2));
+    }
+
+    // Footer
+    .pf-chatbot__footer {
+      grid-area: 3 / 2 / 4 / 3;
+      width: 100%;
+      padding-left: max(20%, calc((100% - 960px) / 2));
+      padding-right: max(20%, calc((100% - 960px) / 2));
+      margin: 0;
+    }
+  } 
 }
