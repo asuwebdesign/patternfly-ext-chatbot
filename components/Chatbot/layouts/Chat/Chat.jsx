@@ -30,7 +30,7 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
 
   // Configure default values
   const {
-    
+
   } = config.global || {}
   const {
     footnote = {
@@ -87,17 +87,14 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
     drawerRef.current && drawerRef.current.focus()
   }
 
-
   return (
     <>
       <ToastAlerts />
       <Header>
-        {displayMode !== 'pf-chatbot--fullscreen' && (
-          <div className="pf-chatbot__title">
-            <Brand config={config} />
-          </div>
-        )}
-        {displayMode !== 'pf-chatbot--fullscreen' && <ToggleMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
+        <div className="pf-chatbot__title">
+          <Brand config={config} />
+        </div>
+        <ToggleMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
         <ToggleOptions onModeChange={onModeChange} />
       </Header>
       <Menu config={config} displayMode={displayMode} isExpanded={isExpanded} setIsExpanded={setIsExpanded} drawerRef={drawerRef} onExpand={onExpand} />

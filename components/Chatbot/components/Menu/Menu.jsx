@@ -6,33 +6,22 @@ import React from 'react'
 // Import PatternFly components
 import {
   Button,
-  Icon,
   Drawer,
   DrawerPanelContent,
   DrawerContent,
-  DrawerContentBody,
   DrawerPanelBody,
   DrawerHead,
   DrawerActions,
   DrawerCloseButton,
-  DrawerPanelDescription,
   Nav,
   NavItem,
   NavGroup,
-  Panel,
-  PanelMain,
-  PanelMainBody,
-  PanelHeader,
   Truncate
 } from '@patternfly/react-core'
 
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage } from '@fortawesome/free-regular-svg-icons'
-
-// Import Chatbot components
-import Brand from '../../components/Brand/Brand'
-import useDarkMode from '../../useDarkMode'
 
 // Import styles
 import './Menu.scss'
@@ -66,11 +55,11 @@ const Menu = ({ config, displayMode, isExpanded, setIsExpanded, drawerRef, onExp
         </NavItem>
         <NavItem preventDefault itemId="group-1_item-2" isActive={activeItem === 'group-1_item-2'}>
           <FontAwesomeIcon icon={faMessage} />
-          <Truncate content="Enterprise Linux installation and setup" />        
+          <Truncate content="Enterprise Linux installation and setup" />
         </NavItem>
         <NavItem preventDefault itemId="group-1_item-3" isActive={activeItem === 'group-1_item-3'}>
           <FontAwesomeIcon icon={faMessage} />
-          <Truncate content="Troubleshoot system crash" />        
+          <Truncate content="Troubleshoot system crash" />
         </NavItem>
       </NavGroup>
       <NavGroup title="Yesterday">
@@ -158,10 +147,9 @@ const Menu = ({ config, displayMode, isExpanded, setIsExpanded, drawerRef, onExp
       <DrawerHead>
         <DrawerActions>
           <DrawerCloseButton onClick={onCloseClick} />
-          <Button>New chat</Button>          
+          <Button>New chat</Button>
         </DrawerActions>
       </DrawerHead>
-      {/* <DrawerPanelDescription>Drawer panel description</DrawerPanelDescription> */}
       <DrawerPanelBody>
         {menuContent}
       </DrawerPanelBody>
@@ -170,26 +158,15 @@ const Menu = ({ config, displayMode, isExpanded, setIsExpanded, drawerRef, onExp
 
   return (
     <>
-      {displayMode !== 'pf-chatbot--fullscreen' && (
-        <Drawer className="pf-chatbot__menu" isExpanded={isExpanded} onExpand={onExpand} position="start">
-          <DrawerContent panelContent={panelContent} />
-        </Drawer>
-      )}
-      {displayMode === 'pf-chatbot--fullscreen' && (
-        <Panel className="pf-chatbot__menu" isScrollable>
-          <PanelHeader>
-            <div className="pf-chatbot__title">
-              <Brand config={config} />
-            </div>
-            <Button isBlock>New chat</Button>
-          </PanelHeader>
-          <PanelMain>
-            <PanelMainBody>
-              {menuContent}
-            </PanelMainBody>
-          </PanelMain>
-        </Panel>
-      )}
+      <Drawer
+        className="pf-chatbot__menu"
+        isExpanded={isExpanded}
+        onExpand={onExpand}
+        isInline={displayMode === 'pf-chatbot--fullscreen'}
+        position="start"
+      >
+        <DrawerContent panelContent={panelContent} />
+      </Drawer>
     </>
   )
 }
