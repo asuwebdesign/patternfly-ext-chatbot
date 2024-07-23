@@ -50,6 +50,9 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
     setIsExpanded(false)
   }
 
+  // Menu Content
+  // - Consumers should pass an array to <Chatbot> of the list of conversations
+  // - Groups could be optional, but items need to be ordered by date
   const menuContent = <>
     <Nav onSelect={onSelect} aria-label="Grouped global">
       <NavGroup title="Today">
@@ -149,12 +152,9 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
   const panelContent = <>
     <DrawerPanelContent>
       <DrawerHead>
-        <span tabIndex={isExpanded ? 0 : -1} ref={drawerRef}>
-          Header, logo on fullscreen
-        </span>
         <DrawerActions>
-          <Button>New chat</Button>
           <DrawerCloseButton onClick={onCloseClick} />
+          <Button>New chat</Button>          
         </DrawerActions>
       </DrawerHead>
       {/* <DrawerPanelDescription>Drawer panel description</DrawerPanelDescription> */}
@@ -173,9 +173,9 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
       )}
       {displayMode === 'pf-chatbot--fullscreen' && (
         <Panel className="pf-chatbot__menu" isScrollable>
-          <PanelHeader>
+          {/* <PanelHeader>
             <Button isBlock>New chat</Button>
-          </PanelHeader>
+          </PanelHeader> */}
           <PanelMain>
             <PanelMainBody>
               {menuContent}

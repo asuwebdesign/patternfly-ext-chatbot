@@ -20,7 +20,7 @@
     --pf-v6-c-nav__link--PaddingBlockEnd: var(--pf-t--global--spacer--200);
     --pf-v6-c-nav__link--PaddingInlineStart: var(--pf-t--global--spacer--200);
     --pf-v6-c-nav__link--PaddingInlineEnd: var(--pf-t--global--spacer--200);
-    --pf-v6-c-nav__link--BorderRadius: var(--pf-t--global--border--radius--pill);
+    // --pf-v6-c-nav__link--BorderRadius: var(--pf-t--global--border--radius--pill);
     --pf-v6-c-nav__link--FontWeight: 500;
 
     font-family: var(--pf-t--chatbot--heading--font-family);
@@ -52,7 +52,59 @@
   pointer-events: none;
   z-index: calc(var(--pf-t--global--z-index--600) * 2);
 
+  // Expanded drawer
   &.pf-m-expanded { pointer-events: auto; }
+
+  // Drawer panel
+  .pf-v6-c-drawer__panel {
+    --pf-v6-c-drawer__panel--PaddingBlockStart: var(--pf-t--global--spacer--400);
+    --pf-v6-c-drawer__panel--PaddingBlockEnd: var(--pf-t--global--spacer--400);
+    --pf-v6-c-drawer__panel--RowGap: var(--pf-t--global--spacer--400);
+  }
+
+  // Drawer head
+  .pf-v6-c-drawer__head {
+    --pf-v6-c-drawer__head--PaddingBlockStart: 0;
+    --pf-v6-c-drawer__head--PaddingBlockEnd: 0;
+    --pf-v6-c-drawer__head--PaddingInlineStart: var(--pf-t--global--spacer--400);
+    --pf-v6-c-drawer__head--PaddingInlineEnd: var(--pf-t--global--spacer--400);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+  }
+
+  // Drawer actions
+  .pf-v6-c-drawer__actions {
+    --pf-v6-c-drawer__actions--MarginBlockStart: 0;
+    --pf-v6-c-drawer__actions--MarginInlineEnd: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Close drawer
+  .pf-v6-c-drawer__close {
+    .pf-v6-c-button {
+
+      width: 48px;
+      height: 48px;
+      border-radius: var(--pf-t--global--border--radius--pill);
+    }
+  }
+
+  // Drawer body
+  .pf-v6-c-drawer__body {
+    --pf-v6-c-drawer__panel__body--PaddingBlockStart: 0;
+    --pf-v6-c-drawer__panel__body--PaddingBlockEnd: 0;
+    --pf-v6-c-drawer__panel__body--PaddingInlineStart: var(--pf-t--global--spacer--400);
+    --pf-v6-c-drawer__panel__body--PaddingInlineEnd: var(--pf-t--global--spacer--400);
+  }
 }
 
 
