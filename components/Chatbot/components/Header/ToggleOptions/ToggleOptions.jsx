@@ -4,7 +4,12 @@
 import React from 'react'
 
 // Import PatternFly components
-import { Button, Icon, Dropdown, DropdownList, DropdownItem, Divider } from '@patternfly/react-core'
+import { Button, Icon, Dropdown, DropdownGroup, DropdownList, DropdownItem, Divider } from '@patternfly/react-core'
+
+// Import FontAwesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRightToBracket, faExpand } from '@fortawesome/free-solid-svg-icons'
+import { faWindowRestore } from '@fortawesome/free-regular-svg-icons'
 
 // Import Chatbot components
 import Tooltip from '@/components/Chatbot/components/Tooltip/Tooltip'
@@ -33,6 +38,7 @@ const ToggleOptions = () => {
   return (
     <>
       <Dropdown
+        className="pf-chatbot__options"
         isOpen={isOpen}
         onSelect={onSelect}
         onOpenChange={isOpen => setIsOpen(isOpen)}
@@ -55,29 +61,22 @@ const ToggleOptions = () => {
           </>
         )}
       >
-        <DropdownList>
-          {/* Configurable by consumer */}
-          <DropdownItem value={0} key="action">
-            Action
-          </DropdownItem>
-          <DropdownItem value={1} key="link" to="#default-link2" onClick={ev => ev.preventDefault()}>
-            Link
-          </DropdownItem>
-          <DropdownItem value={2} isDisabled key="disabled action">
-            Disabled Action
-          </DropdownItem>
-          <DropdownItem value={3} isDisabled key="disabled link" to="#default-link4">
-            Disabled Link
-          </DropdownItem>
-          <Divider component="li" key="separator" />
-          <DropdownItem value={4} key="separated action">
-            Separated Action
-          </DropdownItem>
-          <DropdownItem value={5} key="separated link" to="#default-link6" onClick={ev => ev.preventDefault()}>
-            Separated Link
-          </DropdownItem>
-          {/* Configurable by consumer */}
-        </DropdownList>
+        <DropdownGroup label="Display mode">
+          <DropdownList>
+            <DropdownItem value={0} key="action">
+              <FontAwesomeIcon icon={faWindowRestore} />
+              <span>Overlay</span>
+            </DropdownItem>
+            <DropdownItem value={1} key="action" onClick={ev => ev.preventDefault()}>
+              <FontAwesomeIcon icon={faArrowRightToBracket} />
+              <span>Dock to window</span>
+            </DropdownItem>
+            <DropdownItem value={2} key="action">
+              <FontAwesomeIcon icon={faExpand} />
+              <span>Fullscreen</span>
+            </DropdownItem>
+          </DropdownList>
+        </DropdownGroup>
       </Dropdown>
     </>
   )

@@ -42,3 +42,17 @@
     }
   }
 }
+
+
+// ============================================================================
+// Options Dropdown
+// ============================================================================
+.pf-chatbot__options.pf-v6-c-menu {
+
+  .pf-v6-c-menu__item-text {
+    display: flex;
+    align-items: center;
+    gap: var(--pf-t--global--spacer--200);
+  }
+
+}
