@@ -119,7 +119,27 @@
     --pf-v6-c-panel__main-body--PaddingBlockStart: var(--pf-t--global--spacer--400);
     --pf-v6-c-panel__main-body--PaddingBlockEnd: var(--pf-t--global--spacer--400);    
 
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 100%;
+    overflow: hidden;
     box-shadow: 1px 0 0 0 var(--pf-t--color--gray--10);
+
+    .pf-v6-c-panel__header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--pf-t--global--spacer--400);
+
+      .pf-chatbot__title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+      }
+      
+      .pf-chatbot__title img { width: auto; height: 100%; }
+    }
 
     .pf-v6-c-panel__main {
       max-height: 100%;

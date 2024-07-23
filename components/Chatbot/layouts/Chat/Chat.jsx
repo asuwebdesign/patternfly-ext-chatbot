@@ -5,9 +5,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 // Import PatternFly components
-import { Backdrop, Brand, Text, TextVariants } from '@patternfly/react-core'
+import { Backdrop, Text, TextVariants } from '@patternfly/react-core'
 
 // Import Chatbot components
+import Brand from '../../components/Brand/Brand'
 import ToastAlerts from '../../components/ToastAlerts/ToastAlerts'
 import Header from '@/components/Chatbot/components/Header/Header'
 import Menu from '../../components/Menu/Menu'
@@ -30,6 +31,9 @@ import './Chat.scss'
 const Chat = ({ config = {}, displayMode, onModeChange }) => {
 
   // Configure default values
+  const {
+    
+  } = config.global || {}
   const {
     footnote = {
       show: true,
@@ -95,14 +99,13 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
       <Header>
         {displayMode !== 'pf-chatbot--fullscreen' && (
           <div className="pf-chatbot__title">
-            <Brand src={isDarkMode ? '/logo-chatbot--inverted.svg' : '/logo-chatbot.svg'} alt="Lightspeed logo" />
-            {/* <Text component={TextVariants.h1}>Red Hat</Text> */}
+            <Brand config={config} />
           </div>
         )}
         {displayMode !== 'pf-chatbot--fullscreen' && <ToggleMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />}
         <ToggleOptions onModeChange={onModeChange} />
       </Header>
-      <Menu displayMode={displayMode} isExpanded={isExpanded} setIsExpanded={setIsExpanded} drawerRef={drawerRef} onExpand={onExpand} />
+      <Menu config={config} displayMode={displayMode} isExpanded={isExpanded} setIsExpanded={setIsExpanded} drawerRef={drawerRef} onExpand={onExpand} />
       {displayMode !== 'pf-chatbot--fullscreen' && isExpanded && <Backdrop />}
       <Main>
         <Messages>

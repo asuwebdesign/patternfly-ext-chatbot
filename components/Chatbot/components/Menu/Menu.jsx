@@ -30,10 +30,14 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage } from '@fortawesome/free-regular-svg-icons'
 
+// Import Chatbot components
+import Brand from '../../components/Brand/Brand'
+import useDarkMode from '../../useDarkMode'
+
 // Import styles
 import './Menu.scss'
 
-const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) => {
+const Menu = ({ config, displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) => {
 
   const [activeItem, setActiveItem] = React.useState('group-1_item-1')
 
@@ -173,9 +177,12 @@ const Menu = ({ displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) =
       )}
       {displayMode === 'pf-chatbot--fullscreen' && (
         <Panel className="pf-chatbot__menu" isScrollable>
-          {/* <PanelHeader>
+          <PanelHeader>
+            <div className="pf-chatbot__title">
+              <Brand config={config} />
+            </div>
             <Button isBlock>New chat</Button>
-          </PanelHeader> */}
+          </PanelHeader>
           <PanelMain>
             <PanelMainBody>
               {menuContent}
