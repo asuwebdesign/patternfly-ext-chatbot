@@ -26,7 +26,7 @@ import RHUIIconMenuBars from './Icon'
 // Import styles
 import './ToggleMenu.scss'
 
-const ToggleMenu = ({ isExpanded, setIsExpanded }) => {
+const ToggleMenu = ({ isMenuExpanded, setIsMenuExpanded }) => {
 
   // Configure tooltips
   const tooltipToggleMenu = React.useRef()
@@ -34,7 +34,7 @@ const ToggleMenu = ({ isExpanded, setIsExpanded }) => {
   // Configure handlers
   const handleMenu = () => {
     console.log('Toggle menu')
-    setIsExpanded(!isExpanded)
+    setIsMenuExpanded(!isMenuExpanded)
   }
   
 

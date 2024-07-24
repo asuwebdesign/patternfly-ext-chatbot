@@ -18,7 +18,7 @@ import RHUIIconEllipsisHorizontalFill from './Icon'
 // Import styles
 import './ToggleOptions.scss'
 
-const ToggleOptions = ({ onModeChange }) => {
+const ToggleOptions = ({ isMenuExpanded, setIsMenuExpanded, onModeChange }) => {
 
   // Configure tooltips
   const buttonToggleOptionsRef = React.useRef()
@@ -33,6 +33,24 @@ const ToggleOptions = ({ onModeChange }) => {
   const onSelect = (_event, value) => {
     console.log('selected', value)
     setIsOpen(false)
+  }
+
+  // Handle Overlay
+  const handleOverlayMode = () => {
+    onModeChange('')
+    isMenuExpanded && setIsMenuExpanded(false)
+  }
+
+  // Handle Dock
+  const handleDockMode = () => {
+    onModeChange('pf-chatbot--docked')
+    isMenuExpanded && setIsMenuExpanded(false)
+  }
+
+  // Handle Fullscreen
+  const handleFullscreenMode = () => {
+    onModeChange('pf-chatbot--fullscreen')
+    !isMenuExpanded && setIsMenuExpanded(true)
   }
 
   return (
@@ -63,15 +81,15 @@ const ToggleOptions = ({ onModeChange }) => {
       >
         <DropdownGroup label="Display mode">
           <DropdownList>
-            <DropdownItem key="switchDisplayOverlay" onClick={() => onModeChange('')}>
+            <DropdownItem key="switchDisplayOverlay" onClick={handleOverlayMode}>
               <FontAwesomeIcon icon={faWindowRestore} />
               <span>Overlay</span>
             </DropdownItem>
-            <DropdownItem key="switchDisplayDock" onClick={() => onModeChange('pf-chatbot--docked')}>
+            <DropdownItem key="switchDisplayDock" onClick={handleDockMode}>
               <FontAwesomeIcon icon={faArrowRightToBracket} />
               <span>Dock to window</span>
             </DropdownItem>
-            <DropdownItem key="switchDisplayFullscreen" onClick={() => onModeChange('pf-chatbot--fullscreen')}>
+            <DropdownItem key="switchDisplayFullscreen" onClick={handleFullscreenMode}>
               <FontAwesomeIcon icon={faExpand} />
               <span>Fullscreen</span>
             </DropdownItem>

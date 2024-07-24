@@ -5,7 +5,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 // Import PatternFly components
-import { Backdrop, Text, TextVariants } from '@patternfly/react-core'
+import { Backdrop } from '@patternfly/react-core'
 
 // Import Chatbot components
 import Brand from '../../components/Brand/Brand'
@@ -93,10 +93,10 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
 
 
 
-  const [isExpanded, setIsExpanded] = React.useState(false)
+  const [isMenuExpanded, setIsMenuExpanded] = React.useState(false)
   const drawerRef = React.useRef()
 
-  const onExpand = () => {
+  const onMenuExpand = () => {
     drawerRef.current && drawerRef.current.focus()
   }
 
@@ -107,11 +107,11 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
         <div className="pf-chatbot__title">
           <Brand config={config} />
         </div>
-        <ToggleMenu isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
-        <ToggleOptions onModeChange={onModeChange} />
+        <ToggleMenu isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} />
+        <ToggleOptions isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} onModeChange={onModeChange} />
       </Header>
-      <Menu config={config} displayMode={displayMode} isExpanded={isExpanded} setIsExpanded={setIsExpanded} drawerRef={drawerRef} onExpand={onExpand} />
-      {displayMode !== 'pf-chatbot--fullscreen' && isExpanded && <Backdrop />}
+      <Menu drawerRef={drawerRef} config={config} displayMode={displayMode} isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} onMenuExpand={onMenuExpand} />
+      {displayMode !== 'pf-chatbot--fullscreen' && isMenuExpanded && <Backdrop />}
       <Main>
         <Messages>
 
@@ -130,9 +130,12 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
           {/* Store this conversation and pass through <Chatbot .../> */}
 
           {messages.map((message, index) => (
-            <div key={index} className={message.user ? 'user-message' : 'bot-message'}>
-              {message.text}
-            </div>
+            <>
+              <div key={index} className={message.user ? 'user-message' : 'bot-message'}>
+                {message.text}
+              </div>
+              {/* <Message key={index} message={message.text} /> */}
+            </>
           ))}
           <div ref={messagesEndRef} aria-hidden="true" />
 
