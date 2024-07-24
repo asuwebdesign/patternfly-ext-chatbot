@@ -34,7 +34,7 @@ const MessageBar = ({ onSend }) => {
   // Attachments
   // --------------------------------------------------------------------------
   const handleAttach = () => { console.log('Attach button clicked') }
-  
+
   // Microphone
   // --------------------------------------------------------------------------
   const [listening, setListening] = useState(false)
@@ -59,7 +59,7 @@ const MessageBar = ({ onSend }) => {
   // Detect speech recognition browser support
   useEffect(() => {
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-      
+
       // Initialize SpeechRecognition
       const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)()
       recognition.continuous = false
@@ -80,7 +80,7 @@ const MessageBar = ({ onSend }) => {
       setSpeechRecognition(recognition)
     }
   }, [])
-  
+
   // Handle sending message
   const handleSend = () => {
     onSend(value)
@@ -93,14 +93,16 @@ const MessageBar = ({ onSend }) => {
   return (
     <div className="pf-chatbot__message-bar" >
 
-      <AutoTextArea
-        ref={textareaRef}
-        className="pf-chatbot__message-textarea"
-        value={value}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-        placeholder={listening ? 'Listening' : 'Send a message...'}
-        aria-label={listening ? 'Listening' : 'Send a message...'} />
+      <div className="pf-chatbot__message-bar-input">
+        <AutoTextArea
+          ref={textareaRef}
+          className="pf-chatbot__message-textarea"
+          value={value}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          placeholder={listening ? 'Listening' : 'Send a message...'}
+          aria-label={listening ? 'Listening' : 'Send a message...'} />
+      </div>
 
       <div className="pf-chatbot__message-bar-actions">
         <Attach handleAttach={handleAttach} isDisabled={listening} />
