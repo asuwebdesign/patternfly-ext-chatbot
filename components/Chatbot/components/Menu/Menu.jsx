@@ -26,7 +26,7 @@ import { faMessage } from '@fortawesome/free-regular-svg-icons'
 // Import styles
 import './Menu.scss'
 
-const Menu = ({ config, displayMode, isExpanded, setIsExpanded, drawerRef, onExpand }) => {
+const Menu = ({ config, displayMode, isMenuExpanded, setIsMenuExpanded, onMenuExpand }) => {
 
   const [activeItem, setActiveItem] = React.useState('group-1_item-1')
 
@@ -35,12 +35,12 @@ const Menu = ({ config, displayMode, isExpanded, setIsExpanded, drawerRef, onExp
 
     // Hide navigation drawer when chatbot is floating/docked
     if (displayMode !== 'pf-chatbot--fullscreen') {
-      setIsExpanded(false)
+      setIsMenuExpanded(false)
     }
   }
 
   const onCloseClick = () => {
-    setIsExpanded(false)
+    setIsMenuExpanded(false)
   }
 
   // Menu Content
@@ -160,8 +160,8 @@ const Menu = ({ config, displayMode, isExpanded, setIsExpanded, drawerRef, onExp
     <>
       <Drawer
         className="pf-chatbot__menu"
-        isExpanded={isExpanded}
-        onExpand={onExpand}
+        isExpanded={isMenuExpanded}
+        onExpand={onMenuExpand}
         isInline={displayMode === 'pf-chatbot--fullscreen'}
         position="start"
       >
