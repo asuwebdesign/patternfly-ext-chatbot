@@ -5,7 +5,7 @@
 import React from 'react'
 
 // Import PatternFly components
-import { Button, Text, TextVariants } from '@patternfly/react-core'
+import { Button, Content, ContentVariants } from '@patternfly/react-core'
 
 // Import Chatbot components
 import Header from '@/components/Chatbot/components/Header/Header'
@@ -43,10 +43,10 @@ const DeclinedLegal = ({ config = {} }) => {
         <div className="pf-chatbot__illustration">
           <Illustration />
         </div>
-        <Text component={TextVariants.h1}>{title}</Text>
+        <Content component={ContentVariants.h1}>{title}</Content>
       </Header>
       <Main>
-        <Text component={TextVariants.p}>{content}</Text>
+        <Content component={ContentVariants.p}>{content}</Content>
       </Main>
       <Footer>
         <Button>{primaryButton.label}</Button>

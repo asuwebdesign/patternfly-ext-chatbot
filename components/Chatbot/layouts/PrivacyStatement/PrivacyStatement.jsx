@@ -4,7 +4,7 @@
 import React from 'react'
 
 // Import PatternFly components
-import { Button, Text, TextVariants } from '@patternfly/react-core'
+import { Button, Content, ContentVariants } from '@patternfly/react-core'
 
 // Import Chatbot components
 import Header from '../../components/Header/Header'
@@ -29,7 +29,7 @@ const PrivacyStatement = ({ config = {} }) => {
         <div className="pf-chatbot__illustration">
           <Illustration />
         </div>
-        <Text component={TextVariants.h1}>{title}</Text>
+        <Content component={ContentVariants.h1}>{title}</Content>
       </Header>
       <Main>{content}</Main>
       <Footer>

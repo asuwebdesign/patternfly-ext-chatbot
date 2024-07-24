@@ -5,7 +5,7 @@
 import React from 'react'
 
 // Import Patternfly components
-import { Button, Text, TextVariants } from '@patternfly/react-core'
+import { Button, Content, ContentVariants } from '@patternfly/react-core'
 
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -29,8 +29,8 @@ const Footnote = ({ config }) => {
   const popoverBodyContent = (
     <>
       {popover.image.show && <img src={popover.image.src} alt={popover.image.alt} />}
-      <Text component={TextVariants.h3}>{popover.title}</Text>
-      <Text component={TextVariants.p}>{popover.desc}</Text>
+      <Content component={ContentVariants.h3}>{popover.title}</Content>
+      <Content component={ContentVariants.p}>{popover.desc}</Content>
     </>
   )
 
@@ -61,7 +61,7 @@ const Footnote = ({ config }) => {
         </Popover>
       )}
       {!popover.show && (
-        <Text component={TextVariants.small}>{label}</Text>
+        <Content component={ContentVariants.small}>{label}</Content>
       )}
     </div>
   )

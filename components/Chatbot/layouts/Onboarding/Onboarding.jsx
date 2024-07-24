@@ -4,7 +4,7 @@
 import React, { useState } from 'react'
 
 // Import PatternFly components
-import { Button, Text, TextVariants } from '@patternfly/react-core'
+import { Button, Content, ContentVariants } from '@patternfly/react-core'
 
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -65,13 +65,13 @@ const Onboarding = ({ config = {}, onSkip }) => {
   return (
     <>
       <Header>
-        <Text component={TextVariants.h1}>{`What's new`}</Text>
+        <Content component={ContentVariants.h1}>{`What's new`}</Content>
         <Button variant="link" onClick={onSkip}>Skip</Button>
       </Header>
       <Main>
         <img src={features[currentFeature].photo} alt={features[currentFeature].title} />
-        <Text id="chatbot-feature-title" component={TextVariants.h2}>{features[currentFeature].title}</Text>
-        <Text id="chatbot-feature-desc" component={TextVariants.p}>{features[currentFeature].description}</Text>
+        <Content id="chatbot-feature-title" component={ContentVariants.h2}>{features[currentFeature].title}</Content>
+        <Content id="chatbot-feature-desc" component={ContentVariants.p}>{features[currentFeature].description}</Content>
       </Main>
       <Footer>
         <div className="controls">

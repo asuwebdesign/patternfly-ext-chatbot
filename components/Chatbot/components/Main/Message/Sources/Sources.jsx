@@ -5,7 +5,7 @@
 import React, { useState } from 'react'
 
 // Import PatternFly components
-import { Card, CardBody, CardFooter, Button, Text, TextVariants } from '@patternfly/react-core'
+import { Card, CardBody, CardFooter, Button, Content, ContentVariants } from '@patternfly/react-core'
 
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -36,17 +36,17 @@ const Sources = ({ items }) => {
 
   return (
     <div className="pf-chatbot__sources">
-      <Text className="pf-chatbot__sources-total" component={TextVariants.p}>{totalSources} sources</Text>
+      <Content className="pf-chatbot__sources-total" component={ContentVariants.p}>{totalSources} sources</Content>
 
       <div start={currentSource + 1}>
         <Card key={currentSource}>
           <CardBody>
-            <Text component={TextVariants.h3}>
-              <Text component={TextVariants.a} href={url} target="_blank" rel="noopener noreferrer">
+            <Content component={ContentVariants.h3}>
+              <Content component={ContentVariants.a} href={url} target="_blank" rel="noopener noreferrer">
                 {title}
-              </Text>
-            </Text>
-            <Text component={TextVariants.p}>{description}</Text>
+              </Content>
+            </Content>
+            <Content component={ContentVariants.p}>{description}</Content>
           </CardBody>
           <CardFooter>
             <div className="pf-chatbot__sources-actions">
@@ -57,7 +57,7 @@ const Sources = ({ items }) => {
                 {nextSourceIcon}
               </Button>
             </div>
-            <Text component={TextVariants.p}>{currentSource + 1} of {totalSources}</Text>
+            <Content component={ContentVariants.p}>{currentSource + 1} of {totalSources}</Content>
           </CardFooter>
         </Card>
       </div>
