@@ -40,8 +40,10 @@ const Message = ({ config, message, addAlert }) => {
   const sampleText = <>By default <code>{'push()'}</code></>
   const sampleList = ['Item 1', 'Item 2', 'Item 3']
   const sampleListOrdered = ['Item 1', 'Item 2', 'Item 3']
-  const sampleImgSrc = 'https://cdn.dribbble.com/userupload/15532609/file/original-e98aacdfdd1aad5b1a07d597e7771735.jpg?resize=2048x1536'
-  const sampleImgAlt = 'Mockup of 3 iPhones on blue background'
+  const sampleImage = {
+    src: 'https://cdn.dribbble.com/userupload/15532609/file/original-e98aacdfdd1aad5b1a07d597e7771735.jpg?resize=2048x1536',
+    alt: 'Mockup of 3 iPhones on blue background'
+  }
   const sampleSources = [
     {
       title: 'Getting started with Red Hat OpenShift on IBM',
@@ -59,17 +61,23 @@ const Message = ({ config, message, addAlert }) => {
       description: 'This is the description for item 3.',
     }
   ]
-  const sampleVideoTitle = 'Sprite Fight'
-  const sampleVideoSrc = 'https://files.vidstack.io/sprite-fight/720p.mp4'
-  const sampleVideoPosterSrc = 'https://files.vidstack.io/sprite-fight/poster.webp'
-  const sampleVideoPosterAlt = 'Girl walks into campfire with gnomes surrounding her friend ready for their next meal!'
-  const sampleVideoThumbnails = 'https://files.vidstack.io/sprite-fight/thumbnails.vtt'
+  const sampleVideo = {
+    title: 'Sprite Fight',
+    src: 'https://files.vidstack.io/sprite-fight/720p.mp4',
+    poster: {
+      src: 'https://files.vidstack.io/sprite-fight/poster.webp',
+      alt: 'Girl walks into campfire with gnomes surrounding her friend ready for their next meal!'
+    },
+    thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt'
+  }
   const sampleQuickReplyInlineMinimum = ['Yes', 'No']
   const sampleQuickReplyInline = ['Microsoft Edge', 'Google Chrome', 'Mozilla Firefox', 'Apple Safari', 'Internet Explorer']
   const sampleQuickReplyStacked = ['Help me with an access issue', 'Show my critical vulnerabilities', 'Create new integrations', 'Get recommendations from an advisor', 'Something else']
-  const sampleTableCaption = 'Simple table caption'
-  const sampleTableHeaders = ['Column header', 'Column header', 'Column header']
-  const sampleTableData = [['A1', 'A2', 'A3'], ['B1', 'B2', 'B3'], ['C1', 'C2', 'C3']]
+  const sampleTable = {
+    caption: 'Simple table caption',
+    columns: ['Column header', 'Column header', 'Column header'],
+    rows: [['A1', 'A2', 'A3'], ['B1', 'B2', 'B3'], ['C1', 'C2', 'C3']] 
+  }
   // ---- Sample content ----
 
   return (
@@ -87,17 +95,17 @@ const Message = ({ config, message, addAlert }) => {
             <TextMessage text={sampleText} />
             <ListMessage items={sampleList} />
             <ListMessage ordered items={sampleListOrdered} />
-            <ImageMessage imageSrc={sampleImgSrc} imageAlt={sampleImgAlt} />
-            <VideoMessage title={sampleVideoTitle} videoSrc={sampleVideoSrc} posterSrc={sampleVideoPosterSrc} posterAlt={sampleVideoPosterAlt} thumbnails={sampleVideoThumbnails} />
+            <ImageMessage image={sampleImage} />
+            <VideoMessage video={sampleVideo} />
             <QuickReplyMessage items={sampleQuickReplyInlineMinimum} />
             <QuickReplyMessage items={sampleQuickReplyInline} />
             <QuickReplyMessage items={sampleQuickReplyStacked} stacked />
             <CodeBlockMessage addAlert={addAlert} />
-            <TableMessage caption={sampleTableCaption} columns={sampleTableHeaders} rows={sampleTableData} />
+            <TableMessage table={sampleTable} />
           </>}
         </div>
         {!isProcessing && <Sources items={sampleSources} />}
-        {!isProcessing && <Actions />}
+        {!isProcessing && <Actions addAlert={addAlert} />}
       </div>
     </div>
   )

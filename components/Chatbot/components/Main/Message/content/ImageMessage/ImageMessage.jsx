@@ -6,10 +6,10 @@ import React from 'react'
 // Import styles
 import './ImageMessage.scss'
 
-const ImageMessage = ({ imageSrc, imageAlt }) => {
+const ImageMessage = ({ image }) => {
   return (
     <div className="pf-chatbot__message-image">
-      {imageSrc && imageAlt && <img src={imageSrc} alt={imageAlt} />}
+      {image.src && image.alt && <img src={image.src} alt={image.alt} />}
     </div>
   )
 }

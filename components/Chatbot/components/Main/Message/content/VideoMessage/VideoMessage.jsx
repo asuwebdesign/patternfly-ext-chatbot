@@ -14,20 +14,20 @@ import '@vidstack/react/player/styles/default/layouts/video.css'
 // Import styles
 import './VideoMessage.scss'
 
-const VideoMessage = ({ title, videoSrc, posterSrc, posterAlt, thumbnails }) => {
+const VideoMessage = ({ video }) => {
   return (
     <div className="pf-chatbot__message-video">
-      <MediaPlayer title={title} src={videoSrc}>
+      <MediaPlayer title={video.title} src={video.src}>
         <MediaProvider>
-          {posterSrc && posterAlt && (
+          {video.poster.src && video.poster.alt && (
             <Poster
               className="vds-poster"
-              src={posterSrc}
-              alt={posterAlt}
+              src={video.poster.src}
+              alt={video.poster.alt}
             />
           )}
         </MediaProvider>
-        <DefaultVideoLayout thumbnails={thumbnails} icons={defaultLayoutIcons} />
+        <DefaultVideoLayout thumbnails={video.thumbnails} icons={defaultLayoutIcons} />
       </MediaPlayer>
     </div>
   )

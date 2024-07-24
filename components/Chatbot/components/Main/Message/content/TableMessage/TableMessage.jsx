@@ -7,26 +7,26 @@ import React from 'react'
 import './TableMessage.scss'
 import { Table, Caption, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table'
 
-const TableMessage = ({ caption, columns, rows }) => {
+const TableMessage = ({ table }) => {
   return (
     <div className="pf-chatbot__message-table">
-      <Table aria-label={caption && caption} gridBreakPoint="grid">
-        {caption && <Caption>{caption}</Caption>}
-        {columns && (
+      <Table aria-label={table.caption && table.caption} gridBreakPoint="grid">
+        {table.caption && <Caption>{table.caption}</Caption>}
+        {table.columns && (
           <Thead>
             <Tr>
-              {columns.map((column, index) => (
+              {table.columns.map((column, index) => (
                 <Th key={index}>{column}</Th>
               ))}
             </Tr>
           </Thead>
         )}
-        {columns && rows && (
+        {table.columns && table.rows && (
           <Tbody>
-            {rows.map((row, index) => (
+            {table.rows.map((row, index) => (
               <Tr key={index}>
                 {row.map((cell, index) => (
-                  <Td key={index} dataLabel={columns[index]}>{cell}</Td>
+                  <Td key={index} dataLabel={table.columns[index]}>{cell}</Td>
                 ))}
               </Tr>
             ))}
