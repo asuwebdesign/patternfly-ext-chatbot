@@ -2,25 +2,23 @@
 // Chatbot Main - Message - Content - Code Block
 // ============================================================================
 .pf-chatbot__message-code-block {
-  // display: flex;
-  // flex-direction: column;
-  // max-width: 100%;
-  background-color: rgb(40, 44, 52); // match syntax highlighting
+  background-color: rgb(40, 43, 46); // match syntax highlighting
   border-radius: 6px;
-  color: white;
+  color: var(--pf-t--color--white);
   
+  // Code block
   .pf-v6-c-code-block {
-    // display: flex;
-    // flex-direction: column;
+    --pf-t--global--border--color--default: rgba(255, 255, 255, 0.2);
     background-color: inherit;
   }
 
+  // Code block header
   .pf-v6-c-code-block__header {
     --pf-v6-c-code-block__header--PaddingBlockStart: var(--pf-t--global--spacer--200);
     --pf-v6-c-code-block__header--PaddingBlockEnd: var(--pf-t--global--spacer--200);
     --pf-v6-c-code-block__header--PaddingInlineStart: var(--pf-t--global--spacer--300);
     --pf-v6-c-code-block__header--PaddingInlineEnd: var(--pf-t--global--spacer--300);
-    color: white;
+    color: var(--pf-t--color--white);
 
     .pf-v6-c-code-block__actions {
       width: 100%;
@@ -35,9 +33,16 @@
       font-weight: 500;
     }
 
-    .pf-v6-c-button__icon { color: white; }
+    .pf-chatbot__button--copy.pf-v6-c-button {
+      color: var(--pf-t--color--gray--30);
+      
+      &:hover, &:focus {
+        color: var(--pf-t--color--white);
+      }
+    }
   }
 
+  // Code block content
   .pf-v6-c-code-block__content {
     --pf-v6-c-code-block__content--PaddingBlockStart: var(--pf-t--global--spacer--300);
     --pf-v6-c-code-block__content--PaddingBlockEnd: var(--pf-t--global--spacer--300);
@@ -46,16 +51,17 @@
     font-size: var(--pf-t--global--font--size--sm);
   
     pre, pre:hover {
+      overflow: hidden;
       white-space: pre-wrap;
       word-break: break-all;
     }
     pre code {
       display: block;
-      overflow-x: auto;
+      overflow: hidden;
       font-size: var(--pf-t--global--font--size--sm);
     }
 
-    .pf-v6-c-code-block__code > div { padding: 0 !important; }
+    .pf-v6-c-code-block__code > div { padding: 0 !important; overflow: hidden !important; }
   }
 
 }

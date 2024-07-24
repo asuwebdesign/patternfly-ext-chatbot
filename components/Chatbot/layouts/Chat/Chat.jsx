@@ -32,6 +32,7 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
   const {
 
   } = config.global || {}
+
   const {
     footnote = {
       show: true,
@@ -53,6 +54,18 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
       }
     }
   } = config.chat || {}
+
+  // Configure toast alerts
+  const [alerts, setAlerts] = React.useState([])
+
+  // Add alert
+  const addAlert = (title, variant, key) => {
+    setAlerts(prevAlerts => [...prevAlerts, {
+      title,
+      variant,
+      key
+    }])
+  }
 
   // Configure messages
   const [messages, setMessages] = useState([])
@@ -89,7 +102,7 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
 
   return (
     <>
-      <ToastAlerts />
+      <ToastAlerts alerts={alerts} />
       <Header>
         <div className="pf-chatbot__title">
           <Brand config={config} />
@@ -103,17 +116,17 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
         <Messages>
 
           {/* Store this conversation and pass through <Chatbot .../> */}
-          <Message />
+          <Message addAlert={addAlert} />
           <Separator type="text" value="Agent joined the chat" />
-          <Message />
+          <Message addAlert={addAlert} />
           <Separator type="date" value="2024-07-08" />
-          <Message />
+          <Message addAlert={addAlert} />
           <QuickTip
             imgSrc="https://cdn.dribbble.com/userupload/15166768/file/original-55c633c1ee5dbc0bb6da2b833b4d125c.png?resize=2048x1536"
             imgAlt="Picture description"
             heading="Quick tip heading"
             description="Quick tip description that can wrap multiple lines as needed." />
-          <Message />
+          <Message addAlert={addAlert} />
           {/* Store this conversation and pass through <Chatbot .../> */}
 
           {messages.map((message, index) => (
