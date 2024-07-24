@@ -9,13 +9,31 @@ import { Spinner } from '@patternfly/react-core'
 
 // Import Chatbot components
 import Main from '../../components/Main/Main'
+import Brand from '../../components/Brand/Brand'
+import useDarkMode from '../../useDarkMode'
 
 // Import styles
 import './Splash.scss'
 
 const Splash = ({ config, chatbotVisible }) => {
 
-  const { logo } = config.splash
+  // Configure default values
+  const {
+    background = {
+      show: true,
+      lightTheme: {
+        src: '/bg-splash.jpg',
+        alt: 'Abstract and soft blue gradients on light background'
+      },
+      darkTheme: {
+        src: '/bg-splash-dark.jpg',
+        alt: 'Abstract and soft blue gradients on dark background'
+      },
+    }
+  } = config.splash
+
+  // Detect dark mode
+  const isDarkMode = useDarkMode()
 
   // Configure animations
   const motionBrand = {
@@ -26,13 +44,17 @@ const Splash = ({ config, chatbotVisible }) => {
   return (
     <>
       <Main>
-        {logo.src && logo.alt && (
-          <motion.div className="pf-chatbot__brand" variants={motionBrand} initial="hidden" animate={chatbotVisible ? "visible" : "hidden"}>
-            <img src={logo.src} alt={logo.alt} />
-          </motion.div>
-        )}
+        <motion.div className="pf-chatbot__brand" variants={motionBrand} initial="hidden" animate={chatbotVisible ? "visible" : "hidden"}>
+          <Brand config={config} />
+        </motion.div>
 
         <div className="pf-chatbot__loading"><Spinner aria-label="Connecting to the service" /></div>
+
+        {background.show && (
+          <div className="pf-chatbot__background">
+            <img src={isDarkMode ? background.darkTheme.src : background.lightTheme.src} alt={isDarkMode ? background.darkTheme.alt : background.lightTheme.alt} />
+          </div>
+        )}
       </Main>
     </>
   )
