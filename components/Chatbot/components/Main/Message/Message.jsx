@@ -23,7 +23,7 @@ import Actions from './Actions/Actions'
 // Import styles
 import './Message.scss'
 
-const Message = ({ config, message }) => {
+const Message = ({ config, message, addAlert }) => {
 
   // avatar, name, badge, timestamp, message, sources, actions
 
@@ -92,7 +92,7 @@ const Message = ({ config, message }) => {
             <QuickReplyMessage items={sampleQuickReplyInlineMinimum} />
             <QuickReplyMessage items={sampleQuickReplyInline} />
             <QuickReplyMessage items={sampleQuickReplyStacked} stacked />
-            <CodeBlockMessage />
+            <CodeBlockMessage addAlert={addAlert} />
             <TableMessage caption={sampleTableCaption} columns={sampleTableHeaders} rows={sampleTableData} />
           </>}
         </div>
