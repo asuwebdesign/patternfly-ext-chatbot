@@ -327,16 +327,16 @@ features:
           })
         }
 
-        else {
-          result.push({
-            type: 'text',
-            text: 'Hello there'
-          })
-        }
-
         position = userInput.indexOf(keyword, position + 1)
       }
     })
+
+    if (result.length === 0) {
+      result.push({
+        type: 'text',
+        text: 'Hello there! How can I help you today?'
+      })
+    }
 
     return result
   }
