@@ -1,18 +1,47 @@
 const chatbotConfig = {
 
   // Global config
+  // --------------------------------------------------------------------------
+  global: {
+    // brand: {
+    //   lightTheme: {
+    //     src: 'https://staging-v6.patternfly.org/images/f18506f4.svg',
+    //     alt: 'PatternFly Logo'
+    //   },
+    //   darkTheme: {
+    //     src: 'https://staging-v6.patternfly.org/images/ca43ebed.svg',
+    //     alt: 'PatternFly Logo'
+    //   }
+    // },
+    display: {
+      default: 'float'
+    },
+    menu: {
+      show: true,
+      items: []
+    },
+    options: {
+      show: true,
+      items: []
+    }
+  },
 
   // Splash config
+  // --------------------------------------------------------------------------
   splash: {
-    show: true,
-    logo: {
-      src: '/logo-chatbot--inverted.svg',
-      alt: 'Red Hat Lightspeed logo'
-    },
-    background: ''
+    // show: true,
+    // lightTheme: {
+    //   src: '/bg-splash.jpg',
+    //   alt: 'Abstract and soft blue gradients on light background'
+    // },
+    // darkTheme: {
+    //   src: '/bg-splash-dark.jpg',
+    //   alt: 'Abstract and soft blue gradients on dark background'
+    // },
   },
 
   // Terms of Use config
+  // --------------------------------------------------------------------------
   termsOfUse: {
     show: true,
     title: 'Terms of use',
@@ -83,6 +112,7 @@ const chatbotConfig = {
   },
 
   // Privacy Statement config
+  // --------------------------------------------------------------------------
   privacyStatement: {
     show: true,
     title: 'Privacy statement',
@@ -153,6 +183,7 @@ const chatbotConfig = {
   },
 
   // Declined agreements config
+  // --------------------------------------------------------------------------
   declinedLegal: {
     show: true,
     title: 'Acceptance required',
@@ -173,6 +204,7 @@ const chatbotConfig = {
   },
 
   // Onboarding config
+  // --------------------------------------------------------------------------
   onboarding: {
     show: true,
     features: [
@@ -195,6 +227,7 @@ const chatbotConfig = {
   },
 
   // Chat config
+  // --------------------------------------------------------------------------
   chat: {
     userName: 'Johnny Smith',
     userAvatar: '',
@@ -203,7 +236,13 @@ const chatbotConfig = {
     botName: 'Red Hat Lightspeed',
     botAvatar: '',
     botAvatarAlt: '',
-  
+
+    // enable speech-to-text
+    // enable attachments ... menu, editable
+
+    // menu drawer items
+    // option menu items
+
     footnote: {
       show: true,
       label: 'Lightspeed uses AI. Check for mistakes.',
