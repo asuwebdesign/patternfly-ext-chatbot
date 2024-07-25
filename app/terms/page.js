@@ -21,12 +21,6 @@ const App = () => {
     setChatbotVisible(!chatbotVisible)
   }
 
-  // Display mode support
-  const [displayMode, setDisplayMode] = useState('')
-  const handleDisplay = (className) => {
-    setDisplayMode(className)
-  }
-
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -116,13 +110,12 @@ const App = () => {
         </a>
       </div>
 
-      <Testing handleDisplay={handleDisplay} />
+      <Testing />
 
       <ChatbotToggle label="Chatbot" chatbotVisible={chatbotVisible} toggleChatbot={toggleChatbot} />
 
       <Chatbot
         config={chatbotConfig}
-        displayMode={displayMode}
         layout="terms-of-use"
         chatbotVisible={chatbotVisible}
       />

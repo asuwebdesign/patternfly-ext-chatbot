@@ -20,8 +20,6 @@ const App = () => {
   const toggleChatbot = () => {
     setChatbotVisible(!chatbotVisible)
   }
-
-  // Display mode support
   
 
   return (
@@ -119,8 +117,6 @@ const App = () => {
 
       <Chatbot
         config={chatbotConfig}
-        // displayMode={displayMode}
-        // handleDisplay={handleDisplay}
         layout="chat"
         chatbotVisible={chatbotVisible}
       />

@@ -15,19 +15,6 @@ import Testing from '@/components/testing'
 
 const App = () => {
 
-  // Toggle visibility support
-  const [chatbotVisible, setChatbotVisible] = useState(true)
-  const toggleChatbot = () => {
-    setChatbotVisible(!chatbotVisible)
-  }
-
-  // Display mode support
-  const [displayMode, setDisplayMode] = useState('')
-  const handleDisplay = (className) => {
-    setDisplayMode(className)
-  }
-
-
   return (
     <div className="pf-v6-c-page" id="page-id">
       <header className="pf-v6-c-masthead" id="masthead-id">
@@ -241,9 +228,7 @@ const App = () => {
 
           <Chatbot
             config={chatbotConfig}
-            displayMode={displayMode}
             layout="chat"
-            chatbotVisible={chatbotVisible}
             isEmbedded
           />
 
