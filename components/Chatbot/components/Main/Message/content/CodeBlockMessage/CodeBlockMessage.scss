@@ -2,6 +2,7 @@
 // Chatbot Main - Message - Content - Code Block
 // ============================================================================
 .pf-chatbot__message-code-block {
+  width: 100%;
   background-color: rgb(40, 43, 46); // match syntax highlighting
   border-radius: 6px;
   color: var(--pf-t--color--white);
@@ -22,6 +23,10 @@
 
     .pf-v6-c-code-block__actions {
       width: 100%;
+    }
+
+    .pf-chatbot__message-code-block-language {
+      text-transform: uppercase;
     }
     
     .pf-v6-c-code-block__actions-item {

@@ -6,7 +6,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { obsidian } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
 // Import PatternFly components
-import { CodeBlock, CodeBlockAction, CodeBlockCode, ClipboardCopyButton, Button } from '@patternfly/react-core'
+import { CodeBlock, CodeBlockAction, CodeBlockCode, Button } from '@patternfly/react-core'
 
 // Import FontAwesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -19,7 +19,7 @@ import Tooltip from '@/components/Chatbot/components/Tooltip/Tooltip'
 // Import styles
 import './CodeBlockMessage.scss'
 
-const CodeBlockMessage = ({ addAlert }) => {
+const CodeBlockMessage = ({ language, code, addAlert }) => {
 
   const [copied, setCopied] = React.useState(false)
 
@@ -57,7 +57,7 @@ const CodeBlockMessage = ({ addAlert }) => {
   // Setup code block header
   const actions = <>
     <CodeBlockAction>
-      <div className="pf-chatbot__message-code-block-language">YAML</div>
+      <div className="pf-chatbot__message-code-block-language">{language}</div>
       
       <Button
         ref={buttonRef}
@@ -72,40 +72,11 @@ const CodeBlockMessage = ({ addAlert }) => {
     </CodeBlockAction>
   </>
 
-  const code = `application:
-  name: FakeApp
-  version: 1.0.0
-  environment: production
-
-database:
-  host: db.fakeapp.com
-  port: 5432
-  name: fakeapp_db
-  user: fakeuser
-  password: fakepassword
-
-server:
-  host: api.fakeapp.com
-  port: 8080
-
-logging:
-  level: INFO
-  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-
-auth:
-  jwt_secret: supersecretjwtkey
-  token_expiration_minutes: 60
-
-features:
-  enable_feature_x: true
-  enable_feature_y: false
-  enable_feature_z: true`
-
   return (
     <div className="pf-chatbot__message-code-block">
       <CodeBlock actions={actions}>
         <CodeBlockCode>
-          <SyntaxHighlighter language="yaml" style={obsidian} PreTag="div" CodeTag="div" wrapLongLines>
+          <SyntaxHighlighter language={language} style={obsidian} PreTag="div" CodeTag="div" wrapLongLines>
             {code}
           </SyntaxHighlighter>
         </CodeBlockCode>
