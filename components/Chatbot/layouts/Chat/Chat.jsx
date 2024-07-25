@@ -115,10 +115,32 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
     setTimeout(() => {
       const botResponse = generateBotResponse(input)
 
+      const includeSources = input.includes('sources')
+
       setMessages((prevMessages) => [...prevMessages, {
         role: 'bot',
         time: formattedCurrentTime,
-        content: botResponse
+        content: botResponse,
+        sources: {
+          show: includeSources,
+          items: [
+            {
+              title: 'Getting started with Red Hat OpenShift on IBM',
+              url: 'https://example.com/1',
+              description: 'Red Hat OpenShift on IBM Cloud is a managed offering to create your own cluster of compute hosts where you can deploy and manage containerized apps on IBM Cloud',
+            },
+            {
+              title: 'Item 2',
+              url: 'https://example.com/2',
+              description: 'This is the description for item 2.',
+            },
+            {
+              title: 'Item 3',
+              url: 'https://example.com/3',
+              description: 'This is the description for item 3.',
+            }
+          ]
+        }
       }])
     }, 1000)
 
@@ -137,7 +159,8 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
       'quick-reply-stack',
       'inline-code',
       'codeblock',
-      'table'
+      'table',
+      'sources'
     ]
     const result = []
 
@@ -199,8 +222,8 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
             {
               type: 'image',
               image: {
-                src: 'https://cdn.dribbble.com/userupload/15532609/file/original-e98aacdfdd1aad5b1a07d597e7771735.jpg?resize=2048x1536',
-                alt: 'Mockup of 3 iPhones on blue background'
+                src: 'https://cdn.dribbble.com/userupload/14799798/file/original-8e9a1f418fedf6f68365cdfb8ba3cafc.png?resize=2048x1536',
+                alt: 'Placeholder description of image'
               }
             }
           )
@@ -301,6 +324,13 @@ features:
               columns: ['Column header', 'Column header', 'Column header'],
               rows: [['A1', 'A2', 'A3'], ['B1', 'B2', 'B3'], ['C1', 'C2', 'C3']]
             }
+          })
+        }
+
+        else {
+          result.push({
+            type: 'text',
+            text: 'Hello there'
           })
         }
 

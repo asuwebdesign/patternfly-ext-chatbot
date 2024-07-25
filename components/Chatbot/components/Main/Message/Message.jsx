@@ -25,6 +25,7 @@ import './Message.scss'
 
 const Message = ({ config = {}, displayMode, message, addAlert }) => {
 
+  // Configure default values
   const {
     user = {
       name: 'User Name',
@@ -43,29 +44,6 @@ const Message = ({ config = {}, displayMode, message, addAlert }) => {
   } = config.global || {}
 
   const [isProcessing, setIsProcessing] = useState(false)
-
-  // ---- Sample content ----
-  const sampleSources = [
-    {
-      title: 'Getting started with Red Hat OpenShift on IBM',
-      url: 'https://example.com/1',
-      description: 'Red Hat OpenShift on IBM Cloud is a managed offering to create your own cluster of compute hosts where you can deploy and manage containerized apps on IBM Cloud',
-    },
-    {
-      title: 'Item 2',
-      url: 'https://example.com/2',
-      description: 'This is the description for item 2.',
-    },
-    {
-      title: 'Item 3',
-      url: 'https://example.com/3',
-      description: 'This is the description for item 3.',
-    }
-  ]
-  const sampleQuickReplyInlineMinimum = ['Yes', 'No']
-  const sampleQuickReplyInline = ['Microsoft Edge', 'Google Chrome', 'Mozilla Firefox', 'Apple Safari', 'Internet Explorer']
-  const sampleQuickReplyStacked = ['Help me with an access issue', 'Show my critical vulnerabilities', 'Create new integrations', 'Get recommendations from an advisor', 'Something else']
-  // ---- Sample content ----
 
   // Simulate bot processing message (will need to change later)
   useEffect(() => {
@@ -105,7 +83,7 @@ const Message = ({ config = {}, displayMode, message, addAlert }) => {
             ))}
           </>}
         </div>
-        {/* {!isProcessing && <Sources items={sampleSources} />} */}
+        {!isProcessing && message.role === 'bot' && message.sources.show && <Sources items={message.sources.items} />}
         {!isProcessing && message.role === 'bot' && <Actions addAlert={addAlert} />}
       </div>
     </div>
