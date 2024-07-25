@@ -17,7 +17,7 @@ export default function Testing() {
     background: 'var(--pf-t--global--background--color--secondary--default)',
     borderRadius: '8px',
     gap: '8px',
-    zIndex: '999'
+    zIndex: '100'
   }
 
   // Switch Theme
