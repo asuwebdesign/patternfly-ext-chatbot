@@ -2,7 +2,7 @@
 // Chatbot Main - Message
 // ============================================================================
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Import PatternFly components
 import { Avatar, Label } from '@patternfly/react-core'
@@ -23,27 +23,28 @@ import Actions from './Actions/Actions'
 // Import styles
 import './Message.scss'
 
-const Message = ({ config, message, addAlert }) => {
+const Message = ({ config = {}, displayMode, message, addAlert }) => {
 
-  // avatar, name, badge, timestamp, message, sources, actions
-
-  const userAvatarSrc = 'https://cdn.dribbble.com/userupload/13172077/file/original-a14393b3cb1514a52294d1f921261f51.jpg?resize=1504x1504'
-  const userAvatarAlt = 'Profile picture of someone'
-  const userName = 'User Name'
-  const timestamp = '9:30am'
+  const {
+    user = {
+      name: 'User Name',
+      avatar: {
+        src: 'https://img.freepik.com/premium-photo/graphic-designer-digital-avatar-generative-ai_934475-9292.jpg',
+        alt: 'Profile picture of user'
+      }
+    },
+    bot = {
+      name: 'PatternFly Bot',
+      avatar: {
+        src: 'https://yt3.googleusercontent.com/ej8uvIe1AIFiJQXBwY9cfJmt0kO1cAeWxpBqG_cJndGHx95mFq1F8WakSoXIjtcprTbMQJoqH5M=s900-c-k-c0x00ffffff-no-rj',
+        alt: 'Profile picture of bot'
+      }
+    }
+  } = config.global || {}
 
   const [isProcessing, setIsProcessing] = useState(false)
 
-  const handleMessage = () => { }
-
   // ---- Sample content ----
-  const sampleText = <>By default <code>{'push()'}</code></>
-  const sampleList = ['Item 1', 'Item 2', 'Item 3']
-  const sampleListOrdered = ['Item 1', 'Item 2', 'Item 3']
-  const sampleImage = {
-    src: 'https://cdn.dribbble.com/userupload/15532609/file/original-e98aacdfdd1aad5b1a07d597e7771735.jpg?resize=2048x1536',
-    alt: 'Mockup of 3 iPhones on blue background'
-  }
   const sampleSources = [
     {
       title: 'Getting started with Red Hat OpenShift on IBM',
@@ -61,51 +62,51 @@ const Message = ({ config, message, addAlert }) => {
       description: 'This is the description for item 3.',
     }
   ]
-  const sampleVideo = {
-    title: 'Sprite Fight',
-    src: 'https://files.vidstack.io/sprite-fight/720p.mp4',
-    poster: {
-      src: 'https://files.vidstack.io/sprite-fight/poster.webp',
-      alt: 'Girl walks into campfire with gnomes surrounding her friend ready for their next meal!'
-    },
-    thumbnails: 'https://files.vidstack.io/sprite-fight/thumbnails.vtt'
-  }
   const sampleQuickReplyInlineMinimum = ['Yes', 'No']
   const sampleQuickReplyInline = ['Microsoft Edge', 'Google Chrome', 'Mozilla Firefox', 'Apple Safari', 'Internet Explorer']
   const sampleQuickReplyStacked = ['Help me with an access issue', 'Show my critical vulnerabilities', 'Create new integrations', 'Get recommendations from an advisor', 'Something else']
-  const sampleTable = {
-    caption: 'Simple table caption',
-    columns: ['Column header', 'Column header', 'Column header'],
-    rows: [['A1', 'A2', 'A3'], ['B1', 'B2', 'B3'], ['C1', 'C2', 'C3']] 
-  }
   // ---- Sample content ----
 
+  // Simulate bot processing message (will need to change later)
+  useEffect(() => {
+    if (message.role === 'bot') {
+      setIsProcessing(true)
+
+      const timer = setTimeout(() => {
+        setIsProcessing(false)
+      }, 3000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [message.role])
+
   return (
-    <div className="pf-chatbot__message">
-      <Avatar src={userAvatarSrc} alt={userAvatarAlt} />
+    <div className={`pf-chatbot__message ${message.role ? 'pf-chatbot__message--' + message.role : ''}`}>
+      <Avatar src={message.role === 'user' ? user.avatar.src : bot.avatar.src} alt={message.role === 'user' ? user.avatar.alt : bot.avatar.alt} />
       <div className="pf-chatbot__message-contents">
         <div className="pf-chatbot__message-meta">
-          <span className="pf-chatbot__message-name">{userName}</span>
-          <Label variant="outline" isCompact>AI</Label> {/* only applies to bot messages... */}
-          <time dateTime="">{timestamp}</time>
+          <span className="pf-chatbot__message-name">{message.role === 'user' ? user.name : bot.name}</span>
+          {message.role === 'bot' && <Label variant="outline" isCompact>AI</Label>}
+          <time dateTime="">{message.time}</time>
         </div>
         <div className="pf-chatbot__message-response">
           {isProcessing && <Processing />}
           {!isProcessing && <>
-            <TextMessage text={sampleText} />
-            <ListMessage items={sampleList} />
-            <ListMessage ordered items={sampleListOrdered} />
-            <ImageMessage image={sampleImage} />
-            <VideoMessage video={sampleVideo} />
-            <QuickReplyMessage items={sampleQuickReplyInlineMinimum} />
-            <QuickReplyMessage items={sampleQuickReplyInline} />
-            <QuickReplyMessage items={sampleQuickReplyStacked} stacked />
-            <CodeBlockMessage addAlert={addAlert} />
-            <TableMessage table={sampleTable} />
+            {message.content.map((snippet, index) => (
+              <>
+                {snippet.type === 'text' && <TextMessage key={index} text={snippet.text} />}
+                {snippet.type === 'list' && <ListMessage items={snippet.items} ordered={snippet.ordered} />}
+                {snippet.type === 'image' && <ImageMessage image={snippet.image} />}
+                {snippet.type === 'video' && <VideoMessage video={snippet.video} />}
+                {snippet.type === 'quick-reply' && <QuickReplyMessage items={snippet.items} stacked={snippet.stacked} />}
+                {snippet.type === 'codeblock' && <CodeBlockMessage language={snippet.language} code={snippet.code} addAlert={addAlert} />}
+                {snippet.type === 'table' && <TableMessage table={snippet.table} displayMode={displayMode} />}
+              </>
+            ))}
           </>}
         </div>
-        {!isProcessing && <Sources items={sampleSources} />}
-        {!isProcessing && <Actions addAlert={addAlert} />}
+        {/* {!isProcessing && <Sources items={sampleSources} />} */}
+        {!isProcessing && message.role === 'bot' && <Actions addAlert={addAlert} />}
       </div>
     </div>
   )
