@@ -22,6 +22,7 @@ import ToggleOptions from '../../components/Header/ToggleOptions/ToggleOptions'
 import Messages from '../../components/Main/Messages/Messages'
 import Separator from '../../components/Main/Separator/Separator'
 import QuickTip from '../../components/Main/QuickTip/QuickTip'
+import Welcome from './Welcome/Welcome'
 
 // Import styles
 import './Chat.scss'
@@ -130,14 +131,14 @@ const Chat = ({ config = {}, displayMode, onModeChange }) => {
               description: 'Red Hat OpenShift on IBM Cloud is a managed offering to create your own cluster of compute hosts where you can deploy and manage containerized apps on IBM Cloud',
             },
             {
-              title: 'Item 2',
+              title: 'Azure Red Hat OpenShift documentation',
               url: 'https://example.com/2',
-              description: 'This is the description for item 2.',
+              description: 'Microsoft Azure Red Hat OpenShift allows you to deploy a production ready Red Hat OpenShift cluster in Azure Red Hat OpenShift docs English (United States).',
             },
             {
-              title: 'Item 3',
+              title: 'OKD Documentation: Home',
               url: 'https://example.com/3',
-              description: 'This is the description for item 3.',
+              description: 'OKD is a distribution of Kubernetes optimized for continuous application development and multi-tenant deployment. OKD also serves as the upstream code base upon.',
             }
           ]
         }
@@ -363,8 +364,16 @@ features:
         <div className="pf-chatbot__title">
           <Brand config={config} />
         </div>
-        <ToggleMenu isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} />
-        <ToggleOptions isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} onModeChange={onModeChange} />
+        
+        <ToggleMenu
+          isMenuExpanded={isMenuExpanded}
+          setIsMenuExpanded={setIsMenuExpanded} />
+        
+        <ToggleOptions
+          isMenuExpanded={isMenuExpanded}
+          setIsMenuExpanded={setIsMenuExpanded}
+          onModeChange={onModeChange}
+          displayMode={displayMode} />
       </Header>
       
       <Menu
@@ -374,7 +383,8 @@ features:
         isMenuExpanded={isMenuExpanded}
         setIsMenuExpanded={setIsMenuExpanded}
         onMenuExpand={onMenuExpand} />
-      {displayMode !== 'pf-chatbot--fullscreen' || displayMode !== 'pf-chatbot--embedded' && isMenuExpanded && <Backdrop />}
+      
+      {(displayMode === '' || displayMode === 'pf-chatbot--docked') && isMenuExpanded && <Backdrop />}
       
       <Main>
         <Messages>
@@ -394,11 +404,7 @@ features:
           {/* Store this conversation and pass through <Chatbot .../> */}
 
           {/* Default view when no messages exist in current conversation */}
-          {messages.length === 0 && (
-            <>
-              {/* <div>Default message view</div> */}
-            </>
-          )}
+          {messages.length === 0 && <Welcome />}
 
           {/* Display all messages in current conversation */}
           {messages.map((message, index) => <Message key={index} message={message} addAlert={addAlert} displayMode={displayMode} />)}
