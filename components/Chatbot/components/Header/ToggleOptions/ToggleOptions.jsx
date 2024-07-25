@@ -18,7 +18,7 @@ import RHUIIconEllipsisHorizontalFill from './Icon'
 // Import styles
 import './ToggleOptions.scss'
 
-const ToggleOptions = ({ isMenuExpanded, setIsMenuExpanded, onModeChange }) => {
+const ToggleOptions = ({ isMenuExpanded, setIsMenuExpanded, onModeChange, displayMode }) => {
 
   // Configure tooltips
   const buttonToggleOptionsRef = React.useRef()
@@ -79,22 +79,26 @@ const ToggleOptions = ({ isMenuExpanded, setIsMenuExpanded, onModeChange }) => {
           </>
         )}
       >
-        <DropdownGroup label="Display mode">
-          <DropdownList>
-            <DropdownItem key="switchDisplayOverlay" onClick={handleOverlayMode}>
-              <FontAwesomeIcon icon={faWindowRestore} />
-              <span>Overlay</span>
-            </DropdownItem>
-            <DropdownItem key="switchDisplayDock" onClick={handleDockMode}>
-              <FontAwesomeIcon icon={faArrowRightToBracket} />
-              <span>Dock to window</span>
-            </DropdownItem>
-            <DropdownItem key="switchDisplayFullscreen" onClick={handleFullscreenMode}>
-              <FontAwesomeIcon icon={faExpand} />
-              <span>Fullscreen</span>
-            </DropdownItem>
-          </DropdownList>
-        </DropdownGroup>
+
+        {displayMode !== 'pf-chatbot--embedded' && (
+          <DropdownGroup label="Display mode">
+            <DropdownList>
+              <DropdownItem key="switchDisplayOverlay" onClick={handleOverlayMode}>
+                <FontAwesomeIcon icon={faWindowRestore} />
+                <span>Overlay</span>
+              </DropdownItem>
+              <DropdownItem key="switchDisplayDock" onClick={handleDockMode}>
+                <FontAwesomeIcon icon={faArrowRightToBracket} />
+                <span>Dock to window</span>
+              </DropdownItem>
+              <DropdownItem key="switchDisplayFullscreen" onClick={handleFullscreenMode}>
+                <FontAwesomeIcon icon={faExpand} />
+                <span>Fullscreen</span>
+              </DropdownItem>
+            </DropdownList>
+          </DropdownGroup>
+        )}
+
       </Dropdown>
     </>
   )
