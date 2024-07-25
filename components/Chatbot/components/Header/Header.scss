@@ -66,6 +66,8 @@
 // ============================================================================
 .pf-chatbot--fullscreen {
   .pf-chatbot__header {
+    padding-top: 0;
+    padding-bottom: 0;
     background-color: var(--pf-t--color--white);
 
     &::after { display: none; }
@@ -79,6 +81,8 @@
 @media screen and (min-width: 1024px) {
   .pf-chatbot--embedded {
     .pf-chatbot__header {
+      padding-top: 0;
+      padding-bottom: 0;
       background-color: var(--pf-t--color--white);
   
       &::after { display: none; }
