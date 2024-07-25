@@ -348,7 +348,7 @@ features:
 
 
   // Menu panel
-  const [isMenuExpanded, setIsMenuExpanded] = React.useState(false)
+  const [isMenuExpanded, setIsMenuExpanded] = React.useState( displayMode === 'pf-chatbot--embedded' ? true : false )
   const drawerRef = React.useRef()
 
   const onMenuExpand = () => {
@@ -358,6 +358,7 @@ features:
   return (
     <>
       <ToastAlerts alerts={alerts} />
+      
       <Header>
         <div className="pf-chatbot__title">
           <Brand config={config} />
@@ -365,8 +366,16 @@ features:
         <ToggleMenu isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} />
         <ToggleOptions isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} onModeChange={onModeChange} />
       </Header>
-      <Menu drawerRef={drawerRef} config={config} displayMode={displayMode} isMenuExpanded={isMenuExpanded} setIsMenuExpanded={setIsMenuExpanded} onMenuExpand={onMenuExpand} />
-      {displayMode !== 'pf-chatbot--fullscreen' && isMenuExpanded && <Backdrop />}
+      
+      <Menu
+        drawerRef={drawerRef}
+        config={config}
+        displayMode={displayMode}
+        isMenuExpanded={isMenuExpanded}
+        setIsMenuExpanded={setIsMenuExpanded}
+        onMenuExpand={onMenuExpand} />
+      {displayMode !== 'pf-chatbot--fullscreen' || displayMode !== 'pf-chatbot--embedded' && isMenuExpanded && <Backdrop />}
+      
       <Main>
         <Messages>
 
@@ -397,6 +406,7 @@ features:
 
         </Messages>
       </Main>
+      
       <Footer>
         <MessageBar onSend={handleSend} />
         {footnote.show && <Footnote config={footnote} />}

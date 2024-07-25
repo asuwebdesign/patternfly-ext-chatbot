@@ -56,16 +56,16 @@
 @media screen and (min-width: 1024px) {
   .pf-chatbot.pf-chatbot--layout--chat.pf-chatbot--embedded {
     grid-template-columns: auto 1fr;
-    grid-template-rows: 96px 1fr auto;
-  
+    grid-template-rows: 80px 1fr auto;
+
     // Menu
     .pf-chatbot__menu {
       grid-area: 1 / 1 / 4 / 2;
     }
-  
+
     // Header
     .pf-chatbot__header { grid-area: 1 / 2 / 2 / 3; }
-  
+
     // Main
     .pf-chatbot__main {
       grid-area: 2 / 2 / 3 / 3;

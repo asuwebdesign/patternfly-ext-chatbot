@@ -183,7 +183,7 @@ const Menu = ({ config, displayMode, isMenuExpanded, setIsMenuExpanded, onMenuEx
         className="pf-chatbot__menu"
         isExpanded={isMenuExpanded}
         onExpand={onMenuExpand}
-        isInline={displayMode === 'pf-chatbot--fullscreen'}
+        isInline={displayMode === 'pf-chatbot--fullscreen' || displayMode === 'pf-chatbot--embedded'}
         position="start"
       >
         <DrawerContent panelContent={panelContent} />

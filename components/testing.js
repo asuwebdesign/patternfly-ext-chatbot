@@ -53,6 +53,9 @@ export default function Testing() {
       <Link href="/declined-legal">Declined legal</Link>
       <Link href="/onboarding">Onboarding / new features</Link>
       <Link href="/chat">Chat</Link>
+      <br />
+      <p><small>Use cases:</small></p>
+      <Link href="/embed">Embedded</Link>
     </div>
   )
 }

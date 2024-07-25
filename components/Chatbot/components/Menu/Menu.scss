@@ -144,6 +144,33 @@
 
 
 // ============================================================================
+// Chatbot Display Mode - Embedded
+// ============================================================================
+@media screen and (min-width: 1024px) {
+  .pf-chatbot--embedded {
+    .pf-chatbot__menu.pf-v6-c-drawer {
+      --pf-v6-c-drawer__panel--MinWidth: 0;
+      --pf-v6-c-drawer__panel--xl--MinWidth: 0;
+      position: static;
+      width: 0;
+  
+      &.pf-m-expanded {
+        width: 384px;
+      }
+  
+      .pf-v6-c-drawer__panel {
+        // transition: none;
+  
+        &::after {
+          --pf-v6-c-drawer--m-inline--m-expanded__panel--after--BackgroundColor: var(--pf-t--color--gray--10);
+        }
+      }
+    }
+  }
+}
+
+
+// ============================================================================
 // Chatbot Dark Theme
 // ============================================================================
 .pf-v6-theme-dark {

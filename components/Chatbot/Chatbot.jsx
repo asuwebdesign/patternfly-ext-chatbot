@@ -16,10 +16,10 @@ import Gutter from './components/Gutter/Gutter'
 // Import styles
 import './Chatbot.scss'
 
-const Chatbot = ({ config, layout, chatbotVisible, isEmbedded, ...props }) => {
+const Chatbot = ({ config, layout, chatbotVisible = true, isEmbedded, ...props }) => {
 
   // Configure display modes
-  const [displayMode, setDisplayMode] = useState('')
+  const [displayMode, setDisplayMode] = useState(isEmbedded ? 'pf-chatbot--embedded' : '')
   
   // Switch display modes
   const handleDisplayModeChange = (mode) => {
@@ -61,7 +61,7 @@ const Chatbot = ({ config, layout, chatbotVisible, isEmbedded, ...props }) => {
 
   return (
     <motion.div
-      className={`pf-chatbot ${layout && 'pf-chatbot--layout--' + layout} ${displayMode} ${isEmbedded ? 'pf-chatbot--embedded' : ''} ${!chatbotVisible ? 'pf-chatbot--hidden' : ''}`}
+      className={`pf-chatbot ${layout && 'pf-chatbot--layout--' + layout} ${displayMode} ${!chatbotVisible ? 'pf-chatbot--hidden' : ''}`}
       variants={motionChatbot}
       initial="hidden"
       animate={chatbotVisible ? "visible" : "hidden"}
