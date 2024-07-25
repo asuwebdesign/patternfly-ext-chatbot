@@ -7,10 +7,10 @@ import React from 'react'
 import './TableMessage.scss'
 import { Table, Caption, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table'
 
-const TableMessage = ({ table }) => {
+const TableMessage = ({ displayMode, table }) => {
   return (
     <div className="pf-chatbot__message-table">
-      <Table aria-label={table.caption && table.caption} gridBreakPoint="grid">
+      <Table aria-label={table.caption && table.caption} gridBreakPoint={displayMode === 'pf-chatbot--fullscreen' || displayMode === 'pf-chatbot--embedded' ? 'grid-2xl' : 'grid'}>
         {table.caption && <Caption>{table.caption}</Caption>}
         {table.columns && (
           <Thead>

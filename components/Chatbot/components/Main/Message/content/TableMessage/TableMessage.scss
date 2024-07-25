@@ -2,11 +2,20 @@
 // Chatbot Main - Message - Content - Table
 // ============================================================================
 .pf-chatbot__message-table {
+  width: 100%;
+  padding: var(--pf-t--chatbot-message--type--padding);
+  background-color: var(--pf-t--global--background--color--primary--default);
   border-radius: var(--pf-t--chatbot-message--type--border--radius);
   overflow: hidden;
 
-  .pf-v6-c-table__tr:last-child {
-    border-block-end: 0;
+  .pf-v6-c-table {
+    .pf-v6-c-table__tbody:first-of-type {
+      border-block-start: 0;
+    }
+  
+    .pf-v6-c-table__tr:last-child {
+      border-block-end: 0;
+    } 
   }
 
 }
