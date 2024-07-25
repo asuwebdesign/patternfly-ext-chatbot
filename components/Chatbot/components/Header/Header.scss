@@ -95,9 +95,19 @@
 // Chatbot Dark Theme
 // ============================================================================
 .pf-v6-theme-dark {
+  
   .pf-chatbot--fullscreen {
     .pf-chatbot__header {
       background-color: var(--pf-t--color--gray--90);
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    .pf-chatbot--embedded {
+      .pf-chatbot__header {
+        background-color: var(--pf-t--color--gray--90);    
+      }
+    }
+  }
+
 }

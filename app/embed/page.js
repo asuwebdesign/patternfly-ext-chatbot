@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react'
+import { Switch } from '@patternfly/react-core'
 import Image from "next/image"
 import styles from "../page.module.css"
 
@@ -14,6 +15,24 @@ import chatbotConfig from '../config'
 import Testing from '@/components/testing'
 
 const App = () => {
+
+  // Switch Theme
+  const [isDarkTheme, setIsDarkTheme] = useState(false)
+  
+
+  useEffect(() => {
+    const htmlElement = document.documentElement
+    if (isDarkTheme) {
+      htmlElement.classList.add('pf-v6-theme-dark')
+    } else {
+      htmlElement.classList.remove('pf-v6-theme-dark')
+    }
+  }, [isDarkTheme]);
+  
+  const toggleTheme = (event, checked) => {
+    // setIsDarkTheme(!isDarkTheme)
+    setIsDarkTheme(checked)
+  }
 
   return (
     <div className="pf-v6-c-page" id="page-id">
@@ -220,6 +239,7 @@ const App = () => {
               </ul>
             </section>
           </nav>
+          <Switch id="simple-switch" label="Dark theme" isChecked={isDarkTheme} onChange={toggleTheme} ouiaId="BasicSwitch" />
         </div>
       </div>
 
