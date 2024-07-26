@@ -23,7 +23,21 @@ const chatbotConfig = {
     options: {
       show: true,
       items: []
-    }
+    },
+    // user: {
+    //   name: 'User Name',
+    //   avatar: {
+    //     src: 'https://img.freepik.com/premium-photo/graphic-designer-digital-avatar-generative-ai_934475-9292.jpg',
+    //     alt: 'Profile picture of user'
+    //   }
+    // },
+    // bot: {
+    //   name: 'PatternFly Bot',
+    //   avatar: {
+    //     src: 'https://yt3.googleusercontent.com/ej8uvIe1AIFiJQXBwY9cfJmt0kO1cAeWxpBqG_cJndGHx95mFq1F8WakSoXIjtcprTbMQJoqH5M=s900-c-k-c0x00ffffff-no-rj',
+    //     alt: 'Profile picture of bot'
+    //   }
+    // }
   },
 
   // Splash config
@@ -229,14 +243,6 @@ const chatbotConfig = {
   // Chat config
   // --------------------------------------------------------------------------
   chat: {
-    userName: 'Johnny Smith',
-    userAvatar: '',
-    userAvatarAlt: '',
-  
-    botName: 'Red Hat Lightspeed',
-    botAvatar: '',
-    botAvatarAlt: '',
-
     // enable speech-to-text
     // enable attachments ... menu, editable
 
