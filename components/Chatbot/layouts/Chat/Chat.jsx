@@ -349,7 +349,7 @@ features:
 
 
   // Menu panel
-  const [isMenuExpanded, setIsMenuExpanded] = React.useState( displayMode === 'pf-chatbot--embedded' ? true : false )
+  const [isMenuExpanded, setIsMenuExpanded] = React.useState(displayMode === 'pf-chatbot--embedded' ? true : false)
   const drawerRef = React.useRef()
 
   const onMenuExpand = () => {
@@ -359,23 +359,23 @@ features:
   return (
     <>
       <ToastAlerts alerts={alerts} />
-      
+
       <Header>
         <div className="pf-chatbot__title">
           <Brand config={config} />
         </div>
-        
+
         <ToggleMenu
           isMenuExpanded={isMenuExpanded}
           setIsMenuExpanded={setIsMenuExpanded} />
-        
+
         <ToggleOptions
           isMenuExpanded={isMenuExpanded}
           setIsMenuExpanded={setIsMenuExpanded}
           onModeChange={onModeChange}
           displayMode={displayMode} />
       </Header>
-      
+
       <Menu
         drawerRef={drawerRef}
         config={config}
@@ -383,36 +383,40 @@ features:
         isMenuExpanded={isMenuExpanded}
         setIsMenuExpanded={setIsMenuExpanded}
         onMenuExpand={onMenuExpand} />
-      
+
       {(displayMode === '' || displayMode === 'pf-chatbot--docked') && isMenuExpanded && <Backdrop />}
-      
+
       <Main>
-        <Messages>
+        {/* Default view when no messages exist in current conversation */}
+        {messages.length === 0 && <Welcome />}
 
-          {/* Store this conversation and pass through <Chatbot .../> */}
-          {/* <Message addAlert={addAlert} />
-          <Separator type="text" value="Agent joined the chat" />
-          <Message addAlert={addAlert} />
-          <Separator type="date" value="2024-07-08" />
-          <Message addAlert={addAlert} />
-          <QuickTip
-            imgSrc="https://cdn.dribbble.com/userupload/15166768/file/original-55c633c1ee5dbc0bb6da2b833b4d125c.png?resize=2048x1536"
-            imgAlt="Picture description"
-            heading="Quick tip heading"
-            description="Quick tip description that can wrap multiple lines as needed." />
-          <Message addAlert={addAlert} /> */}
-          {/* Store this conversation and pass through <Chatbot .../> */}
+        {messages.length > 0 && (
+          <Messages>
 
-          {/* Default view when no messages exist in current conversation */}
-          {messages.length === 0 && <Welcome />}
+            {/* Store this conversation and pass through <Chatbot .../> */}
+            {/* <Message addAlert={addAlert} />
+            <Separator type="text" value="Agent joined the chat" />
+            <Message addAlert={addAlert} />
+            <Separator type="date" value="2024-07-08" />
+            <Message addAlert={addAlert} />
+            <QuickTip
+              imgSrc="https://cdn.dribbble.com/userupload/15166768/file/original-55c633c1ee5dbc0bb6da2b833b4d125c.png?resize=2048x1536"
+              imgAlt="Picture description"
+              heading="Quick tip heading"
+              description="Quick tip description that can wrap multiple lines as needed." />
+            <Message addAlert={addAlert} /> */}
+            {/* Store this conversation and pass through <Chatbot .../> */}
 
-          {/* Display all messages in current conversation */}
-          {messages.map((message, index) => <Message key={index} message={message} addAlert={addAlert} displayMode={displayMode} />)}
-          <div ref={messagesEndRef} aria-hidden="true" />
 
-        </Messages>
+
+            {/* Display all messages in current conversation */}
+            {messages.map((message, index) => <Message key={index} message={message} addAlert={addAlert} displayMode={displayMode} />)}
+            <div ref={messagesEndRef} aria-hidden="true" />
+
+          </Messages>
+        )}
       </Main>
-      
+
       <Footer>
         <MessageBar onSend={handleSend} />
         {footnote.show && <Footnote config={footnote} />}
