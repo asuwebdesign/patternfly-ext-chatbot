@@ -29,6 +29,38 @@
     flex-direction: column;
     gap: 16px;
     width: 100%;
+
+    .pf-v6-c-card { width: 100%; }
+  }
+}
+
+
+// ============================================================================
+// Chatbot Display Mode - Fullscreen
+// ============================================================================
+.pf-chatbot--fullscreen {
+  .pf-chatbot--layout--welcome {
+    
+    .pf-chatbot__prompt-suggestions {
+      flex-direction: row;
+    }
+
+  }
+}
+
+
+// ============================================================================
+// Chatbot Display Mode - Embedded
+// ============================================================================
+@media screen and (min-width: 1024px) {
+  .pf-chatbot--embedded {
+    .pf-chatbot--layout--welcome {
+    
+      .pf-chatbot__prompt-suggestions {
+        flex-direction: row;
+      }
+  
+    }
   }
 }
 

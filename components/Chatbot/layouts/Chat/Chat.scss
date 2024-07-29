@@ -75,7 +75,8 @@
       margin: 0;
     }
 
-    // Messages
+    // Welcome & Messages
+    .pf-chatbot--layout--welcome,
     .pf-chatbot__messages {
       padding-left: max(20%, calc((100% - 960px) / 2));
       padding-right: max(20%, calc((100% - 960px) / 2));
