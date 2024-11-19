@@ -1,16 +1,16 @@
 // ============================================================================
 // Chatbot Tooltip
 // ============================================================================
-// div.pf-chatbot__tooltip { box-shadow: none; }
+div.pf-chatbot__tooltip { box-shadow: none; }
 
-// .pf-chatbot__tooltip .pf-v6-c-tooltip__arrow { display: none; }
+.pf-chatbot__tooltip .pf-v6-c-tooltip__arrow { display: none; }
 
-// .pf-chatbot__tooltip .pf-v6-c-tooltip__content {
-//   padding: var(--pf-t--global--spacer--100) var(--pf-t--global--spacer--200);
-//   background-color: var(--pf-t--color--gray--60);
-//   border-radius: var(--pf-t--global--border--radius--tiny);
-//   color: var(--pf-t--color--white);
-//   font-family: var(--pf-t--chatbot--heading--font-family);
-//   font-weight: 600;
-//   font-size: var(--pf-t--global--font--size--xs);
-// }
+.pf-chatbot__tooltip .pf-v6-c-tooltip__content {
+  padding: var(--pf-t--global--spacer--100) var(--pf-t--global--spacer--200);
+  background-color: var(--pf-t--color--gray--60);
+  border-radius: var(--pf-t--global--border--radius--tiny);
+  color: var(--pf-t--color--white);
+  font-family: var(--pf-t--chatbot--heading--font-family);
+  font-weight: 600;
+  font-size: var(--pf-t--global--font--size--xs);
+}
